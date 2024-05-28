@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "servermod:ruby_ore",
+    "servermod:ruby_block",
+    "servermod:deepslate_ruby_ore",
+    "servermod:deepslate_platinum_ore",
+    "servermod:platinum_block"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "item.servermod.wooden_watering_can": "Wooden Watering Can",
+  "item.servermod.ruby": "Ruby",
+  "item.servermod.custom_lapis": "Lapis Lazuli",
+  "item.servermod.platinum": "Platinum",
+  "item.servermod.soil": "Soil",
+  "item.servermod.ashes_o_enchantment": "Ashes o'Enchantment",
+
+  "block.servermod.planter": "Planter",
+  "block.servermod.ruby_ore": "Ruby Ore",
+  "block.servermod.deepslate_ruby_ore": "Deepslate Ruby Ore",
+  "block.servermod.ruby_block": "Ruby Block",
+  "block.servermod.deepslate_platinum_ore": "Deepslate Platinum Ore",
+  "block.servermod.platinum_block": "Platinum Block",
+
+  "block.servermod.phoenix_block": "Phoenix Block",
+  "block.servermod.boulder_block": "Boulder Block",
+  "block.servermod.styling_table_mine": "Styling Table (Custom)",
+  "block.servermod.bird_stand": "Bird Stand",
+
+  "text.servermod.repair_items": "Repair Items",
+  "text.servermod.repair": "Repair",
+  "text.servermod.no_items": "No damaged items to repair",
+  "text.servermod.not_affordable": "Can not afford",
+  "text.servermod.cost": "Cost",
+
+  "itemgroup.servermod": "Server Mod Item Group"
+}

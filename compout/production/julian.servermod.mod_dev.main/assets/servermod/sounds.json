@@ -1,0 +1,44 @@
+{
+  "loot_vase_break": {
+    "subtitle": "sounds.servermod.loot_vase_break",
+    "sounds": [
+      "servermod:loot_vase_break"
+    ]
+  },
+  "beginning_song": {
+    "subtitle": "sounds.servermod.beginning_song",
+    "sounds": [
+      "servermod:beginning_song"
+    ]
+  },
+  "crate_open": {
+    "subtitle": "sounds.servermod.crate_open",
+    "sounds": [
+      "servermod:crate_open"
+    ]
+  },
+  "crate_open_magic": {
+    "subtitle": "sounds.servermod.crate_open_magic",
+    "sounds": [
+      "servermod:crate_open_magic"
+    ]
+  },
+  "quest_complete": {
+    "subtitle": "sounds.servermod.quest_complete",
+    "sounds": [
+      "servermod:quest-complete"
+    ]
+  },
+  "quest_objective_complete": {
+    "subtitle": "sounds.servermod.quest_objective_complete",
+    "sounds": [
+      "servermod:quest-objective-complete"
+    ]
+  },
+  "task_complete": {
+    "subtitle": "sounds.servermod.task_complete",
+    "sounds": [
+      "servermod:task-complete"
+    ]
+  }
+}

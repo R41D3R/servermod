@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:entity",
+    "pools": [
+      {
+        "rolls": 1,
+        "entries": [
+          {
+            "type": "minecraft:item",
+            "name": "minecraft:item_frame",
+            "functions": [
+              {
+                "function": "minecraft:set_nbt",
+                "tag": "{CustomModelData:34100, EntityTag:{Tags:[\"CornPlant\"],Item:{id:\"minecraft:item_frame\", Count:1b, tag:{CustomModelData:34102}}, Invulnerable:1b, Invisible:1b, Fixed:1b}}"
+              },
+              {
+                "function": "minecraft:set_name",
+                "name": "Corn Seed"
+              },
+              {
+                "function": "minecraft:set_count",
+                "count": 1
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  

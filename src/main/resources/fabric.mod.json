@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "servermod",
+	"version": "${version}",
+	"name": "servermod",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Julian"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "MIT",
+	"icon": "assets/servermod/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+          "julian.servermod.ServerMod"
+		],
+		"client": [
+			"julian.servermod.ServerModClient"
+		],
+		"fabric-datagen": [
+			"julian.servermod.ServerModDataGenerator"
+		]
+	},
+	"mixins": [
+		"servermod.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.15.7",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

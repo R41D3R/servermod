@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "servermod:block/furniture/badger/farming_banner"
+    },
+    "facing=east": {
+      "model": "servermod:block/furniture/badger/farming_banner",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "servermod:block/furniture/badger/farming_banner",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "servermod:block/furniture/badger/farming_banner",
+      "y": 270
+    }
+  }
+}

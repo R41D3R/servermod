@@ -1,0 +1,7 @@
+// 1.20.1	2024-05-15T20:35:28.143562304	servermod/World Gen
+e90f3ec52ce1bd199539b26f4321f4038a2731d0 data/servermod/worldgen/configured_feature/ruby_ore.json
+7003a5641d2c8e9709c0097144687dd1c28d7fe1 data/servermod/worldgen/configured_feature/platinum_ore.json
+d6b5245baa6ebffcb8b09fd2eadec747a47645e1 data/servermod/worldgen/placed_feature/loot_vase_placed.json
+9f1ed5f0b453a8ffbca338313ee539f590bef0c0 data/servermod/worldgen/placed_feature/platinum_ore_placed.json
+d28df75e6c7d38ebdd03aa659768af65fdcff684 data/servermod/worldgen/configured_feature/loot_vase.json
+ac2c6b643995e9fd99553bac8dd3368fca8705e8 data/servermod/worldgen/placed_feature/ruby_ore_placed.json

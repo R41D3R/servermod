@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "wet=false,soil=false": {
+      "model": "servermod:block/plant_box"
+    },
+    "wet=true,soil=false": {
+      "model": "servermod:block/plant_box_wet"
+    },
+    "wet=false,soil=true": {
+      "model": "servermod:block/plant_box_soil"
+    },
+    "wet=true,soil=true": {
+      "model": "servermod:block/plant_box_wet_soil"
+    }
+  }
+}

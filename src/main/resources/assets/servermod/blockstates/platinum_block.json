@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "servermod:block/platinum_block"
+    }
+  }
+}

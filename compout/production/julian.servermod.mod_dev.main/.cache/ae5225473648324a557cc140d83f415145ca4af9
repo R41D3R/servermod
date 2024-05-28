@@ -1,0 +1,8 @@
+// 1.20.1	2024-05-15T00:06:41.809006803	servermod/Block Loot Tables
+362ec7d64bdd1f7e981d665425dcd88b7515abf6 data/servermod/loot_tables/blocks/ruby_ore.json
+7fcafab4238b5c27b3adc20a6ac4776d4038c7e2 data/servermod/loot_tables/blocks/ruby_block.json
+0d90990f476f23890426c4f822cfa2c42a2694cf data/servermod/loot_tables/blocks/loot_vase_block.json
+1af96bdd43bab61f9fbb378f04768f2a95cedfb8 data/servermod/loot_tables/blocks/deepslate_ruby_ore.json
+bc697250215a6d5f289ae6788df8f624373e8752 data/servermod/loot_tables/blocks/platinum_block.json
+6ffb6a7b5056b98067a0661d28433c2f70cb2549 data/servermod/loot_tables/blocks/planter.json
+5aecd3464014074d3ee81ae6dc8b2149d4b95912 data/servermod/loot_tables/blocks/deepslate_platinum_ore.json

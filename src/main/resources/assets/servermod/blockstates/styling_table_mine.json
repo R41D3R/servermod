@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "servermod:block/styling_table_mine"
+      },
+      {
+        "model": "servermod:block/styling_table_mine",
+        "y": 90
+      },
+      {
+        "model": "servermod:block/styling_table_mine",
+        "y": 180
+      },{
+        "model": "servermod:block/styling_table_mine",
+        "y": 270
+      }
+    ]
+  }
+}
