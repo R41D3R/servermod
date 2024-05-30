@@ -16,6 +16,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 
 import java.time.DayOfWeek;
@@ -97,7 +98,7 @@ public class DailyCropBlock extends CropBlock {
             int age = this.getAge(state);
 
             // don't grow if not moist
-            if (!isMoisture(world, pos)) {
+            if (!isMoisture(world, pos) || !isSoiled(world, pos)) {
                 world.setBlockState(pos, this.withAge(age).with(LAST_GROWTH_DAY, currentDayOfWeekValue), 2);
                 return;
             }
@@ -105,8 +106,17 @@ public class DailyCropBlock extends CropBlock {
             if (age < this.getMaxAge()) {
                 world.setBlockState(pos, this.withAge(age + 1).with(LAST_GROWTH_DAY, currentDayOfWeekValue), 2);
                 world.setBlockState(pos.down(), world.getBlockState(pos.down()).with(BooleanProperty.of("wet"), false), 2);
+
+                if (this.getAge(state) == MAX_AGE) {
+                    world.setBlockState(pos.down(), world.getBlockState(pos.down()).with(BooleanProperty.of("soil"), false), 2);
+                }
             }
         }
+    }
+
+    @Override
+    public void onBroken(WorldAccess world, BlockPos pos, BlockState state) {
+        world.setBlockState(pos.down(), world.getBlockState(pos.down()).with(BooleanProperty.of("soil"), false), 2);
     }
 
     @Override
@@ -125,6 +135,12 @@ public class DailyCropBlock extends CropBlock {
         BlockPos planterPos = pos.down();
         BlockState blockState = world.getBlockState(planterPos);
         return blockState.get(PlanterBlock.WET);
+    }
+
+    protected static boolean isSoiled(BlockView world, BlockPos pos) {
+        BlockPos planterPos = pos.down();
+        BlockState blockState = world.getBlockState(planterPos);
+        return blockState.get(PlanterBlock.SOIL);
     }
 
     @Override

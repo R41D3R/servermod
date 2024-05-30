@@ -20,6 +20,7 @@ public class ModItemGroups {
                         entries.add(ModItems.CUSTOM_LAPIS);
                         entries.add(ModItems.PLATINUM);
                         entries.add(ModItems.SOIL);
+                        entries.add(ModItems.FERTILIZER_SPEED);
 
                         entries.add(ModItems.CRATE_KEY_RARE);
                         entries.add(ModBlocks.RARE_CHEST);

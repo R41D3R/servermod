@@ -1,6 +1,5 @@
 package julian.servermod.datagen;
 
-import julian.servermod.block.ModBlocks;
 import julian.servermod.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
@@ -22,6 +21,8 @@ public class ModModelProvider extends FabricModelProvider {
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
         itemModelGenerator.register(ModItems.CRATE_KEY_BADGER, Models.GENERATED);
         itemModelGenerator.register(ModItems.CRATE_KEY_LEGENDARY, Models.GENERATED);
+
+        itemModelGenerator.register(ModItems.FERTILIZER_SPEED, Models.GENERATED);
 
         // crop seeds
         itemModelGenerator.register(ModItems.CORN, Models.GENERATED);

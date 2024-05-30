@@ -1,4 +1,4 @@
-// 1.20.1	2024-05-30T12:56:22.661695751	servermod/Block Loot Tables
+// 1.20.1	2024-05-30T14:27:47.821810883	servermod/Block Loot Tables
 6f63daeef75199728fffe81276e9714ef4ae4ddb data/servermod/loot_tables/blocks/badger_plushie.json
 23f0a79d003ff97da3ff8e3f6f845b08b1ebcf7e data/servermod/loot_tables/blocks/log_table.json
 6ffb6a7b5056b98067a0661d28433c2f70cb2549 data/servermod/loot_tables/blocks/planter.json
@@ -11,6 +11,7 @@ cb11cf108227fda8f9259a3a6e332bd6bcfb1410 data/servermod/loot_tables/blocks/woode
 6ec96b6930d2797dac3641cfc7991127217552d5 data/servermod/loot_tables/blocks/log_bench.json
 0e216be094061470c22043f6955035d4c57f47c6 data/servermod/loot_tables/blocks/wooden_creeper.json
 5aecd3464014074d3ee81ae6dc8b2149d4b95912 data/servermod/loot_tables/blocks/deepslate_platinum_ore.json
+1e5aa111fc1c51e202fc762cee6e51a8bed4c2af data/servermod/loot_tables/blocks/corn_crop.json
 dea2671bd919783acf136548d2ce2e8f4cb2e373 data/servermod/loot_tables/blocks/wooden_llama.json
 acad9d5a24d8dac14cfcc0d62525ef6dc3a6b3c7 data/servermod/loot_tables/blocks/log_stack_2.json
 e7972317edc74e29c5d8933a41b2fa91d4c11172 data/servermod/loot_tables/blocks/log_stool_2.json

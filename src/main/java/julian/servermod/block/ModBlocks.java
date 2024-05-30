@@ -63,7 +63,7 @@ public class ModBlocks {
 
     // CROPS
 
-    public static final Block BANANA_CROP = registerBlock("banana_crop",
+    public static final Block MANGO_CROP = registerBlock("mango_crop",
             new DailyCropBlock(FabricBlockSettings.copyOf(Blocks.WHEAT), 5));
 
     public static final Block CORN_CROP = registerBlock("corn_crop",
@@ -77,11 +77,11 @@ public class ModBlocks {
 
     // NOT ACTIVE CROPS
 
+    public static final Block BANANA_CROP = registerBlock("banana_crop",
+            new DailyCropBlock(FabricBlockSettings.copyOf(Blocks.WHEAT), 5));
+
     public static final Block PINEAPPLE_CROP = registerBlock("pineapple_crop",
             new DailyCropBlock(FabricBlockSettings.copyOf(Blocks.WHEAT), 4));
-
-    public static final Block MANGO_CROP = registerBlock("mango_crop",
-            new DailyCropBlock(FabricBlockSettings.copyOf(Blocks.WHEAT), 5));
 
     public static final Block CHILI_CROP = registerBlock("chili_crop",
             new DailyCropBlock(FabricBlockSettings.copyOf(Blocks.WHEAT), 2));

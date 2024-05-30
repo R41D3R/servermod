@@ -2,6 +2,7 @@ package julian.servermod.item;
 
 import julian.servermod.ServerMod;
 import julian.servermod.block.ModBlocks;
+import julian.servermod.item.custom.FertilizerSpeed;
 import julian.servermod.item.custom.Soil;
 import julian.servermod.item.custom.WateringCan;
 import julian.servermod.item.custom.cratekeys.CrateKeyBadger;
@@ -31,6 +32,9 @@ public class ModItems {
 
     public static final Item SOIL = registerItem("soil",
             new Soil(new FabricItemSettings()));
+
+    public static final Item FERTILIZER_SPEED = registerItem("fertilizer_speed",
+            new FertilizerSpeed(new FabricItemSettings()));
 
     public static final Item ASHES_O_ENCHANTMENT = registerItem("ashes_o_enchantment",
             new Item(new FabricItemSettings()));

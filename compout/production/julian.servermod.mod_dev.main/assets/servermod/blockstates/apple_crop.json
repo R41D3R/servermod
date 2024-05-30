@@ -15,7 +15,7 @@
     "age=4": {
       "model": "servermod:block/plant/apple/apple_tree_5"
     },
-    "age=6": {
+    "age=5": {
       "model": "servermod:block/plant/apple/apple_tree_6"
     }
   }

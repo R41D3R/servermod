@@ -1,4 +1,4 @@
-// 1.20.1	2024-05-30T13:00:42.613309326	servermod/Tags for minecraft:block
+// 1.20.1	2024-05-30T14:30:13.283565623	servermod/Tags for minecraft:block
 f048ad749d210cec121bbb698645b800279bf29f data/minecraft/tags/blocks/mineable/pickaxe.json
 aa54242c3ebaf87e9240f5e2e34a583868821ea5 data/minecraft/tags/blocks/mineable/axe.json
 315023bb619a8cc9163b0c5ccbccb197ec210b11 data/minecraft/tags/blocks/needs_diamond_tool.json

@@ -13,9 +13,9 @@
       "model": "servermod:block/plant/mango/mango_tree_4"
     },
     "age=4": {
-      "model": "servermod:block/plant/mango/ apple_tree_5"
+      "model": "servermod:block/plant/mango/mango_tree_5"
     },
-    "age=6": {
+    "age=5": {
       "model": "servermod:block/plant/mango/mango_tree_6"
     }
   }

@@ -1,6 +1,7 @@
 package julian.servermod.datagen;
 
 import julian.servermod.block.ModBlocks;
+import julian.servermod.block.custom.crop.DailyCropBlock;
 import julian.servermod.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
@@ -9,13 +10,17 @@ import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
+import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
+import net.minecraft.loot.condition.BlockStatePropertyLootCondition;
+import net.minecraft.loot.condition.LootCondition;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.entry.LeafEntry;
 import net.minecraft.loot.entry.LootPoolEntry;
 import net.minecraft.loot.function.ApplyBonusLootFunction;
 import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.provider.number.UniformLootNumberProvider;
+import net.minecraft.predicate.StatePredicate;
 
 public class ModLootTableProvider extends FabricBlockLootTableProvider {
     public ModLootTableProvider(FabricDataOutput dataOutput) {
@@ -58,6 +63,9 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.WOODEN_PENGUIN);
         addDrop(ModBlocks.WOODEN_SCARECROW);
         addDrop(ModBlocks.WOODEN_SWORD);
+
+        // Crops
+        addDrop(ModBlocks.CORN_CROP, customCropDrops(ModBlocks.CORN_CROP, ModItems.CORN, ModItems.CORN_SEEDS, cropBlockLikeDrop((DailyCropBlock) ModBlocks.CORN_CROP, ModItems.CORN)));
     }
 
     public LootTable.Builder copperLikeOreDrops(Block drop, Item item) {
@@ -85,5 +93,31 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
                                 .apply(SetCountLootFunction
                                         .builder(UniformLootNumberProvider.create(3.0f, 7.0f))))
                         ));
+    }
+
+    public BlockStatePropertyLootCondition.Builder cropBlockLikeDrop(DailyCropBlock block, Item item) {
+        return BlockStatePropertyLootCondition.builder(block).properties(StatePredicate.Builder.create().exactMatch(DailyCropBlock.AGE, block.MAX_AGE));
+    }
+
+    public LootTable.Builder customCropDrops(Block crop, Item product, Item seeds, LootCondition.Builder maxAgeCondition) {
+        DailyCropBlock dailyCropBlock = (DailyCropBlock) crop;
+
+        // Define condition for non-max age (any age other than max age)
+        LootCondition.Builder notMaxAgeCondition = BlockStatePropertyLootCondition.builder(dailyCropBlock)
+                .properties(StatePredicate.Builder.create().exactMatch(DailyCropBlock.AGE, dailyCropBlock.MAX_AGE));
+
+        // Define the inverse condition (non-max age)
+        LootCondition.Builder nonMaxAgeCondition = BlockStatePropertyLootCondition.builder(dailyCropBlock)
+                .properties(StatePredicate.Builder.create().exactMatch(DailyCropBlock.AGE, dailyCropBlock.MAX_AGE)).invert();
+
+        return this.applyExplosionDecay(crop, LootTable.builder()
+                // Pool for dropping the product at max age
+                .pool(LootPool.builder()
+                        .conditionally(maxAgeCondition)
+                        .with(ItemEntry.builder(product)))
+                // Pool for dropping seeds at non-max age
+                .pool(LootPool.builder()
+                        .conditionally(nonMaxAgeCondition)
+                        .with(ItemEntry.builder(seeds))));
     }
 }

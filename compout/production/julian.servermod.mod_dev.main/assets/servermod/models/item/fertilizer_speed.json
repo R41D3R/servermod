@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "servermod:item/chili"
+    "layer0": "servermod:item/fertilizer_speed"
   }
 }
