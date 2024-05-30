@@ -2,6 +2,7 @@ package julian.servermod.item;
 
 import julian.servermod.ServerMod;
 import julian.servermod.block.ModBlocks;
+import julian.servermod.entity.ModEntities;
 import julian.servermod.item.custom.FertilizerSpeed;
 import julian.servermod.item.custom.Soil;
 import julian.servermod.item.custom.WateringCan;
@@ -18,6 +19,12 @@ import net.minecraft.util.Identifier;
 
 // registers all Item
 public class ModItems {
+
+    // Entities
+    public static final Item LOOT_BALLOON_SPAWN_EGG = registerItem("loot_balloon_spawn_egg",
+            new SpawnEggItem(ModEntities.LOOT_BALLOON, 0xD57E57, 0x100000,
+                    new FabricItemSettings()));
+
     public static final Item WateringCan = registerItem("wooden_watering_can",
             new WateringCan(new FabricItemSettings().maxDamage(6)));
 

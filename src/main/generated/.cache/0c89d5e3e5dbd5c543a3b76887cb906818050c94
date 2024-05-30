@@ -1,4 +1,4 @@
-// 1.20.1	2024-05-30T14:30:13.282766767	servermod/Model Definitions
+// 1.20.1	2024-05-30T20:11:03.911454097	servermod/Model Definitions
 8e4a38c5dc50676136e5b387331250221f0e1f46 assets/servermod/models/item/pineapple_seeds.json
 02dea629e7b74f1c79fff12dce1fa3223d5f43f6 assets/servermod/models/item/eggplant_seeds.json
 82c445f0eb28ec7c80d731fd9f0a5aefa282e213 assets/servermod/models/item/mango.json
@@ -16,3 +16,4 @@ b3c2d2e6a2bd66e7e605669ad10c99691491374b assets/servermod/models/item/banana_see
 c0c57ce93be66e92e3806f0017fdcb97938e34fb assets/servermod/models/item/crate_key_legendary.json
 0ef1cfbf0017b3975c7cb0103f7c8397bd3580ef assets/servermod/models/item/lettuce.json
 f39b2b71aea067d5ad063f224cdead5bc5700fb5 assets/servermod/models/item/crate_key_badger.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/servermod/models/item/loot_balloon_spawn_egg.json

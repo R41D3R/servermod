@@ -40,5 +40,11 @@
     "sounds": [
       "servermod:task-complete"
     ]
+  },
+  "pop": {
+    "subtitle": "sounds.servermod.pop",
+    "sounds": [
+      "servermod:pop"
+    ]
   }
 }

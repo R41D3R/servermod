@@ -1,10 +1,13 @@
 package julian.servermod;
 
 import julian.servermod.block.ModBlocks;
+import julian.servermod.entity.ModEntities;
+import julian.servermod.entity.client.LootBalloonRenderer;
 import julian.servermod.screen.*;
 import julian.servermod.screen.util.BadgerTaskClientNetworkUtil;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
 
@@ -60,5 +63,8 @@ public class ServerModClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WOODEN_SWORD, RenderLayer.getCutout());
 
         BadgerTaskClientNetworkUtil.init();
+
+        EntityRendererRegistry.register(ModEntities.LOOT_BALLOON, LootBalloonRenderer::new);
+
     }
 }

@@ -15,6 +15,9 @@ public class ModItemGroups {
             new Identifier(ServerMod.MOD_ID, "servermod"),
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.servermod"))
                     .icon(() -> new ItemStack(ModItems.RUBY)).entries((displayContext, entries) -> {
+                        // Entities
+                        entries.add(ModItems.LOOT_BALLOON_SPAWN_EGG);
+
                         entries.add(ModItems.WateringCan);
                         entries.add(ModItems.RUBY);
                         entries.add(ModItems.CUSTOM_LAPIS);

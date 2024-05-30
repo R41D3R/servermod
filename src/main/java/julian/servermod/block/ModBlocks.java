@@ -61,6 +61,9 @@ public class ModBlocks {
     public static final Block LOOT_VASE_BLOCK = registerBlock("loot_vase_block",
             new LootVaseBlock(FabricBlockSettings.copyOf(Blocks.GLASS).nonOpaque().sounds(ModSounds.LOOT_VASE_BLOCK_SOUNDS)));
 
+    public static final Block BALLOON_CRATE_BLOCK = registerBlock("balloon_crate_block",
+            new BalloonLootCrateBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).nonOpaque()));
+
     // CROPS
 
     public static final Block MANGO_CROP = registerBlock("mango_crop",

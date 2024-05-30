@@ -38,8 +38,6 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.DEEPSLATE_PLATINUM_ORE, diamondLikeOreDrops(ModBlocks.DEEPSLATE_PLATINUM_ORE, ModItems.PLATINUM));
         addDrop(ModBlocks.LOOT_VASE_BLOCK, lootVaseBlockDrops(ModBlocks.LOOT_VASE_BLOCK, ModItems.RUBY));
 
-        // TODO: Add Crop LOOT
-
         // Furniture
         // Badger
         addDrop(ModBlocks.MUSHROOM_STOOL);
@@ -66,6 +64,13 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 
         // Crops
         addDrop(ModBlocks.CORN_CROP, customCropDrops(ModBlocks.CORN_CROP, ModItems.CORN, ModItems.CORN_SEEDS, cropBlockLikeDrop((DailyCropBlock) ModBlocks.CORN_CROP, ModItems.CORN)));
+        addDrop(ModBlocks.APPLE_CROP, customCropDrops(ModBlocks.APPLE_CROP, Items.APPLE, ModItems.APPLE_SEEDS, cropBlockLikeDrop((DailyCropBlock) ModBlocks.APPLE_CROP, Items.APPLE)));
+        addDrop(ModBlocks.BANANA_CROP, customCropDrops(ModBlocks.BANANA_CROP, ModItems.BANANA, ModItems.BANANA_SEEDS, cropBlockLikeDrop((DailyCropBlock) ModBlocks.BANANA_CROP, ModItems.BANANA)));
+        addDrop(ModBlocks.MANGO_CROP, customCropDrops(ModBlocks.MANGO_CROP, ModItems.MANGO, ModItems.MANGO_SEEDS, cropBlockLikeDrop((DailyCropBlock) ModBlocks.MANGO_CROP, ModItems.MANGO)));
+        addDrop(ModBlocks.PINEAPPLE_CROP, customCropDrops(ModBlocks.PINEAPPLE_CROP, ModItems.PINEAPPLE, ModItems.PINEAPPLE_SEEDS, cropBlockLikeDrop((DailyCropBlock) ModBlocks.PINEAPPLE_CROP, ModItems.PINEAPPLE)));
+        addDrop(ModBlocks.EGGPLANT_CROP, customCropDrops(ModBlocks.EGGPLANT_CROP, ModItems.EGGPLANT, ModItems.EGGPLANT_SEEDS, cropBlockLikeDrop((DailyCropBlock) ModBlocks.EGGPLANT_CROP, ModItems.EGGPLANT)));
+        addDrop(ModBlocks.LETTUCE_CROP, customCropDrops(ModBlocks.LETTUCE_CROP, ModItems.LETTUCE, ModItems.LETTUCE_SEEDS, cropBlockLikeDrop((DailyCropBlock) ModBlocks.LETTUCE_CROP, ModItems.LETTUCE)));
+        addDrop(ModBlocks.CHILI_CROP, customCropDrops(ModBlocks.CHILI_CROP, ModItems.CHILI, ModItems.CHILI_SEEDS, cropBlockLikeDrop((DailyCropBlock) ModBlocks.CHILI_CROP, ModItems.CHILI)));
     }
 
     public LootTable.Builder copperLikeOreDrops(Block drop, Item item) {

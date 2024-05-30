@@ -31,7 +31,7 @@ public class DailyCropBlock extends CropBlock {
     public static final IntProperty LAST_GROWTH_DAY = IntProperty.of("last_growth_day", 0, 6); // 0 = Monday, 6 = Sunday
 
     private static final int GROWTH_HOUR = 0; // Hour for growth
-    private static final int GROWTH_MINUTE = 3; // Minute for growth, change this for testing
+    private static final int GROWTH_MINUTE = 0; // Minute for growth, change this for testing
     private static final ZoneId GERMAN_TIME_ZONE = ZoneId.of("Europe/Berlin");
 
     private static final int tickSchedule = 300; // Schedule next check in approximately 1 minute (1200 ticks)
@@ -77,6 +77,26 @@ public class DailyCropBlock extends CropBlock {
     public static void growParticles(World world, BlockPos pos) {
     }
 
+    private void growCrop(World world, BlockPos pos, BlockState state, int currentDayOfWeekValue) {
+        int age = this.getAge(state);
+
+        // don't grow if not moist
+        if (!isMoisture(world, pos) || !isSoiled(world, pos)) {
+            world.setBlockState(pos, this.withAge(age).with(LAST_GROWTH_DAY, currentDayOfWeekValue), 2);
+            return;
+        }
+
+        if (age < this.getMaxAge()) {
+            // grow the crop
+            world.setBlockState(pos, this.withAge(age + 1).with(LAST_GROWTH_DAY, currentDayOfWeekValue), 2);
+            world.setBlockState(pos.down(), world.getBlockState(pos.down()).with(BooleanProperty.of("wet"), false), 2);
+
+            if (this.getAge(state) == MAX_AGE) {
+                // remove soil if fully grown
+                world.setBlockState(pos.down(), world.getBlockState(pos.down()).with(BooleanProperty.of("soil"), false), 2);
+            }
+        }
+    }
 
 
     private void checkAndGrow(World world, BlockPos pos, BlockState state) {
@@ -90,27 +110,11 @@ public class DailyCropBlock extends CropBlock {
 
         int lastGrowthDay = state.get(LAST_GROWTH_DAY);
 
-        // TODO: If it is after 12pm and before 7am then subtract 7 hours from the currentTime
-        if (currentDayOfWeekValue != lastGrowthDay &&
+        // check if it's time to grow
+        if (currentDayOfWeekValue != lastGrowthDay && // BUG: This will not grow if one week is skipped
                 currentTime.isAfter(growthTime)) {
 
-            // Grow the crop
-            int age = this.getAge(state);
-
-            // don't grow if not moist
-            if (!isMoisture(world, pos) || !isSoiled(world, pos)) {
-                world.setBlockState(pos, this.withAge(age).with(LAST_GROWTH_DAY, currentDayOfWeekValue), 2);
-                return;
-            }
-
-            if (age < this.getMaxAge()) {
-                world.setBlockState(pos, this.withAge(age + 1).with(LAST_GROWTH_DAY, currentDayOfWeekValue), 2);
-                world.setBlockState(pos.down(), world.getBlockState(pos.down()).with(BooleanProperty.of("wet"), false), 2);
-
-                if (this.getAge(state) == MAX_AGE) {
-                    world.setBlockState(pos.down(), world.getBlockState(pos.down()).with(BooleanProperty.of("soil"), false), 2);
-                }
-            }
+            growCrop(world, pos, state, currentDayOfWeekValue);
         }
     }
 

@@ -5,6 +5,8 @@ import julian.servermod.block.ModBlocks;
 import julian.servermod.block.entity.ModBlockEntities;
 import julian.servermod.color.ModColorProviders;
 import julian.servermod.command.ModCommandRegister;
+import julian.servermod.entity.ModEntities;
+import julian.servermod.entity.custom.LootBalloonEntity;
 import julian.servermod.item.ModItemGroups;
 import julian.servermod.item.ModItems;
 import julian.servermod.screen.ModScreenHandlers;
@@ -18,6 +20,7 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.registry.RegistryKey;
@@ -69,6 +72,8 @@ public class ServerMod implements ModInitializer {
 		ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
 			handlePlayerLogin(handler.getPlayer());
 		});
+
+		FabricDefaultAttributeRegistry.register(ModEntities.LOOT_BALLOON, LootBalloonEntity.setAttributes());
 
 
 	}
