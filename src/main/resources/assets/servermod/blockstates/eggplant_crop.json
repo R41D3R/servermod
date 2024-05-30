@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "servermod:block/plant/eggplant/egg_plant_1"
+    },
+    "age=1": {
+      "model": "servermod:block/plant/eggplant/egg_plant_2"
+    },
+    "age=2": {
+      "model": "servermod:block/plant/eggplant/egg_plant_3"
+    },
+    "age=3": {
+      "model": "servermod:block/plant/eggplant/egg_plant_4"
+    }
+  }
+}

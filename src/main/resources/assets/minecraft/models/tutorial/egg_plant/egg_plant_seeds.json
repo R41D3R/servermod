@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "tutorial/egg_plant/egg_plant_seeds"
-  }
-}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "servermod:block/plant/lettuce/lettuce_1"
+    },
+    "age=1": {
+      "model": "servermod:block/plant/lettuce/lettuce_2"
+    },
+    "age=2": {
+      "model": "servermod:block/plant/lettuce/lettuce_3"
+    }
+  }
+}

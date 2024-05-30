@@ -12,11 +12,13 @@ import julian.servermod.screen.util.BadgerTaskNetworkUtil;
 import julian.servermod.screen.util.BoulderNetworkUtil;
 import julian.servermod.sound.ModSounds;
 import julian.servermod.world.gen.ModWorldGeneration;
+import net.fabricmc.api.EnvType;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
@@ -49,7 +51,10 @@ public class ServerMod implements ModInitializer {
 		ModItems.registerModItems();
 		ModBlockEntities.registerBLockEntities();
 		ModScreenHandlers.registerScreenHandlers();
-		ModColorProviders.registerModColorProviders();
+
+		if (FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT) {
+			ModColorProviders.registerModColorProviders();
+		}
 
 		ModWorldGeneration.generateModWorldGen();
 

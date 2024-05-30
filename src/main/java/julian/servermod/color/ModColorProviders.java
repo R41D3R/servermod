@@ -1,6 +1,8 @@
 package julian.servermod.color;
 
 import julian.servermod.block.ModBlocks;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.client.color.block.BlockColorProvider;
@@ -8,6 +10,8 @@ import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 import julian.servermod.ServerMod;
 
+
+@Environment(EnvType.CLIENT)
 public class ModColorProviders {
 
     public static void registerBlockColorProvider(Block block, int tintIndex, int color) {

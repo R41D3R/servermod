@@ -1,19 +1,43 @@
 {
   "variants": {
-    "facing=north": {
+    "facing=north,half=middle": {
       "model": "servermod:block/furniture/badger/wooden_creeper"
     },
-    "facing=east": {
+    "facing=east,half=middle": {
       "model": "servermod:block/furniture/badger/wooden_creeper",
       "y": 90
     },
-    "facing=south": {
+    "facing=south,half=middle": {
       "model": "servermod:block/furniture/badger/wooden_creeper",
       "y": 180
     },
-    "facing=west": {
+    "facing=west,half=middle": {
       "model": "servermod:block/furniture/badger/wooden_creeper",
       "y": 270
+    },
+    "facing=north,half=lower": {
+      "model": "minecraft:block/barrier"
+    },
+    "facing=east,half=lower": {
+      "model": "minecraft:block/barrier"
+    },
+    "facing=south,half=lower": {
+      "model": "minecraft:block/barrier"
+    },
+    "facing=west,half=lower": {
+      "model": "minecraft:block/barrier"
+    },
+    "facing=north,half=upper": {
+      "model": "minecraft:block/barrier"
+    },
+    "facing=east,half=upper": {
+      "model": "minecraft:block/barrier"
+    },
+    "facing=south,half=upper": {
+      "model": "minecraft:block/barrier"
+    },
+    "facing=west,half=upper": {
+      "model": "minecraft:block/barrier"
     }
   }
 }

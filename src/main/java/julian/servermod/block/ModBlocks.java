@@ -63,8 +63,32 @@ public class ModBlocks {
 
     // CROPS
 
+    public static final Block BANANA_CROP = registerBlock("banana_crop",
+            new DailyCropBlock(FabricBlockSettings.copyOf(Blocks.WHEAT), 5));
+
     public static final Block CORN_CROP = registerBlock("corn_crop",
             new DailyCropBlock(FabricBlockSettings.copyOf(Blocks.WHEAT), 4));
+
+    public static final Block EGGPLANT_CROP = registerBlock("eggplant_crop",
+            new DailyCropBlock(FabricBlockSettings.copyOf(Blocks.WHEAT), 3));
+
+    public static final Block LETTUCE_CROP = registerBlock("lettuce_crop",
+            new DailyCropBlock(FabricBlockSettings.copyOf(Blocks.WHEAT), 2));
+
+    // NOT ACTIVE CROPS
+
+    public static final Block PINEAPPLE_CROP = registerBlock("pineapple_crop",
+            new DailyCropBlock(FabricBlockSettings.copyOf(Blocks.WHEAT), 4));
+
+    public static final Block MANGO_CROP = registerBlock("mango_crop",
+            new DailyCropBlock(FabricBlockSettings.copyOf(Blocks.WHEAT), 5));
+
+    public static final Block CHILI_CROP = registerBlock("chili_crop",
+            new DailyCropBlock(FabricBlockSettings.copyOf(Blocks.WHEAT), 2));
+
+    // TODO: Remove apples from loot tables
+    public static final Block APPLE_CROP = registerBlock("apple_crop",
+            new DailyCropBlock(FabricBlockSettings.copyOf(Blocks.WHEAT), 5));
 
     //
     // FURNITURE

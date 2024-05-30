@@ -44,7 +44,21 @@ public class ModItemGroups {
                         entries.add(ModBlocks.BADGER_TASK_BLOCK);
 
                         // Crops
+                        entries.add(ModItems.CORN);
                         entries.add(ModItems.CORN_SEEDS);
+                        entries.add(ModItems.BANANA);
+                        entries.add(ModItems.BANANA_SEEDS);
+                        entries.add(ModItems.EGGPLANT);
+                        entries.add(ModItems.EGGPLANT_SEEDS);
+                        entries.add(ModItems.LETTUCE);
+                        entries.add(ModItems.LETTUCE_SEEDS);
+                        entries.add(ModItems.PINEAPPLE);
+                        entries.add(ModItems.PINEAPPLE_SEEDS);
+                        entries.add(ModItems.MANGO);
+                        entries.add(ModItems.MANGO_SEEDS);
+                        entries.add(ModItems.CHILI);
+                        entries.add(ModItems.CHILI_SEEDS);
+                        entries.add(ModItems.APPLE_SEEDS);
 
                         // FURNITURE
                         // Badger
