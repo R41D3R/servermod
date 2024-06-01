@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "servermod:block/balloon_crate/balloon_crate"
+    }
+  }
+}

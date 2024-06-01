@@ -22,7 +22,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.RUBY_BLOCK)
                 .add(ModBlocks.DEEPSLATE_RUBY_ORE)
                 .add(ModBlocks.DEEPSLATE_PLATINUM_ORE)
-                .add(ModBlocks.PLATINUM_BLOCK);
+                .add(ModBlocks.PLATINUM_BLOCK)
+                .add(ModBlocks.LOOT_VASE_BLOCK);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
                 .add(ModBlocks.RUBY_ORE)
@@ -42,6 +43,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(Blocks.DEEPSLATE_REDSTONE_ORE);
 
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
-                .add(ModBlocks.PLANTER);
+                .add(ModBlocks.PLANTER)
+                .add(ModBlocks.BALLOON_CRATE_BLOCK);
     }
 }

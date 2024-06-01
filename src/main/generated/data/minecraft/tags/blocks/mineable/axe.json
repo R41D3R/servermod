@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "servermod:planter"
+    "servermod:planter",
+    "servermod:balloon_crate_block"
   ]
 }

@@ -25,7 +25,7 @@ public class BalloonLootCrateBlock extends FallingBlock {
     public void afterBreak(World world, PlayerEntity player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity, ItemStack tool) {
         if (EnchantmentHelper.getLevel(Enchantments.SILK_TOUCH, tool) == 0) {
             ServerWorld serverWorld = world.getServer().getWorld(world.getRegistryKey());
-            List<ItemStack> randomLoot = AllCustomLootTables.URN_LOOT_TABLE.getRandomLoot(4);
+            List<ItemStack> randomLoot = AllCustomLootTables.URN_LOOT_TABLE.getRandomLoot(6);
             for (ItemStack itemStack : randomLoot) {
                 spawnItemStack(serverWorld, pos, itemStack);
             }
@@ -37,6 +37,6 @@ public class BalloonLootCrateBlock extends FallingBlock {
     public void spawnItemStack(ServerWorld serverWorld, BlockPos blockPos, ItemStack itemStack) {
         ItemEntity itemEntity = new ItemEntity(serverWorld, blockPos.getX(), blockPos.getY(), blockPos.getZ(), itemStack);
         itemEntity.setPickupDelay(20);
-
+        serverWorld.spawnEntity(itemEntity);
     }
 }

@@ -5,6 +5,7 @@
     "servermod:ruby_block",
     "servermod:deepslate_ruby_ore",
     "servermod:deepslate_platinum_ore",
-    "servermod:platinum_block"
+    "servermod:platinum_block",
+    "servermod:loot_vase_block"
   ]
 }

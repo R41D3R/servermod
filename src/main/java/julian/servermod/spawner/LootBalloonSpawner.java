@@ -17,8 +17,10 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Random;
 
 public class LootBalloonSpawner implements Spawner {
-    private static final int SPAWN_INTERVAL = (int)20 * 10; // 5 minutes in ticks (20 ticks per second * 300 seconds)
-    private static final double SPAWN_CHANCE = 1.0; // 2.5% chance
+    private static final int SPAWN_INTERVAL = (int)20 * 60 * 5; // 5 minutes in ticks (20 ticks per second * 300 seconds)
+    private static final double SPAWN_CHANCE = 0.025; // 2.5% chance
+    private static final int SPAWN_RADIUS = 30;
+    private static final int SPAWN_HEIGHT_OFFSET = 25;
     private final Random random = new Random();
     private int spawnTimer;
 
@@ -62,11 +64,11 @@ public class LootBalloonSpawner implements Spawner {
     private BlockPos getSpawnPosition(World world, ServerPlayerEntity player) {
         BlockPos playerPos = player.getBlockPos();
         for (int i = 0; i < 10; ++i) {
-//            int x = playerPos.getX() + this.random.nextInt(160) - 80;
-//            int z = playerPos.getZ() + this.random.nextInt(160) - 80;
-            int x = playerPos.getX();
-            int z = playerPos.getZ();
-            int y = world.getTopY(Heightmap.Type.WORLD_SURFACE, x, z) + 10;
+            int x = playerPos.getX() + this.random.nextInt(2*SPAWN_RADIUS) - SPAWN_RADIUS;
+            int z = playerPos.getZ() + this.random.nextInt(2*SPAWN_RADIUS) - SPAWN_RADIUS;
+//            int x = playerPos.getX();
+//            int z = playerPos.getZ();
+            int y = world.getTopY(Heightmap.Type.WORLD_SURFACE, x, z) + SPAWN_HEIGHT_OFFSET;
             BlockPos potentialPos = new BlockPos(x, y, z);
             ServerMod.LOGGER.info("potential pos " + potentialPos);
             if (isValidSpawnPosition(world, potentialPos)) {
