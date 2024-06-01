@@ -17,6 +17,7 @@ public class ModItemGroups {
                     .icon(() -> new ItemStack(ModItems.RUBY)).entries((displayContext, entries) -> {
                         // Entities
                         entries.add(ModItems.LOOT_BALLOON_SPAWN_EGG);
+                        entries.add(ModItems.CAPTURE_NET);
 
                         entries.add(ModItems.WateringCan);
                         entries.add(ModItems.RUBY);

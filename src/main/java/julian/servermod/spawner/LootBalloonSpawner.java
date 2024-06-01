@@ -30,7 +30,7 @@ public class LootBalloonSpawner implements Spawner {
 
     @Override
     public int spawn(ServerWorld world, boolean spawnMonsters, boolean spawnAnimals) {
-        ServerMod.LOGGER.info("Check if I can spawn balloon " + this.spawnTimer);
+        //ServerMod.LOGGER.info("Check if I can spawn balloon " + this.spawnTimer);
         if (this.spawnTimer > 0) {
             this.spawnTimer--;
             return 0;
@@ -41,16 +41,16 @@ public class LootBalloonSpawner implements Spawner {
         for (ServerPlayerEntity player : world.getPlayers()) {
             if (this.random.nextDouble() <= SPAWN_CHANCE) {
                 BlockPos playerPos = player.getBlockPos();
-                ServerMod.LOGGER.info("player pos was " + playerPos);
+                //ServerMod.LOGGER.info("player pos was " + playerPos);
                 BlockPos spawnPos = this.getSpawnPosition(world, player);
-                ServerMod.LOGGER.info("spawn pos was " + spawnPos);
+                //ServerMod.LOGGER.info("spawn pos was " + spawnPos);
                 if (spawnPos != null) {
                     LootBalloonEntity lootBalloon = ModEntities.LOOT_BALLOON.spawn(world, spawnPos, SpawnReason.EVENT);
                     if (lootBalloon != null) {
                         // Additional setup for the loot balloon if needed
                         //lootBalloon.refreshPositionAndAngles(spawnPos, 0, 0);
                         // lootBalloon.initializeDirection(new Vec3d(playerPos.getX(), playerPos.getY(), playerPos.getZ()));
-                        player.sendMessage(Text.of("Balloon spawned at: " + spawnPos));
+                        // player.sendMessage(Text.of("Balloon spawned at: " + spawnPos));
                         return 1;
                     }
                 }
@@ -70,7 +70,7 @@ public class LootBalloonSpawner implements Spawner {
 //            int z = playerPos.getZ();
             int y = world.getTopY(Heightmap.Type.WORLD_SURFACE, x, z) + SPAWN_HEIGHT_OFFSET;
             BlockPos potentialPos = new BlockPos(x, y, z);
-            ServerMod.LOGGER.info("potential pos " + potentialPos);
+            //ServerMod.LOGGER.info("potential pos " + potentialPos);
             if (isValidSpawnPosition(world, potentialPos)) {
                 return potentialPos;
             }
