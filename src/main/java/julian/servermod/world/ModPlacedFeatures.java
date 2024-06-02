@@ -20,6 +20,7 @@ public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> RUBY_ORE_PLACED_KEY = registerKey("ruby_ore_placed");
     public static final RegistryKey<PlacedFeature> PLATINUM_ORE_PLACED_KEY = registerKey("platinum_ore_placed");
     public static final RegistryKey<PlacedFeature> LOOT_VASE_PLACED_KEY = registerKey("loot_vase_placed");
+    public static final RegistryKey<PlacedFeature> EMERALD_ORE_PLACED_KEY = registerKey("emerald_ore_placed");
 
     public static void bootstrap(Registerable<PlacedFeature> context) {
         var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
@@ -27,6 +28,10 @@ public class ModPlacedFeatures {
 
         // TODO: How many drops per chunk for ruby and loot vase?
         register(context, RUBY_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.RUBY_ORE_KEY),
+                ModOrePlacement.modifiersWithCount(7,
+                        HeightRangePlacementModifier.uniform(YOffset.fixed(-80), YOffset.fixed(48))));
+
+        register(context, EMERALD_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.EMERALD_ORE_KEY),
                 ModOrePlacement.modifiersWithCount(7,
                         HeightRangePlacementModifier.uniform(YOffset.fixed(-80), YOffset.fixed(48))));
 

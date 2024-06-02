@@ -19,6 +19,8 @@ import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
+import net.fabricmc.fabric.api.event.player.UseEntityCallback;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.loader.api.FabricLoader;
@@ -76,6 +78,7 @@ public class ServerMod implements ModInitializer {
 		FabricDefaultAttributeRegistry.register(ModEntities.LOOT_BALLOON, LootBalloonEntity.setAttributes());
 
 
+		// UseEntityCallback.EVENT.register(new VillagerTradingChangeHandler());
 	}
 
 	public static void handlePlayerLogin(PlayerEntity player) {

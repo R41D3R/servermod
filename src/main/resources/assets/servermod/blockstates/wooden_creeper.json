@@ -16,28 +16,28 @@
       "y": 270
     },
     "facing=north,half=lower": {
-      "model": "minecraft:block/barrier"
+      "model": "servermod:block/placeholder/wooden_dark"
     },
     "facing=east,half=lower": {
-      "model": "minecraft:block/barrier"
+      "model": "servermod:block/placeholder/wooden_dark"
     },
     "facing=south,half=lower": {
-      "model": "minecraft:block/barrier"
+      "model": "servermod:block/placeholder/wooden_dark"
     },
     "facing=west,half=lower": {
-      "model": "minecraft:block/barrier"
+      "model": "servermod:block/placeholder/wooden_dark"
     },
     "facing=north,half=upper": {
-      "model": "minecraft:block/barrier"
+      "model": "servermod:block/placeholder/wooden_dark"
     },
     "facing=east,half=upper": {
-      "model": "minecraft:block/barrier"
+      "model": "servermod:block/placeholder/wooden_dark"
     },
     "facing=south,half=upper": {
-      "model": "minecraft:block/barrier"
+      "model": "servermod:block/placeholder/wooden_dark"
     },
     "facing=west,half=upper": {
-      "model": "minecraft:block/barrier"
+      "model": "servermod:block/placeholder/wooden_dark"
     }
   }
 }

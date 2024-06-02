@@ -2,6 +2,7 @@ package julian.servermod.world;
 
 import julian.servermod.ServerMod;
 import julian.servermod.block.ModBlocks;
+import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
@@ -18,6 +19,7 @@ public class ModConfiguredFeatures {
 
     public static final RegistryKey<ConfiguredFeature<?, ?>> RUBY_ORE_KEY = registerKey("ruby_ore");
     public static final RegistryKey<ConfiguredFeature<?, ?>> PLATINUM_ORE_KEY = registerKey("platinum_ore");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> EMERALD_ORE_KEY = registerKey("emerald_ore");
     public static final RegistryKey<ConfiguredFeature<?, ?>> LOOT_VASE_KEY = registerKey("loot_vase");
 
 
@@ -33,14 +35,17 @@ public class ModConfiguredFeatures {
         List<OreFeatureConfig.Target> overworldPlatinumOres =
                 List.of(OreFeatureConfig.createTarget(deepslateReplaceables, ModBlocks.DEEPSLATE_PLATINUM_ORE.getDefaultState()));
 
+        List<OreFeatureConfig.Target> overworldEmeraldOres =
+                List.of(OreFeatureConfig.createTarget(stoneReplaceables, Blocks.EMERALD_ORE.getDefaultState()),
+                        OreFeatureConfig.createTarget(deepslateReplaceables, Blocks.DEEPSLATE_EMERALD_ORE.getDefaultState()));
+
 
         register(context, RUBY_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldRubyOres, 3));
         register(context, PLATINUM_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldPlatinumOres, 1));
+        register(context, EMERALD_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldEmeraldOres, 2));
 
         register(context, LOOT_VASE_KEY, Feature.SIMPLE_BLOCK,
-
                         new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.LOOT_VASE_BLOCK))
-
                 );
     }
 

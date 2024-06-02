@@ -9,7 +9,9 @@
 		"ItemRendererAccessor",
 		"ItemRendererMixin",
 		"ModelLoaderMixin",
-		"MinecraftServerMixin"
+		"MinecraftServerMixin",
+		"VillagerInitMixin",
+		"ChunkSectionMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

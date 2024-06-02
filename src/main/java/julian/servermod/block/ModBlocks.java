@@ -150,7 +150,7 @@ public class ModBlocks {
             new DirectionalBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).nonOpaque()));
 
     public static final Block WOODEN_CREEPER = registerBlock("wooden_creeper",
-            new ThreeTallDirectionalBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).nonOpaque()));
+            new ThreeTallDirectionalBlock(FabricBlockSettings.copyOf(Blocks.FLOWER_POT).nonOpaque()));
 
     public static final Block WOODEN_LLAMA = registerBlock("wooden_llama",
             new DirectionalBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).nonOpaque()));
