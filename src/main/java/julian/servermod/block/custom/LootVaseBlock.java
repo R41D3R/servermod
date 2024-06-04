@@ -7,9 +7,12 @@ import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
+import net.minecraft.entity.mob.SilverfishEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
@@ -29,11 +32,24 @@ public class LootVaseBlock extends LootBoxBlock {
     @Override
     public void afterBreak(World world, PlayerEntity player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity, ItemStack tool) {
         if (EnchantmentHelper.getLevel(Enchantments.SILK_TOUCH, tool) == 0) {
-            ServerWorld serverWorld = world.getServer().getWorld(world.getRegistryKey());
-            dropExperience(serverWorld, pos);
-            List<ItemStack> randomLoot = AllCustomLootTables.URN_LOOT_TABLE.getRandomLoot(4);
-            for (ItemStack itemStack : randomLoot) {
-                spawnItemStack(serverWorld, pos, itemStack);
+            // random change to spawn a silverfish instead of dropping loot
+            if (world.random.nextInt(10) == 0) {
+
+                // spawn 1-3 silverfish
+                int numSilverfish = world.random.nextInt(3) + 1;
+                for (int i = 0; i < numSilverfish; i++) {
+                    SilverfishEntity silverfish = EntityType.SILVERFISH.create(world);
+                    silverfish.refreshPositionAndAngles(pos, 0, 0);
+                    world.spawnEntity(silverfish);
+                }
+            } else {
+                // drop loot
+                ServerWorld serverWorld = world.getServer().getWorld(world.getRegistryKey());
+                dropExperience(serverWorld, pos);
+                List<ItemStack> randomLoot = AllCustomLootTables.URN_LOOT_TABLE.getRandomLoot(4);
+                for (ItemStack itemStack : randomLoot) {
+                    spawnItemStack(serverWorld, pos, itemStack);
+                }
             }
         }
         super.afterBreak(world, player, pos, state, blockEntity, tool);

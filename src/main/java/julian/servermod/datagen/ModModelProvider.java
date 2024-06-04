@@ -26,6 +26,8 @@ public class ModModelProvider extends FabricModelProvider {
 
         itemModelGenerator.register(ModItems.FERTILIZER_SPEED, Models.GENERATED);
 
+        itemModelGenerator.register(ModItems.PHOENIX_FEATHER, Models.GENERATED);
+
         // crop seeds
         itemModelGenerator.register(ModItems.CORN, Models.GENERATED);
         itemModelGenerator.register(ModItems.BANANA_SEEDS, Models.GENERATED);

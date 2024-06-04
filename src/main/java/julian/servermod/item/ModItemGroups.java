@@ -43,6 +43,7 @@ public class ModItemGroups {
 
                         entries.add(ModBlocks.PHOENIX_BLOCK);
                         entries.add(ModItems.ASHES_O_ENCHANTMENT);
+                        entries.add(ModItems.PHOENIX_FEATHER);
 
                         entries.add(ModBlocks.STYLING_TABLE_MINE);
                         entries.add(ModBlocks.BOULDER_BLOCK);

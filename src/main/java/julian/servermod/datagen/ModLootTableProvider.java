@@ -36,7 +36,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.RUBY_ORE, copperLikeOreDrops(ModBlocks.RUBY_ORE, ModItems.RUBY));
         addDrop(ModBlocks.DEEPSLATE_RUBY_ORE, copperLikeOreDrops(ModBlocks.DEEPSLATE_RUBY_ORE, ModItems.RUBY));
         addDrop(ModBlocks.DEEPSLATE_PLATINUM_ORE, diamondLikeOreDrops(ModBlocks.DEEPSLATE_PLATINUM_ORE, ModItems.PLATINUM));
-        addDrop(ModBlocks.LOOT_VASE_BLOCK, lootVaseBlockDrops(ModBlocks.LOOT_VASE_BLOCK, ModItems.RUBY));
+        addDrop(ModBlocks.LOOT_VASE_BLOCK, lootVaseBlockDrops(ModBlocks.LOOT_VASE_BLOCK, Items.EMERALD));
         addDrop(ModBlocks.BALLOON_CRATE_BLOCK, lootVaseBlockDrops(ModBlocks.BALLOON_CRATE_BLOCK, ModItems.RUBY));
 
         // Furniture
@@ -97,7 +97,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
                 ((LeafEntry.Builder)
                         ItemEntry.builder(item)
                                 .apply(SetCountLootFunction
-                                        .builder(UniformLootNumberProvider.create(3.0f, 7.0f))))
+                                        .builder(UniformLootNumberProvider.create(0.0f, 0.0f))))
                         ));
     }
 

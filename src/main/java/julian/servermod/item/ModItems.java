@@ -53,6 +53,9 @@ public class ModItems {
     public static final Item ASHES_O_ENCHANTMENT = registerItem("ashes_o_enchantment",
             new Item(new FabricItemSettings()));
 
+    public static final Item PHOENIX_FEATHER = registerItem("phoenix_feather",
+            new Item(new FabricItemSettings()));
+
     public static final Item CRATE_KEY_RARE = registerItem("crate_key_rare",
             new CrateKeyRare(new FabricItemSettings()));
 
