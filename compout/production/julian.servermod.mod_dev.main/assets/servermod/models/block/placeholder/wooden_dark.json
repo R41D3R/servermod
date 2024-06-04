@@ -1,0 +1,10 @@
+{
+  "texture_size" : [
+    64,
+    64
+    ],
+    "textures" : {
+
+        "particle" : "servermod:block/furniture/badger/wooden_creeper"
+    }
+}

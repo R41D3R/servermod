@@ -3,10 +3,7 @@ package julian.servermod.item;
 import julian.servermod.ServerMod;
 import julian.servermod.block.ModBlocks;
 import julian.servermod.entity.ModEntities;
-import julian.servermod.item.custom.CaptureNet;
-import julian.servermod.item.custom.FertilizerSpeed;
-import julian.servermod.item.custom.Soil;
-import julian.servermod.item.custom.WateringCan;
+import julian.servermod.item.custom.*;
 import julian.servermod.item.custom.cratekeys.CrateKeyBadger;
 import julian.servermod.item.custom.cratekeys.CrateKeyLegendary;
 import julian.servermod.item.custom.cratekeys.CrateKeyRare;
@@ -29,6 +26,9 @@ public class ModItems {
     public static final Item CAPTURE_NET = registerItem("capture_net",
             new CaptureNet(new FabricItemSettings().maxDamage(3)));
 
+
+    public static final Item BADGER_CLUB_ID = registerItem("badger_club_id",
+            new BadgerClubId(new FabricItemSettings().maxCount(1)));
 
 
 

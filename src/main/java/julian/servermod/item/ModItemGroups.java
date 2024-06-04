@@ -48,6 +48,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.STYLING_TABLE_MINE);
                         entries.add(ModBlocks.BOULDER_BLOCK);
                         entries.add(ModBlocks.BADGER_TASK_BLOCK);
+                        entries.add(ModItems.BADGER_CLUB_ID);
 
                         // Crops
                         entries.add(ModItems.CORN);

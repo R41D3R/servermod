@@ -1,4 +1,4 @@
-// 1.20.1	2024-06-04T18:05:13.08723688	servermod/Block Loot Tables
+// 1.20.1	2024-06-04T19:23:40.108553509	servermod/Block Loot Tables
 f1768bb015759afe2a7626ee2b60f062a793b26c data/servermod/loot_tables/blocks/banana_crop.json
 6f63daeef75199728fffe81276e9714ef4ae4ddb data/servermod/loot_tables/blocks/badger_plushie.json
 fb63b2a02096601847649944e95d65014c506fbf data/servermod/loot_tables/blocks/balloon_crate_block.json
@@ -31,8 +31,8 @@ bc697250215a6d5f289ae6788df8f624373e8752 data/servermod/loot_tables/blocks/plati
 9d429b35fb93c25292da55fdbea174b26766bab3 data/servermod/loot_tables/blocks/wooden_bear.json
 7674f0901d7f006603931afc69ee4bd113b1d3f2 data/servermod/loot_tables/blocks/stall_cart.json
 c2d63b47a5408b5058e18b7d91813b32a9c45190 data/servermod/loot_tables/blocks/wooden_sword.json
-6fb49ab884de04c4bd8b9c6256206a8b304c7494 data/servermod/loot_tables/blocks/log_stool_1.json
 c99b83f031bb09e846eab67057481b8ed90147da data/servermod/loot_tables/blocks/chili_crop.json
+6fb49ab884de04c4bd8b9c6256206a8b304c7494 data/servermod/loot_tables/blocks/log_stool_1.json
 10218d3c3e06adebb7ccd1ec92885b7f36765620 data/servermod/loot_tables/blocks/mushroom_lampstand.json
 e322257e4c43578d890568385aefb39dfd56048f data/servermod/loot_tables/blocks/wooden_scarecrow.json
 c6e8d1f802e2060e6652f73c1caa7603176126d3 data/servermod/loot_tables/blocks/log_stack_1.json

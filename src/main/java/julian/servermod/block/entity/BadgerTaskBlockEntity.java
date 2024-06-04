@@ -3,10 +3,12 @@ package julian.servermod.block.entity;
 import julian.servermod.ServerMod;
 import julian.servermod.badgertasks.ActiveBadgerTask;
 import julian.servermod.badgertasks.ActiveBadgerTaskList;
+import julian.servermod.badgertasks.BadgerClubData;
 import julian.servermod.badgertasks.BadgerTaskManager;
 import julian.servermod.item.ModItems;
 import julian.servermod.screen.BadgerTaskBlockScreenHandler;
 import julian.servermod.screen.util.BadgerTaskClientNetworkUtil;
+import julian.servermod.utils.IEntityDataSaver;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -117,8 +119,12 @@ public class BadgerTaskBlockEntity extends BlockEntity implements ExtendedScreen
 
                 if (BadgerTaskManager.checkIfAllTasksCompleted(player.getUuid())) {
                     ServerMod.LOGGER.info("All tasks completed");
+                    if (BadgerClubData.getTotalBadgerTasks((IEntityDataSaver) player) == 0) {
+                        player.giveItemStack(new ItemStack(ModItems.BADGER_CLUB_ID));
+                    }
                     player.sendMessage(Text.of("All tasks completed!").copy().formatted(Formatting.GREEN), true);
                     List<ItemStack> rewards = BadgerTaskManager.getRewardForPlayer(player.getUuid());
+                    BadgerClubData.incrementTotalBadgerTasks(((IEntityDataSaver) player));
                     String rewardMessage = "You have received: \n";
                     for (ItemStack rewardStack : rewards) {
                         rewardMessage += rewardStack.getCount() + " x " + rewardStack.getItem().getName().getString();
