@@ -29,6 +29,9 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 
     @Override
     public void generate() {
+        // BIOME
+        addDrop(ModBlocks.PEBBLES_BLOCK, ModItems.PEBBLES_ITEM);
+
         addDrop(ModBlocks.RUBY_BLOCK);
         addDrop(ModBlocks.PLATINUM_BLOCK);
         addDrop(ModBlocks.PLANTER);

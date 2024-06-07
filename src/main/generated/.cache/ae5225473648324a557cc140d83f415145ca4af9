@@ -1,4 +1,4 @@
-// 1.20.1	2024-06-04T19:23:40.108553509	servermod/Block Loot Tables
+// 1.20.1	2024-06-07T17:18:41.411155205	servermod/Block Loot Tables
 f1768bb015759afe2a7626ee2b60f062a793b26c data/servermod/loot_tables/blocks/banana_crop.json
 6f63daeef75199728fffe81276e9714ef4ae4ddb data/servermod/loot_tables/blocks/badger_plushie.json
 fb63b2a02096601847649944e95d65014c506fbf data/servermod/loot_tables/blocks/balloon_crate_block.json
@@ -9,6 +9,7 @@ cb11cf108227fda8f9259a3a6e332bd6bcfb1410 data/servermod/loot_tables/blocks/woode
 8021b7d948408b7dda25714a03eba1c0c5682488 data/servermod/loot_tables/blocks/pineapple_crop.json
 81d312f8f8801b555b0efbe0cab4b74ac7874973 data/servermod/loot_tables/blocks/wooden_cart.json
 362ec7d64bdd1f7e981d665425dcd88b7515abf6 data/servermod/loot_tables/blocks/ruby_ore.json
+2f6d5e3bb23f4bb8e1251dcb5c2bc2059a322b2d data/servermod/loot_tables/blocks/pebbles_block.json
 4ffbe710cadd478e43f3188def206b76a6d44f6e data/servermod/loot_tables/blocks/mango_crop.json
 473beadea510646a7ed4a854ac64e07d469ae99d data/servermod/loot_tables/blocks/log_stack_3.json
 1af96bdd43bab61f9fbb378f04768f2a95cedfb8 data/servermod/loot_tables/blocks/deepslate_ruby_ore.json

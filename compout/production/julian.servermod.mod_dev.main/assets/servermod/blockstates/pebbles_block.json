@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "size=1": {
+      "model": "servermod:block/biome/pebbles/pebbles_1"
+    },
+    "size=2": {
+      "model": "servermod:block/biome/pebbles/pebbles_2"
+    },
+    "size=3": {
+      "model": "servermod:block/biome/pebbles/pebbles_3"
+    }
+  }
+}

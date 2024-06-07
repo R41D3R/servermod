@@ -1,9 +1,11 @@
 package julian.servermod.item;
 
+import com.eliotlash.mclib.math.functions.classic.Mod;
 import julian.servermod.ServerMod;
 import julian.servermod.block.ModBlocks;
 import julian.servermod.entity.ModEntities;
 import julian.servermod.item.custom.*;
+import julian.servermod.item.custom.biome.PebbleItem;
 import julian.servermod.item.custom.cratekeys.CrateKeyBadger;
 import julian.servermod.item.custom.cratekeys.CrateKeyLegendary;
 import julian.servermod.item.custom.cratekeys.CrateKeyRare;
@@ -66,6 +68,9 @@ public class ModItems {
             new CrateKeyLegendary(new FabricItemSettings()));
 
     // Crops Seeds
+
+    public static final Item PEBBLES_ITEM = registerItem("pebbles",
+            new PebbleItem(ModBlocks.PEBBLES_BLOCK, new FabricItemSettings()));
 
     // banana seeds
     public static final Item BANANA_SEEDS = registerItem("banana_seeds",

@@ -21,6 +21,10 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
+        // PLANTS
+        itemModelGenerator.register(ModItems.PEBBLES_ITEM, Models.GENERATED);
+
+
         itemModelGenerator.register(ModItems.CRATE_KEY_BADGER, Models.GENERATED);
         itemModelGenerator.register(ModItems.CRATE_KEY_LEGENDARY, Models.GENERATED);
 

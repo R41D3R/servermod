@@ -5,6 +5,7 @@ import julian.servermod.block.custom.*;
 import julian.servermod.block.custom.abstracts.DirectionalBlock;
 import julian.servermod.block.custom.abstracts.ThreeTallDirectionalBlock;
 import julian.servermod.block.custom.abstracts.WallPlaceableBlock;
+import julian.servermod.block.custom.biome.Pebble;
 import julian.servermod.block.custom.crop.DailyCropBlock;
 import julian.servermod.sound.ModSounds;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -63,6 +64,11 @@ public class ModBlocks {
 
     public static final Block BALLOON_CRATE_BLOCK = registerBlock("balloon_crate_block",
             new BalloonLootCrateBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).nonOpaque()));
+
+    // PLANTS
+
+    public static final Block PEBBLES_BLOCK = registerBlock("pebbles_block",
+            new Pebble(FabricBlockSettings.copyOf(Blocks.STONE_BUTTON).nonOpaque()));
 
     // CROPS
 
