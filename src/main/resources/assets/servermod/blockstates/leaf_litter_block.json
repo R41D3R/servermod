@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "servermod:block/biome/cover/leaf_pile_oak"
+    },
+    "facing=east": {
+      "model": "servermod:block/biome/cover/leaf_pile_oak",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "servermod:block/biome/cover/leaf_pile_oak",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "servermod:block/biome/cover/leaf_pile_oak",
+      "y": 270
+    }
+  }
+}

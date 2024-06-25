@@ -6,8 +6,14 @@ import julian.servermod.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.block.Block;
+import net.minecraft.block.TallPlantBlock;
+import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.enchantment.Enchantments;
+import net.minecraft.loot.condition.LocationCheckLootCondition;
+import net.minecraft.loot.condition.RandomChanceLootCondition;
+import net.minecraft.loot.entry.AlternativeEntry;
+
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
@@ -19,8 +25,12 @@ import net.minecraft.loot.entry.LeafEntry;
 import net.minecraft.loot.entry.LootPoolEntry;
 import net.minecraft.loot.function.ApplyBonusLootFunction;
 import net.minecraft.loot.function.SetCountLootFunction;
+import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.loot.provider.number.UniformLootNumberProvider;
+import net.minecraft.predicate.BlockPredicate;
 import net.minecraft.predicate.StatePredicate;
+import net.minecraft.predicate.entity.LocationPredicate;
+import net.minecraft.util.math.BlockPos;
 
 public class ModLootTableProvider extends FabricBlockLootTableProvider {
     public ModLootTableProvider(FabricDataOutput dataOutput) {
@@ -29,8 +39,37 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 
     @Override
     public void generate() {
+        // WOOD
+
+        addDrop(ModBlocks.MAPLE_LOG);
+        addDrop(ModBlocks.MAPLE_WOOD);
+        addDrop(ModBlocks.STRIPPED_MAPLE_LOG);
+        addDrop(ModBlocks.STRIPPED_MAPLE_WOOD);
+        addDrop(ModBlocks.MAPLE_PLANKS);
+        addDrop(ModBlocks.MAPLE_SAPLING);
+
+        addDrop(ModBlocks.MAPLES_LEAVES_RED, leavesDrops(ModBlocks.MAPLES_LEAVES_RED, ModBlocks.MAPLE_SAPLING, 0.005F));
+        addDrop(ModBlocks.MAPLES_LEAVES_ORANGE, leavesDrops(ModBlocks.MAPLES_LEAVES_ORANGE, ModBlocks.MAPLE_SAPLING, 0.005F));
+
         // BIOME
         addDrop(ModBlocks.PEBBLES_BLOCK, ModItems.PEBBLES_ITEM);
+        addDrop(ModBlocks.ROCKS_BLOCK, ModItems.ROCKS_ITEM);
+
+        addDrop(ModBlocks.LEAF_LITTER_BLOCK, ModItems.LEAF_LITTER);
+        addDrop(ModBlocks.COLD_LEAF_LITTER_BLOCK, ModItems.COLD_LEAF_LITTER);
+        addDrop(ModBlocks.DRY_LEAF_LITTER_BLOCK, ModItems.DRY_LEAF_LITTER);
+
+        addDrop(ModBlocks.FLOWER_COVER_WHITE_BLOCK, ModItems.FLOWER_COVER_WHITE);
+        addDrop(ModBlocks.FLOWER_COVER_BLUE_BLOCK, ModItems.FLOWER_COVER_BLUE);
+        addDrop(ModBlocks.FLOWER_COVER_PINK_BLOCK, ModItems.FLOWER_COVER_PINK);
+        addDrop(ModBlocks.FLOWER_COVER_RED_BLOCK, ModItems.FLOWER_COVER_RED);
+        addDrop(ModBlocks.MOSS_COVER_BLOCK, ModItems.MOSS_COVER);
+        addDrop(ModBlocks.SHELF_FUNGUS_BLOCK, ModItems.SHELF_FUNGUS);
+
+        addDrop(ModBlocks.ORANGE_MYCENA_BLOCK, ModItems.ORANGE_MYCENA);
+        //addDrop(ModBlocks.LARGE_ORANGE_MYCENA_BLOCK, ModItems.LARGE_ORANGE_MYCENA);
+        addDrop(ModBlocks.LARGE_ORANGE_MYCENA_BLOCK, tallGrassDrops(ModBlocks.LARGE_ORANGE_MYCENA_BLOCK, ModItems.LARGE_ORANGE_MYCENA, ModItems.ORANGE_MYCENA));
+        addDrop(ModBlocks.CLOVER_BLOCK, ModItems.CLOVER);
 
         addDrop(ModBlocks.RUBY_BLOCK);
         addDrop(ModBlocks.PLATINUM_BLOCK);
@@ -75,6 +114,16 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.EGGPLANT_CROP, customCropDrops(ModBlocks.EGGPLANT_CROP, ModItems.EGGPLANT, ModItems.EGGPLANT_SEEDS, cropBlockLikeDrop((DailyCropBlock) ModBlocks.EGGPLANT_CROP, ModItems.EGGPLANT)));
         addDrop(ModBlocks.LETTUCE_CROP, customCropDrops(ModBlocks.LETTUCE_CROP, ModItems.LETTUCE, ModItems.LETTUCE_SEEDS, cropBlockLikeDrop((DailyCropBlock) ModBlocks.LETTUCE_CROP, ModItems.LETTUCE)));
         addDrop(ModBlocks.CHILI_CROP, customCropDrops(ModBlocks.CHILI_CROP, ModItems.CHILI, ModItems.CHILI_SEEDS, cropBlockLikeDrop((DailyCropBlock) ModBlocks.CHILI_CROP, ModItems.CHILI)));
+    }
+
+    public LootTable.Builder tallGrassDrops(Block tallGrass, Item tallgrass_item, Item grass_item) {
+        // Build loot table with two pools
+        return LootTable.builder()
+                .pool(LootPool.builder()
+                        .with(ItemEntry.builder(grass_item).apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(2.0f))).conditionally(WITH_SHEARS)
+                                .alternatively(ItemEntry.builder(tallgrass_item).apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(1.0f)))
+                        .conditionally(BlockStatePropertyLootCondition.builder(tallGrass)
+                                .properties(StatePredicate.Builder.create().exactMatch(TallPlantBlock.HALF, DoubleBlockHalf.LOWER))))));
     }
 
     public LootTable.Builder copperLikeOreDrops(Block drop, Item item) {

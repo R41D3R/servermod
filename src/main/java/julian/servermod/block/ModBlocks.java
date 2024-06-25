@@ -1,17 +1,27 @@
 package julian.servermod.block;
 
+import com.terraformersmc.terraform.sign.block.TerraformHangingSignBlock;
+import com.terraformersmc.terraform.sign.block.TerraformSignBlock;
+import com.terraformersmc.terraform.sign.block.TerraformWallHangingSignBlock;
+import com.terraformersmc.terraform.sign.block.TerraformWallSignBlock;
 import julian.servermod.ServerMod;
 import julian.servermod.block.custom.*;
 import julian.servermod.block.custom.abstracts.DirectionalBlock;
 import julian.servermod.block.custom.abstracts.ThreeTallDirectionalBlock;
 import julian.servermod.block.custom.abstracts.WallPlaceableBlock;
+import julian.servermod.block.custom.biome.CoverBlock;
+import julian.servermod.block.custom.biome.CustomFernBlock;
+import julian.servermod.block.custom.biome.LitterBlock;
 import julian.servermod.block.custom.biome.Pebble;
 import julian.servermod.block.custom.crop.DailyCropBlock;
 import julian.servermod.sound.ModSounds;
+import julian.servermod.world.tree.MapleSaplingGenerator;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
+import net.minecraft.block.*;
+import net.minecraft.data.family.BlockFamilies;
+import net.minecraft.data.family.BlockFamily;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -65,10 +75,95 @@ public class ModBlocks {
     public static final Block BALLOON_CRATE_BLOCK = registerBlock("balloon_crate_block",
             new BalloonLootCrateBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).nonOpaque()));
 
+
+    // WOOD
+
+    public static final Block MAPLE_LOG = registerBlock("maple_log",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).strength(4f)));
+    public static final Block MAPLE_WOOD = registerBlock("maple_wood",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_WOOD).strength(4f)));
+    public static final Block STRIPPED_MAPLE_LOG = registerBlock("stripped_maple_log",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.STRIPPED_OAK_LOG).strength(4f)));
+    public static final Block STRIPPED_MAPLE_WOOD = registerBlock("stripped_maple_wood",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.STRIPPED_OAK_WOOD).strength(4f)));
+
+    public static final Block MAPLE_PLANKS = registerBlock("maple_planks",
+            new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).strength(4f)));
+    public static final Block MAPLES_LEAVES_RED = registerBlock("maple_leaves_red",
+            new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).strength(4f).nonOpaque()));
+    public static final Block MAPLES_LEAVES_ORANGE = registerBlock("maple_leaves_orange",
+            new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).strength(4f).nonOpaque()));
+
+    public static final Identifier MAPLE_SIGN_TEXTURE = new Identifier(ServerMod.MOD_ID, "entity/signs/maple");
+    public static final Identifier MAPLE_HANGING_SIGN_TEXTURE = new Identifier(ServerMod.MOD_ID, "entity/signs/hanging/maple");
+    public static final Identifier MAPLE_HANGING_GUI_SIGN_TEXTURE = new Identifier(ServerMod.MOD_ID, "textures/gui/hanging_signs/maple");
+
+    public static final Block STANDING_MAPLE_SIGN = Registry.register(Registries.BLOCK, new Identifier(ServerMod.MOD_ID, "maple_standing_sign"),
+            new TerraformSignBlock(MAPLE_SIGN_TEXTURE,FabricBlockSettings.copyOf(Blocks.OAK_SIGN)));
+    public static final Block WALL_MAPLE_SIGN = Registry.register(Registries.BLOCK, new Identifier(ServerMod.MOD_ID, "maple_wall_sign"),
+            new TerraformWallSignBlock(MAPLE_SIGN_TEXTURE,FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN)));
+    public static final Block HANGING_MAPLE_SIGN = Registry.register(Registries.BLOCK, new Identifier(ServerMod.MOD_ID, "maple_hanging_sign"),
+            new TerraformHangingSignBlock(MAPLE_HANGING_SIGN_TEXTURE, MAPLE_HANGING_GUI_SIGN_TEXTURE, FabricBlockSettings.copyOf(Blocks.OAK_HANGING_SIGN)));
+    public static final Block WALL_HANGING_MAPLE_SIGN = Registry.register(Registries.BLOCK, new Identifier(ServerMod.MOD_ID, "maple_wall_hanging_sign"),
+            new TerraformWallHangingSignBlock(MAPLE_HANGING_SIGN_TEXTURE, MAPLE_HANGING_GUI_SIGN_TEXTURE, FabricBlockSettings.copyOf(Blocks.OAK_WALL_HANGING_SIGN)));
+
+    public static final BlockFamily MAPLE_FAMILY = BlockFamilies.register(ModBlocks.MAPLE_PLANKS)
+            .sign(ModBlocks.STANDING_MAPLE_SIGN, ModBlocks.WALL_MAPLE_SIGN)
+            .group("wooden").unlockCriterionName("has_planks").build();
+
+
+    // TODO: make sapling a flower for pot
+    public static final Block MAPLE_SAPLING = registerBlock("maple_sapling",
+            new SaplingBlock(new MapleSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
+
     // PLANTS
 
     public static final Block PEBBLES_BLOCK = registerBlock("pebbles_block",
-            new Pebble(FabricBlockSettings.copyOf(Blocks.STONE_BUTTON).nonOpaque()));
+            new Pebble(FabricBlockSettings.copyOf(Blocks.OAK_SAPLING).nonOpaque()));
+
+    public static final Block ROCKS_BLOCK = registerBlock("rocks_block",
+            new Pebble(FabricBlockSettings.copyOf(Blocks.OAK_SAPLING).nonOpaque()));
+
+    public static final Block LEAF_LITTER_BLOCK = registerBlock("leaf_litter_block",
+            new LitterBlock(FabricBlockSettings.copyOf(Blocks.OAK_SAPLING).noCollision()));
+
+    public static final Block COLD_LEAF_LITTER_BLOCK = registerBlock("cold_leaf_litter_block",
+            new LitterBlock(FabricBlockSettings.copyOf(Blocks.OAK_SAPLING).noCollision()));
+
+    public static final Block DRY_LEAF_LITTER_BLOCK = registerBlock("dry_leaf_litter_block",
+            new LitterBlock(FabricBlockSettings.copyOf(Blocks.OAK_SAPLING).noCollision()));
+
+
+    public static final Block FLOWER_COVER_WHITE_BLOCK = registerBlock("flower_cover_white_block",
+            new CoverBlock(FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
+
+    public static final Block FLOWER_COVER_BLUE_BLOCK = registerBlock("flower_cover_blue_block",
+            new CoverBlock(FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
+
+    public static final Block FLOWER_COVER_PINK_BLOCK = registerBlock("flower_cover_pink_block",
+            new CoverBlock(FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
+
+    public static final Block FLOWER_COVER_RED_BLOCK = registerBlock("flower_cover_red_block",
+            new CoverBlock(FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
+
+    public static final Block MOSS_COVER_BLOCK = registerBlock("moss_cover_block",
+            new CoverBlock(FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
+
+    public static final Block SHELF_FUNGUS_BLOCK = registerBlock("shelf_fungus_block",
+            new CoverBlock(FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
+
+
+
+
+    public static final Block ORANGE_MYCENA_BLOCK = registerBlock("orange_mycena_block",
+            new CustomFernBlock(FabricBlockSettings.copyOf(Blocks.FERN)));
+
+    public static final Block LARGE_ORANGE_MYCENA_BLOCK = registerBlock("large_orange_mycena_block",
+            new TallPlantBlock(FabricBlockSettings.copyOf(Blocks.LARGE_FERN)));
+
+    public static final Block CLOVER_BLOCK = registerBlock("clover_block",
+            new CoverBlock(FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
+
 
     // CROPS
 

@@ -18,6 +18,8 @@ public class ModSounds {
     public static final SoundEvent QUEST_OBJECTIVE_COMPLETE = registerSoundEvent("quest_objective_complete");
     public static final SoundEvent TASK_COMPLETE = registerSoundEvent("task_complete");
     public static final SoundEvent POP = registerSoundEvent("pop");
+    public static final SoundEvent RUBY_GAIN = registerSoundEvent("ruby_gain");
+    public static final SoundEvent RUBY_LOSE = registerSoundEvent("ruby_lose");
 
     public static final BlockSoundGroup LOOT_VASE_BLOCK_SOUNDS =
             new BlockSoundGroup(1f, 1f,

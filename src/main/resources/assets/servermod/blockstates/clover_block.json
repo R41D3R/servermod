@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "servermod:block/biome/clover"
+    },
+    "facing=east": {
+      "model": "servermod:block/biome/clover",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "servermod:block/biome/clover",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "servermod:block/biome/clover",
+      "y": 270
+    }
+  }
+}

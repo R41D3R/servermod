@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "servermod:maple_log",
+    "servermod:maple_wood",
+    "servermod:stripped_maple_log",
+    "servermod:stripped_maple_wood"
+  ]
+}

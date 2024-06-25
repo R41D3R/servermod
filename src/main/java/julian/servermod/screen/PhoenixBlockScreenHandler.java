@@ -1,6 +1,7 @@
 package julian.servermod.screen;
 
 import julian.servermod.block.entity.PhoenixBlockEntity;
+import net.minecraft.block.CandleBlock;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.ExperienceOrbEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -8,6 +9,7 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.EnchantedBookItem;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.*;
 import net.minecraft.screen.slot.Slot;
@@ -67,7 +69,18 @@ public class PhoenixBlockScreenHandler extends ScreenHandler {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 9; j++) {
                 int index = i * 9 + j;
-                this.addSlot(new Slot(this.inventory, index, 8 + (j*18), (52 - 29 - 2 - 18) + (i*18)));
+                this.addSlot(new Slot(this.inventory, index, 8 + (j*18), (52 - 29 - 2 - 18) + (i*18)){
+                    @Override
+                    public boolean canInsert(ItemStack stack) {
+                        if (stack.getItem() instanceof EnchantedBookItem) {
+                            return true;
+                        }
+                        if (stack.getItem() == Items.CANDLE) {
+                            return true;
+                        }
+                        return false;
+                    }
+                });
             }
         }
         
@@ -87,7 +100,7 @@ public class PhoenixBlockScreenHandler extends ScreenHandler {
                 if (!this.insertItem(originalStack, this.inventory.size(), this.slots.size(), false)) {
                     return ItemStack.EMPTY;
                 }
-            } else if (!this.insertItem(originalStack, 1, this.inventory.size(), false)) {
+            } else if (!this.insertItem(originalStack, 0, this.inventory.size()-1, false)) {
                 return ItemStack.EMPTY;
             }
 
@@ -97,6 +110,7 @@ public class PhoenixBlockScreenHandler extends ScreenHandler {
                 slot.markDirty();
             }
             slot.onTakeItem(player, newStack);
+
         }
 
         return newStack;
@@ -117,6 +131,7 @@ public class PhoenixBlockScreenHandler extends ScreenHandler {
     }
 
     private void addPlayerHotbar(PlayerInventory playerInventory) {
+        // TODO: BUG: the items in the HotBar get instantly dropped when I try to click them
         for (int i = 0; i < 9; ++i) {
             this.addSlot(new Slot(playerInventory, i, 8 + i * 18, (214 - 29 - 20)));
         }

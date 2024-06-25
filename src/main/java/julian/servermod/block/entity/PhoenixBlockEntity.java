@@ -24,8 +24,8 @@ import org.jetbrains.annotations.Nullable;
 public class PhoenixBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ImplementedInventory {
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(28, ItemStack.EMPTY);
 
-    private static final int INPUT_SLOTS = 26;
-    private static final int OUTPUT_SLOT = 27;
+    public static final int INPUT_SLOTS = 26;
+    public static final int OUTPUT_SLOT = 27;
 
 
 

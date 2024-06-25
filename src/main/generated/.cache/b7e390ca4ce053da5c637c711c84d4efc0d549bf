@@ -1,10 +1,14 @@
-// 1.20.1	2024-06-07T17:18:41.413046454	servermod/World Gen
+// 1.20.1	2024-06-25T18:53:09.526670178	servermod/World Gen
 e692f0f84d6c9e69d155166abb45bd8ba6635f58 data/servermod/worldgen/configured_feature/ruby_ore.json
 63c72347dd7763e6d3da6b81deccfdda8af3063e data/servermod/worldgen/configured_feature/emerald_ore.json
+285b1236f5499d6df06d27a17bd75f04049ebe93 data/servermod/worldgen/configured_feature/maple_red.json
 429cb42d71f95ce00165bdd17c59d9c9e12b8d58 data/servermod/worldgen/configured_feature/platinum_ore.json
 d6b5245baa6ebffcb8b09fd2eadec747a47645e1 data/servermod/worldgen/placed_feature/loot_vase_placed.json
 9f1ed5f0b453a8ffbca338313ee539f590bef0c0 data/servermod/worldgen/placed_feature/platinum_ore_placed.json
+0d52b9f1f2861db56ebc650c2484b7fcaae00ac9 data/servermod/worldgen/configured_feature/maple_orange.json
+f8e05b1005b4878f153f70d6e02bf011b43953a0 data/servermod/worldgen/configured_feature/fancy_maple_red.json
 ea325ddc48eaf9d6000cf2eedcc2babb659bef6c data/servermod/worldgen/placed_feature/emerald_ore_placed.json
 d28df75e6c7d38ebdd03aa659768af65fdcff684 data/servermod/worldgen/configured_feature/loot_vase.json
 1fe0cb2d7f984e6872c9dfcfcefa1e0e8bb5f2f0 data/servermod/worldgen/biome/maple_forest.json
 2a5bc30ca2c4177e91a1abab30e5eb2cd994342f data/servermod/worldgen/placed_feature/ruby_ore_placed.json
+604598f53ef8df74413575e3a134eba140967504 data/servermod/worldgen/configured_feature/fancy_maple_orange.json

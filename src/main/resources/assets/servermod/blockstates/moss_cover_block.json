@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "servermod:block/biome/cover/moss_cover"
+    },
+    "facing=east": {
+      "model": "servermod:block/biome/cover/moss_cover",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "servermod:block/biome/cover/moss_cover",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "servermod:block/biome/cover/moss_cover",
+      "y": 270
+    }
+  }
+}

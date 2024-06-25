@@ -15,14 +15,45 @@ public class ModItemGroups {
             new Identifier(ServerMod.MOD_ID, "servermod"),
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.servermod"))
                     .icon(() -> new ItemStack(ModItems.RUBY)).entries((displayContext, entries) -> {
+                        // WOOD
+                        entries.add(ModBlocks.MAPLE_LOG);
+                        entries.add(ModBlocks.STRIPPED_MAPLE_LOG);
+                        entries.add(ModBlocks.MAPLE_WOOD);
+                        entries.add(ModBlocks.STRIPPED_MAPLE_WOOD);
+                        entries.add(ModBlocks.MAPLE_PLANKS);
+                        entries.add(ModBlocks.MAPLES_LEAVES_RED);
+                        entries.add(ModBlocks.MAPLES_LEAVES_ORANGE);
+                        entries.add(ModItems.MAPLE_SIGN);
+                        entries.add(ModItems.HANGING_MAPLE_SIGN);
+                        entries.add(ModBlocks.MAPLE_SAPLING);
+
                         // Biome
                         entries.add(ModItems.PEBBLES_ITEM);
+                        entries.add(ModItems.ROCKS_ITEM);
+
+                        entries.add(ModItems.LEAF_LITTER);
+                        entries.add(ModItems.COLD_LEAF_LITTER);
+                        entries.add(ModItems.DRY_LEAF_LITTER);
+
+
+                        entries.add(ModItems.FLOWER_COVER_WHITE);
+                        entries.add(ModItems.FLOWER_COVER_BLUE);
+                        entries.add(ModItems.FLOWER_COVER_PINK);
+                        entries.add(ModItems.FLOWER_COVER_RED);
+                        entries.add(ModItems.MOSS_COVER);
+                        entries.add(ModItems.SHELF_FUNGUS);
+                        entries.add(ModItems.ORANGE_MYCENA);
+                        entries.add(ModItems.LARGE_ORANGE_MYCENA);
+                        entries.add(ModItems.CLOVER);
+
 
                         // Entities
                         entries.add(ModItems.LOOT_BALLOON_SPAWN_EGG);
+                        entries.add(ModItems.SNAIL_SPAWN_EGG);
                         entries.add(ModItems.CAPTURE_NET);
 
                         entries.add(ModItems.WateringCan);
+                        entries.add(ModItems.BADGER_COIN);
                         entries.add(ModItems.RUBY);
                         entries.add(ModItems.CUSTOM_LAPIS);
                         entries.add(ModItems.PLATINUM);

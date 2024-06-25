@@ -3,8 +3,11 @@
   "package" : "julian.servermod.mixin",
   "compatibilityLevel" : "JAVA_17",
   "mixins" : [
+    "AnimalEntityMixin",
     "ChunkSectionMixin",
     "ExampleMixin",
+    "LeavesBlockMixin",
+    "LlamaEntityMixin",
     "MerchantEntityMixin",
     "MerchantMixin",
     "MinecraftServerMixin",

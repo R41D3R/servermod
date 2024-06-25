@@ -9,6 +9,7 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
+import net.minecraft.entity.mob.PhantomEntity;
 import net.minecraft.entity.mob.SilverfishEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -35,12 +36,20 @@ public class LootVaseBlock extends LootBoxBlock {
             // random change to spawn a silverfish instead of dropping loot
             if (world.random.nextInt(10) == 0) {
 
-                // spawn 1-3 silverfish
-                int numSilverfish = world.random.nextInt(3) + 1;
-                for (int i = 0; i < numSilverfish; i++) {
-                    SilverfishEntity silverfish = EntityType.SILVERFISH.create(world);
-                    silverfish.refreshPositionAndAngles(pos, 0, 0);
-                    world.spawnEntity(silverfish);
+                // spawn 1-3 silverfish or phantoms
+                int numMobs = world.random.nextInt(3) + 1;
+                for (int i = 0; i < numMobs; i++) {
+                    if (world.random.nextInt(2) == 0) {
+                        PhantomEntity phantom = EntityType.PHANTOM.create(world);
+                        phantom.refreshPositionAndAngles(pos, 0, 0);
+                        world.spawnEntity(phantom);
+                    }
+                    else {
+                        SilverfishEntity silverfish = EntityType.SILVERFISH.create(world);
+                        silverfish.refreshPositionAndAngles(pos, 0, 0);
+                        world.spawnEntity(silverfish);
+                    }
+
                 }
             } else {
                 // drop loot

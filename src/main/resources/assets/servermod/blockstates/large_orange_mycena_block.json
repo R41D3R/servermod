@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower" : {
+      "model" : "servermod:block/biome/large_orange_mycena_lower"
+    },
+    "half=upper" : {
+      "model" : "servermod:block/biome/large_orange_mycena_upper"
+    }
+  }
+}

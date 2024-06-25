@@ -6,6 +6,7 @@ import julian.servermod.block.ModBlocks;
 import julian.servermod.entity.ModEntities;
 import julian.servermod.item.custom.*;
 import julian.servermod.item.custom.biome.PebbleItem;
+import julian.servermod.item.custom.biome.RocksItem;
 import julian.servermod.item.custom.cratekeys.CrateKeyBadger;
 import julian.servermod.item.custom.cratekeys.CrateKeyLegendary;
 import julian.servermod.item.custom.cratekeys.CrateKeyRare;
@@ -25,6 +26,10 @@ public class ModItems {
             new SpawnEggItem(ModEntities.LOOT_BALLOON, 0xD57E57, 0x100000,
                     new FabricItemSettings()));
 
+    public static final Item SNAIL_SPAWN_EGG = registerItem("snail_spawn_egg",
+            new SpawnEggItem(ModEntities.SNAIL, 0xD57E57, 0x100000,
+                    new FabricItemSettings()));
+
     public static final Item CAPTURE_NET = registerItem("capture_net",
             new CaptureNet(new FabricItemSettings().maxDamage(3)));
 
@@ -36,6 +41,9 @@ public class ModItems {
 
     public static final Item WateringCan = registerItem("wooden_watering_can",
             new WateringCan(new FabricItemSettings().maxDamage(6)));
+
+    public static final Item BADGER_COIN = registerItem("badger_coin",
+            new Item(new FabricItemSettings()));
 
     public static final Item RUBY = registerItem("ruby",
             new Item(new FabricItemSettings()));
@@ -67,11 +75,61 @@ public class ModItems {
     public static final Item CRATE_KEY_LEGENDARY = registerItem("crate_key_legendary",
             new CrateKeyLegendary(new FabricItemSettings()));
 
-    // Crops Seeds
+
+    // BIOME DECORATION
 
     public static final Item PEBBLES_ITEM = registerItem("pebbles",
             new PebbleItem(ModBlocks.PEBBLES_BLOCK, new FabricItemSettings()));
 
+    public static final Item ROCKS_ITEM = registerItem("rocks",
+            new RocksItem(ModBlocks.ROCKS_BLOCK, new FabricItemSettings()));
+
+    public static final Item LEAF_LITTER = registerItem("leaves",
+            new AliasedBlockItem(ModBlocks.LEAF_LITTER_BLOCK, new FabricItemSettings()));
+
+    public static final Item COLD_LEAF_LITTER = registerItem("leaves_cold",
+            new AliasedBlockItem(ModBlocks.COLD_LEAF_LITTER_BLOCK, new FabricItemSettings()));
+
+    public static final Item DRY_LEAF_LITTER = registerItem("leaves_dead",
+            new AliasedBlockItem(ModBlocks.DRY_LEAF_LITTER_BLOCK, new FabricItemSettings()));
+
+    public static final Item FLOWER_COVER_WHITE = registerItem("aubrieta_white",
+            new AliasedBlockItem(ModBlocks.FLOWER_COVER_WHITE_BLOCK, new FabricItemSettings()));
+
+    public static final Item FLOWER_COVER_BLUE = registerItem("aubrieta_blue",
+            new AliasedBlockItem(ModBlocks.FLOWER_COVER_BLUE_BLOCK, new FabricItemSettings()));
+
+    public static final Item FLOWER_COVER_PINK = registerItem("aubrieta_pink",
+            new AliasedBlockItem(ModBlocks.FLOWER_COVER_PINK_BLOCK, new FabricItemSettings()));
+
+    public static final Item FLOWER_COVER_RED = registerItem("aubrieta_red",
+            new AliasedBlockItem(ModBlocks.FLOWER_COVER_RED_BLOCK, new FabricItemSettings()));
+
+    public static final Item MOSS_COVER = registerItem("moss_cover",
+            new AliasedBlockItem(ModBlocks.MOSS_COVER_BLOCK, new FabricItemSettings()));
+
+    public static final Item SHELF_FUNGUS = registerItem("shelf_fungus",
+            new AliasedBlockItem(ModBlocks.SHELF_FUNGUS_BLOCK, new FabricItemSettings()));
+
+
+    public static final Item ORANGE_MYCENA = registerItem("orange_mycena",
+            new AliasedBlockItem(ModBlocks.ORANGE_MYCENA_BLOCK, new FabricItemSettings()));
+
+    public static final Item LARGE_ORANGE_MYCENA = registerItem("large_orange_mycena",
+            new AliasedBlockItem(ModBlocks.LARGE_ORANGE_MYCENA_BLOCK, new FabricItemSettings()));
+
+    public static final Item CLOVER = registerItem("clover",
+            new AliasedBlockItem(ModBlocks.CLOVER_BLOCK, new FabricItemSettings()));
+
+    // WOOD
+    public static final Item MAPLE_SIGN = registerItem("maple_sign",
+            new SignItem(new FabricItemSettings().maxCount(16), ModBlocks.STANDING_MAPLE_SIGN, ModBlocks.WALL_MAPLE_SIGN));
+    public static final Item HANGING_MAPLE_SIGN = registerItem("maple_hanging_sign",
+            new HangingSignItem(ModBlocks.HANGING_MAPLE_SIGN, ModBlocks.WALL_HANGING_MAPLE_SIGN, new FabricItemSettings().maxCount(16)));
+
+
+
+    // Crops Seeds
     // banana seeds
     public static final Item BANANA_SEEDS = registerItem("banana_seeds",
             new AliasedBlockItem(ModBlocks.BANANA_CROP, new FabricItemSettings()));

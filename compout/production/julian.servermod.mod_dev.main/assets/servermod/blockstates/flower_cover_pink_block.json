@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "servermod:block/biome/cover/flower_cover_pink"
+    },
+    "facing=east": {
+      "model": "servermod:block/biome/cover/flower_cover_pink",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "servermod:block/biome/cover/flower_cover_pink",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "servermod:block/biome/cover/flower_cover_pink",
+      "y": 270
+    }
+  }
+}

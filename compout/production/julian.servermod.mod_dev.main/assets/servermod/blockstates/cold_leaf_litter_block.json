@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "servermod:block/biome/cover/leaf_pile_spruce"
+    },
+    "facing=east": {
+      "model": "servermod:block/biome/cover/leaf_pile_spruce",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "servermod:block/biome/cover/leaf_pile_spruce",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "servermod:block/biome/cover/leaf_pile_spruce",
+      "y": 270
+    }
+  }
+}

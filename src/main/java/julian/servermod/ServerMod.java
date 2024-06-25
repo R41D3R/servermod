@@ -7,6 +7,7 @@ import julian.servermod.color.ModColorProviders;
 import julian.servermod.command.ModCommandRegister;
 import julian.servermod.entity.ModEntities;
 import julian.servermod.entity.custom.LootBalloonEntity;
+import julian.servermod.entity.custom.SnailEntity;
 import julian.servermod.item.ModItemGroups;
 import julian.servermod.item.ModItems;
 import julian.servermod.screen.ModScreenHandlers;
@@ -23,6 +24,8 @@ import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
 import net.fabricmc.fabric.api.event.player.UseEntityCallback;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
+import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
+import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.registry.RegistryKey;
@@ -76,9 +79,21 @@ public class ServerMod implements ModInitializer {
 		});
 
 		FabricDefaultAttributeRegistry.register(ModEntities.LOOT_BALLOON, LootBalloonEntity.setAttributes());
+		FabricDefaultAttributeRegistry.register(ModEntities.SNAIL, SnailEntity.setAttributes());
 
 
 		// UseEntityCallback.EVENT.register(new VillagerTradingChangeHandler());
+
+		StrippableBlockRegistry.register(ModBlocks.MAPLE_LOG, ModBlocks.STRIPPED_MAPLE_LOG);
+		StrippableBlockRegistry.register(ModBlocks.MAPLE_WOOD, ModBlocks.STRIPPED_MAPLE_WOOD);
+
+		FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.MAPLE_LOG, 5, 5);
+		FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.MAPLE_WOOD, 5, 5);
+		FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.STRIPPED_MAPLE_LOG, 5, 5);
+		FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.STRIPPED_MAPLE_WOOD, 5, 5);
+		FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.MAPLE_PLANKS, 5, 20);
+		FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.MAPLES_LEAVES_RED, 30, 60);
+		FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.MAPLES_LEAVES_ORANGE, 30, 60);
 	}
 
 	public static void handlePlayerLogin(PlayerEntity player) {

@@ -1,0 +1,59 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.snail.hide": {
+			"animation_length": 2,
+			"bones": {
+				"group": {
+					"scale": {
+						"vector": [0, 0, 0]
+					}
+				},
+				"bone": {
+					"position": {
+						"0.0": {
+							"vector": [0, -1, 0]
+						},
+						"2.0": {
+							"vector": [0, -1, 0]
+						}
+					}
+				}
+			}
+		},
+		"animation.snail.default": {
+			"animation_length": 2,
+			"bones": {
+				"bone": {
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"2.0": {
+							"vector": [0, 0, 0]
+						}
+					}
+				}
+			}
+		},
+		"animation.snail.climb": {
+			"loop": true,
+			"bones": {
+				"group": {
+					"rotation": {
+						"vector": [0, 0, 0]
+					}
+				},
+				"bone2": {
+					"rotation": {
+						"vector": [-90, 0, 0]
+					},
+					"position": {
+						"vector": [0, 5, 0]
+					}
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
+}

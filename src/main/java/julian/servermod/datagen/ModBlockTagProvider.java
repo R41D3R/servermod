@@ -7,6 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.ItemTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -45,5 +46,11 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
                 .add(ModBlocks.PLANTER)
                 .add(ModBlocks.BALLOON_CRATE_BLOCK);
+
+        getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN)
+                .add(ModBlocks.MAPLE_LOG)
+                .add(ModBlocks.MAPLE_WOOD)
+                .add(ModBlocks.STRIPPED_MAPLE_LOG)
+                .add(ModBlocks.STRIPPED_MAPLE_WOOD);
     }
 }

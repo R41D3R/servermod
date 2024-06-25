@@ -46,5 +46,17 @@
     "sounds": [
       "servermod:pop"
     ]
+  },
+  "ruby_lose": {
+    "subtitle": "sounds.servermod.ruby_lose",
+    "sounds": [
+      "servermod:ruby-lose"
+    ]
+  },
+  "ruby_gain": {
+    "subtitle": "sounds.servermod.ruby_gain",
+    "sounds": [
+      "servermod:ruby-gain"
+    ]
   }
 }
