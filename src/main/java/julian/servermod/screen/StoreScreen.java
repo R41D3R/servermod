@@ -21,7 +21,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
+import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
+import org.lwjgl.glfw.GLFW;
 
 import java.util.*;
 import java.util.function.Consumer;
@@ -63,8 +65,8 @@ public class StoreScreen extends BaseOwoScreen<FlowLayout> {
 
         ButtonComponent button = Components.button(Text.of("Buy"), pressButton -> {
             ServerModClient.MY_CHANNEL.clientHandle().send(new ServerModClient.StorePacket(cost, Item.getRawId(sellItem), Item.getRawId(currencyItem)));
-
             this.player.playSound(ModSounds.RUBY_LOSE, 1, 1);
+
             this.player.giveItemStack(new ItemStack(sellItem));
             int remaining = cost;
             for (final var stack : this.player.getInventory().main) {
@@ -156,7 +158,10 @@ public class StoreScreen extends BaseOwoScreen<FlowLayout> {
         outerMenuComponent.child(menuComponent);
         outerMenuComponent.child(currencyBagComponent);
 
-
+        var storeBanner = Components.texture(new Identifier(ServerMod.MOD_ID, "textures/gui/store_head.png"),
+                0 , 0,86, 27, 86, 27);
+        storeBanner.margins(Insets.bottom(8));
+        rootComponent.child(storeBanner);
         rootComponent.child(outerMenuComponent);
     }
 
@@ -180,6 +185,15 @@ public class StoreScreen extends BaseOwoScreen<FlowLayout> {
             int amount = InventoryUtil.countItems(player.getInventory(), currencyItem);
             label.text(Text.of(String.valueOf(amount)));
         }
+    }
+
+    @Override
+    public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
+        if (keyCode == GLFW.GLFW_KEY_J) {
+            this.client.setScreen(null);
+            return true;
+        }
+        return super.keyPressed(keyCode, scanCode, modifiers);
     }
 
     public class Quadruple<T, U, V, K> {

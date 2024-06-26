@@ -20,6 +20,10 @@ public class ModSounds {
     public static final SoundEvent POP = registerSoundEvent("pop");
     public static final SoundEvent RUBY_GAIN = registerSoundEvent("ruby_gain");
     public static final SoundEvent RUBY_LOSE = registerSoundEvent("ruby_lose");
+    public static final SoundEvent CRATE_BEGINNING_CHOIR = registerSoundEvent("crate_beginning_choir");
+    public static final SoundEvent CRATE_CLOSE = registerSoundEvent("crate_close");
+    public static final SoundEvent CRATE_OPEN_CHIMES = registerSoundEvent("crate_open_chimes");
+    public static final SoundEvent ENDING_JINGLE = registerSoundEvent("ending_jingle");
 
     public static final BlockSoundGroup LOOT_VASE_BLOCK_SOUNDS =
             new BlockSoundGroup(1f, 1f,

@@ -122,7 +122,7 @@ public class CaptureNet extends Item {
             String str = lastStringIndex(stack.getNbt().getString(ENTITY_TYPE_TAG));
             String firstLetterUpperCaseStr = str.substring(0, 1).toUpperCase() + str.substring(1);
             tooltip.add(Text.of("Captured Mob: " + firstLetterUpperCaseStr).copy()
-                    .formatted(Formatting.GREEN)
+                    .formatted(Formatting.GRAY)
             );
         }
 

@@ -58,5 +58,29 @@
     "sounds": [
       "servermod:ruby-gain"
     ]
+  },
+  "crate_beginning_choir": {
+    "subtitle": "sounds.servermod.crate_beginning_choir",
+    "sounds": [
+      "servermod:crate_beginning_choir"
+    ]
+  },
+  "crate_close": {
+    "subtitle": "sounds.servermod.crate_close",
+    "sounds": [
+      "servermod:crate_close"
+    ]
+  },
+  "crate_open_chimes": {
+    "subtitle": "sounds.servermod.crate_open_chimes",
+    "sounds": [
+      "servermod:crate_open_chimes"
+    ]
+  },
+  "ending_jingle": {
+    "subtitle": "sounds.servermod.ending_jingle",
+    "sounds": [
+      "servermod:ending_jingle"
+    ]
   }
 }

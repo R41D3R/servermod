@@ -25,6 +25,7 @@ public class CrateKeyLegendary extends CrateKey{
         if (world.isClient()) {
             playBeginningSounds(user);
         }
+        showCustomParticles(user);
 
         if (!world.isClient()) {
             List<ItemStack> list = AllCustomLootTables.CRATE_KEY_RARE_LOOT_TABLE.getRandomLoot(1);
@@ -32,8 +33,8 @@ public class CrateKeyLegendary extends CrateKey{
         }
 
         setCooldownForKeys(user);
-        showFloatingItem1(new ItemStack(ModItems.CRATE_KEY_LEGENDARY));
-        showFloatingItem2(new ItemStack(ModBlocks.LEGENDARY_CHEST));
+//        showFloatingItem1(new ItemStack(ModItems.CRATE_KEY_LEGENDARY));
+//        showFloatingItem2(new ItemStack(ModBlocks.LEGENDARY_CHEST));
 
         if (world.isClient()) {
             playEndingSounds(user);

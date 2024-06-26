@@ -14,6 +14,7 @@ import julian.servermod.screen.ModScreenHandlers;
 import julian.servermod.screen.util.BadgerTaskNetworkUtil;
 import julian.servermod.screen.util.BoulderNetworkUtil;
 import julian.servermod.sound.ModSounds;
+import julian.servermod.utils.CrateParticleAnimationSystem;
 import julian.servermod.world.gen.ModWorldGeneration;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.ModInitializer;
@@ -94,6 +95,8 @@ public class ServerMod implements ModInitializer {
 		FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.MAPLE_PLANKS, 5, 20);
 		FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.MAPLES_LEAVES_RED, 30, 60);
 		FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.MAPLES_LEAVES_ORANGE, 30, 60);
+
+		// CrateParticleAnimationSystem.initialize();
 	}
 
 	public static void handlePlayerLogin(PlayerEntity player) {

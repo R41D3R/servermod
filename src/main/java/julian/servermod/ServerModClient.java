@@ -6,6 +6,7 @@ import julian.servermod.block.ModBlocks;
 import julian.servermod.entity.ModEntities;
 import julian.servermod.entity.client.LootBalloonRenderer;
 import julian.servermod.entity.client.SnailRenderer;
+import julian.servermod.item.ModItems;
 import julian.servermod.screen.*;
 import julian.servermod.screen.util.BadgerTaskClientNetworkUtil;
 import julian.servermod.sound.ModSounds;
@@ -31,6 +32,7 @@ import java.util.UUID;
 
 public class ServerModClient implements ClientModInitializer {
     public static KeyBinding storeGuiKey;
+    public static KeyBinding rewardGuiKey;
     public static final OwoNetChannel MY_CHANNEL = OwoNetChannel.create(new Identifier(ServerMod.MOD_ID, "main"));
 
 
@@ -121,16 +123,38 @@ public class ServerModClient implements ClientModInitializer {
 
         // ruby store screen
         storeGuiKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-                "key.servermod.open_screen", // Translation key for the keybind name
+                "key.servermod.open_store", // Translation key for the keybind name
                 InputUtil.Type.KEYSYM,
                 GLFW.GLFW_KEY_J, // Use J key
+                "category.servermod.general" // Translation key for the keybind category
+        ));
+        rewardGuiKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+                "key.servermod.open_chest_reward", // Translation key for the keybind name
+                InputUtil.Type.KEYSYM,
+                GLFW.GLFW_KEY_K, // Use K key
                 "category.servermod.general" // Translation key for the keybind category
         ));
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             while (storeGuiKey.wasPressed()) {
-                ;
-                client.setScreen(new StoreScreen(client.player));
+
+                if (client.currentScreen instanceof StoreScreen) {
+                    client.setScreen(null);
+                } else {
+                    client.setScreen(new StoreScreen(client.player));
+                }
+            }
+        });
+
+        ClientTickEvents.END_CLIENT_TICK.register(client -> {
+            while (rewardGuiKey.wasPressed()) {
+
+                if (client.currentScreen instanceof CrateRewardScreen) {
+                    client.setScreen(null);
+                } else {
+                    ItemStack reward = new ItemStack(ModItems.CRATE_KEY_LEGENDARY, 3);
+                    client.setScreen(new CrateRewardScreen(reward, ModItems.CRATE_KEY_RARE));
+                }
             }
         });
 

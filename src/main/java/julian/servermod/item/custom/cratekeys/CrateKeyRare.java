@@ -25,6 +25,7 @@ public class CrateKeyRare extends CrateKey {
         if (world.isClient()) {
             playBeginningSounds(user);
         }
+        showCustomParticles(user);
 
         if (!world.isClient()) {
             List<ItemStack> list = AllCustomLootTables.CRATE_KEY_RARE_LOOT_TABLE.getRandomLoot(1);
@@ -32,8 +33,8 @@ public class CrateKeyRare extends CrateKey {
         }
 
         setCooldownForKeys(user);
-        showFloatingItem1(new ItemStack(ModItems.CRATE_KEY_RARE));
-        showFloatingItem2(new ItemStack(ModBlocks.RARE_CHEST));
+//        showFloatingItem1(new ItemStack(ModItems.CRATE_KEY_RARE));
+//        showFloatingItem2(new ItemStack(ModBlocks.RARE_CHEST));
 
         if (world.isClient()) {
             playEndingSounds(user);

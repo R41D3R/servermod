@@ -25,6 +25,7 @@ public class CrateKeyBadger extends CrateKey{
         if (world.isClient()) {
             playBeginningSounds(user);
         }
+        showCustomParticles(user);
 
         if (!world.isClient()) {
             List<ItemStack> list = AllCustomLootTables.CRATE_KEY_BADGER_LOOT_TABLE.getRandomLoot(1);
@@ -32,13 +33,12 @@ public class CrateKeyBadger extends CrateKey{
         }
 
         setCooldownForKeys(user);
-        showFloatingItem1(new ItemStack(ModItems.CRATE_KEY_BADGER));
-        showFloatingItem2(new ItemStack(ModBlocks.BADGER_CHEST));
+//        showFloatingItem1(new ItemStack(ModItems.CRATE_KEY_BADGER));
+//        showFloatingItem2(new ItemStack(ModBlocks.BADGER_CHEST));
 
         if (world.isClient()) {
             playEndingSounds(user);
         }
-
 
         return TypedActionResult.success(user.getStackInHand(hand));
     }
