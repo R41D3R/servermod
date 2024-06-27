@@ -1,6 +1,9 @@
 package julian.servermod.screen.util;
 
 
+import julian.servermod.ServerMod;
+import julian.servermod.utils.playerdata.WalletData;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
@@ -22,5 +25,24 @@ public class InventoryUtil {
                 count += stack.getCount();
         }
         return count;
+    }
+
+    public static int countItemsWallet(PlayerEntity player, Item item) {
+        return WalletData.getWalletItemCountForItem(player, item);
+    }
+
+    public static int countItemsWithWalletAndInventory(PlayerEntity player, Item item) {
+        ServerMod.LOGGER.info("Counting items in inventory and wallet for " + item.toString() + "...");
+        int count_inventory = countItems(player.getInventory(), item);
+        int count_wallet = countItemsWallet(player, item);
+        ServerMod.LOGGER.info("Counted " + count_inventory + " in inventory and " + count_wallet + " in wallet for " + item.toString() + ".");
+        return count_inventory + count_wallet;
+    }
+
+    public static boolean canAffordWithWalletAndInventory(PlayerEntity player, int cost, Item item) {
+        int count = 0;
+        count += countItems(player.getInventory(), item);
+        count += countItemsWallet(player, item);
+        return count >= cost;
     }
 }

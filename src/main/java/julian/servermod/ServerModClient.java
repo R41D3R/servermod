@@ -15,6 +15,8 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.render.RenderLayer;
@@ -31,10 +33,10 @@ import org.lwjgl.glfw.GLFW;
 import java.util.UUID;
 
 public class ServerModClient implements ClientModInitializer {
+    public static final OwoNetChannel CRATE_REWARD_SCREEN_CHANNEL = OwoNetChannel.create(new Identifier(ServerMod.MOD_ID, "crate_reward_screen"));
+    public static final OwoNetChannel CURRENCY_CHANNEL = OwoNetChannel.create(new Identifier(ServerMod.MOD_ID, "currency"));
     public static KeyBinding storeGuiKey;
     public static KeyBinding rewardGuiKey;
-    public static final OwoNetChannel MY_CHANNEL = OwoNetChannel.create(new Identifier(ServerMod.MOD_ID, "main"));
-
 
     @Override
     public void onInitializeClient() {
@@ -119,9 +121,6 @@ public class ServerModClient implements ClientModInitializer {
         SpriteIdentifierRegistry.INSTANCE.addIdentifier(new SpriteIdentifier(TexturedRenderLayers.SIGNS_ATLAS_TEXTURE, ModBlocks.MAPLE_SIGN_TEXTURE));
         SpriteIdentifierRegistry.INSTANCE.addIdentifier(new SpriteIdentifier(TexturedRenderLayers.SIGNS_ATLAS_TEXTURE, ModBlocks.MAPLE_HANGING_SIGN_TEXTURE));
 
-        // register Key pressing
-
-        // ruby store screen
         storeGuiKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
                 "key.servermod.open_store", // Translation key for the keybind name
                 InputUtil.Type.KEYSYM,
@@ -142,6 +141,8 @@ public class ServerModClient implements ClientModInitializer {
                     client.setScreen(null);
                 } else {
                     client.setScreen(new StoreScreen(client.player));
+                    ServerMod.STORE_BUY_CHANNEL.clientHandle().send(new ServerMod.StorePacket(0, 0, Item.getRawId(ModItems.RUBY)));
+                    ServerMod.STORE_BUY_CHANNEL.clientHandle().send(new ServerMod.StorePacket(0, 0, Item.getRawId(ModItems.BADGER_COIN)));
                 }
             }
         });
@@ -158,27 +159,29 @@ public class ServerModClient implements ClientModInitializer {
             }
         });
 
+        CRATE_REWARD_SCREEN_CHANNEL.registerClientbound(CrateScreenPacket.class, (message, access) -> {
+            ItemStack reward = new ItemStack(Item.byRawId(message.rewardItem), message.rewardItemCount);
+            Item crateKeyItem = Item.byRawId(message.crateKeyItem);
 
-        MY_CHANNEL.registerServerbound(StorePacket.class, (message, access) -> {
-            Item currencyItem = Item.byRawId(message.currencyItem);
-            Item buyItem = Item.byRawId(message.buyItem);
+            MinecraftClient.getInstance().execute(() ->
+                    MinecraftClient.getInstance().setScreen(new CrateRewardScreen(reward, crateKeyItem))
+            );
+        });
 
-
-            access.player().giveItemStack(new ItemStack(buyItem));
-
-            int remaining = message.cost;
-            for (final var stack : access.player().getInventory().main) {
-                if (remaining <= 0)
-                    break;
-                if (stack.getItem() == currencyItem) {
-                    int remove = Math.min(stack.getCount(), remaining);
-                    stack.decrement(remove);
-                    remaining -= remove;
-                }
-            }
+        CURRENCY_CHANNEL.registerClientbound(CurrencyPacket.class, (message, access) -> {
+            MinecraftClient.getInstance().execute(() -> {
+                MinecraftClient.getInstance().execute(() -> {
+                    Screen currentScreen = MinecraftClient.getInstance().currentScreen;
+                    if (currentScreen instanceof StoreScreen screen) {
+                        Item currencyItem = Item.byRawId(message.currencyItem);
+                        screen.updateCurrency(currencyItem, message.amount);
+                    }
+                });
+            });
         });
     }
 
-    public record StorePacket(int cost, int buyItem, int currencyItem) {}
+    public record CrateScreenPacket(int crateKeyItem, int rewardItem, int rewardItemCount) {}
+    public record CurrencyPacket(int currencyItem, int amount) {}
 
 }

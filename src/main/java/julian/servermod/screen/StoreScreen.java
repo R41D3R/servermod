@@ -9,33 +9,47 @@ import io.wispforest.owo.ui.container.Containers;
 import io.wispforest.owo.ui.container.FlowLayout;
 import io.wispforest.owo.ui.core.*;
 import julian.servermod.ServerMod;
-import julian.servermod.ServerModClient;
 import julian.servermod.item.ModItems;
 import julian.servermod.screen.util.InventoryUtil;
 import julian.servermod.sound.ModSounds;
 import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.sound.SoundManager;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
 import org.lwjgl.glfw.GLFW;
 
 import java.util.*;
-import java.util.function.Consumer;
 
 public class StoreScreen extends BaseOwoScreen<FlowLayout> {
     private final PlayerEntity player;
     private List<Quadruple<ButtonComponent, Integer, LabelComponent, Item>> buttonCosts = new ArrayList<>();
     private Map<Item, LabelComponent> labelTracker = new HashMap<>();
+    private Map<Item, Integer> currencyTracker = new HashMap<>();
 
     public StoreScreen(PlayerEntity player) {
         super(Text.of("Store"));
         this.player = player;
+        currencyTracker.put(ModItems.RUBY, 0);
+        currencyTracker.put(ModItems.BADGER_COIN, 0);
+    }
+
+    public void updateLabel(Item currencyItem, int new_amount) {
+        LabelComponent label = labelTracker.get(currencyItem);
+        if (label != null) {
+            label.text(Text.of(String.valueOf(new_amount)));
+        }
+    }
+
+    public void updateCurrency(Item currencyItem, int new_amount) {
+        currencyTracker.put(currencyItem, new_amount);
+        updateLabel(currencyItem, new_amount);
+    }
+
+    public boolean canAfford(int cost, Item currencyItem) {
+        return currencyTracker.get(currencyItem) >= cost;
     }
 
     @Override
@@ -64,20 +78,20 @@ public class StoreScreen extends BaseOwoScreen<FlowLayout> {
         pricingBox.horizontalAlignment(HorizontalAlignment.CENTER);
 
         ButtonComponent button = Components.button(Text.of("Buy"), pressButton -> {
-            ServerModClient.MY_CHANNEL.clientHandle().send(new ServerModClient.StorePacket(cost, Item.getRawId(sellItem), Item.getRawId(currencyItem)));
+            ServerMod.STORE_BUY_CHANNEL.clientHandle().send(new ServerMod.StorePacket(cost, Item.getRawId(sellItem), Item.getRawId(currencyItem)));
             this.player.playSound(ModSounds.RUBY_LOSE, 1, 1);
 
             this.player.giveItemStack(new ItemStack(sellItem));
-            int remaining = cost;
-            for (final var stack : this.player.getInventory().main) {
-                if (remaining <= 0)
-                    break;
-                if (stack.getItem() == currencyItem) {
-                    int remove = Math.min(stack.getCount(), remaining);
-                    stack.decrement(remove);
-                    remaining -= remove;
-                }
-            }
+//            int remaining = cost;
+//            for (final var stack : this.player.getInventory().main) {
+//                if (remaining <= 0)
+//                    break;
+//                if (stack.getItem() == currencyItem) {
+//                    int remove = Math.min(stack.getCount(), remaining);
+//                    stack.decrement(remove);
+//                    remaining -= remove;
+//                }
+//            }
         });
 
         button.margins(Insets.top(7));
@@ -98,6 +112,7 @@ public class StoreScreen extends BaseOwoScreen<FlowLayout> {
 
         return outerBox;
     }
+
 
     public Component createCurrencyComponent(Item currencyItem, int amount) {
         FlowLayout currencyComponent = Containers.horizontalFlow(Sizing.content(), Sizing.content());
@@ -174,7 +189,7 @@ public class StoreScreen extends BaseOwoScreen<FlowLayout> {
             int cost = entry.getSecond();
             LabelComponent label = entry.getThird();
             Item currencyItem = entry.getFourth();
-            boolean canAfford = InventoryUtil.canAfford(player.getInventory(), cost, currencyItem);
+            boolean canAfford = canAfford(cost, currencyItem);
             label.color(canAfford ? Color.WHITE : Color.ofRgb(0xA0A0A0));
             button.active(canAfford);
         }
@@ -182,7 +197,7 @@ public class StoreScreen extends BaseOwoScreen<FlowLayout> {
         for (var entry : labelTracker.entrySet()) {
             Item currencyItem = entry.getKey();
             LabelComponent label = entry.getValue();
-            int amount = InventoryUtil.countItems(player.getInventory(), currencyItem);
+            int amount = currencyTracker.get(currencyItem);
             label.text(Text.of(String.valueOf(amount)));
         }
     }

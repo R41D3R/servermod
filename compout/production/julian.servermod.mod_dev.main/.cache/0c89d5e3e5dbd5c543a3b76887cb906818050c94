@@ -1,4 +1,4 @@
-// 1.20.1	2024-06-22T16:05:34.771309455	servermod/Model Definitions
+// 1.20.1	2024-06-25T18:53:09.528858682	servermod/Model Definitions
 581e410350608dc833c1b353809b5cec4ee57ece assets/servermod/blockstates/maple_leaves_orange.json
 b3b67f09f82ff36a9ae005684e10fa11456eb6c3 assets/servermod/models/block/maple_log_horizontal.json
 1923b951219c1cae4a7af60b8179f5cfb232063f assets/servermod/models/item/stripped_maple_log.json
@@ -20,8 +20,8 @@ bb248fff40525032518af6a86605c609be2e76f6 assets/servermod/models/item/aubrieta_r
 02dea629e7b74f1c79fff12dce1fa3223d5f43f6 assets/servermod/models/item/eggplant_seeds.json
 8e4a38c5dc50676136e5b387331250221f0e1f46 assets/servermod/models/item/pineapple_seeds.json
 a96d9a5a896fa63ee51ea99189fbbc4ea0ee8534 assets/servermod/models/item/pebbles.json
-4f0b779d05dff3ddb4c61bc028057ac85d87cf14 assets/servermod/models/block/maple_leaves_orange.json
 b8abbbbfd6a8b85a5cd6d7ada4adfc521c5327b0 assets/servermod/models/block/maple_wood.json
+4f0b779d05dff3ddb4c61bc028057ac85d87cf14 assets/servermod/models/block/maple_leaves_orange.json
 5bc705ba8b9b90ea4eb357257a04a6d8d6430b67 assets/servermod/blockstates/maple_planks.json
 92e654d78ecc6faff01ea71623556174946f7302 assets/servermod/models/item/chilli_seeds.json
 7a02a0152f1dd65d6b26f98d3d31a56972362ff9 assets/servermod/models/item/leaves.json
@@ -35,6 +35,7 @@ b3c2d2e6a2bd66e7e605669ad10c99691491374b assets/servermod/models/item/banana_see
 f39b2b71aea067d5ad063f224cdead5bc5700fb5 assets/servermod/models/item/crate_key_badger.json
 1735539fb38c2478256be012bea319627b099592 assets/servermod/models/block/stripped_maple_log_horizontal.json
 dbd5046c66b7cd17978cbfcf051abaec11b18c9f assets/servermod/models/item/badger_club_id.json
+e4c881a54dbc056e8fe6bcdad4ef05f4f52ceee2 assets/servermod/models/item/badger_coin.json
 bb93fd0845184f8934a6456dffd2d6d764ace4b3 assets/servermod/models/block/maple_leaves_red.json
 e63f50083f796558afe05dd6edc22ee40b53f2c3 assets/servermod/models/item/pineapple.json
 1c377cf32da583c82a8c3fdb1b383a62d8e55fce assets/servermod/blockstates/stripped_maple_log.json
@@ -56,8 +57,8 @@ ab6743ce24c044ef04fb35f1b9e0f3c6a0c1431e assets/servermod/models/item/apple_seed
 891d4fcf01f537a0e440e51b7bccc46459970aa8 assets/servermod/models/item/leaves_dead.json
 8c8dd170967bc2052fda2a50a378317209853f90 assets/servermod/models/block/maple_log.json
 629eac7833d398d840b91d23c13191d067709e57 assets/servermod/blockstates/maple_leaves_red.json
-ee9c12e414428816c8a4d351da1b3c4a364296a8 assets/servermod/models/item/fertilizer_speed.json
 c0f2086c0c3443fc8d11dcf19e33477896a62f19 assets/servermod/models/block/stripped_maple_log.json
+ee9c12e414428816c8a4d351da1b3c4a364296a8 assets/servermod/models/item/fertilizer_speed.json
 c0c57ce93be66e92e3806f0017fdcb97938e34fb assets/servermod/models/item/crate_key_legendary.json
 95d4bd79b04b3f8750c689d29bae6c132315c349 assets/servermod/models/item/aubrieta_pink.json
 0ef1cfbf0017b3975c7cb0103f7c8397bd3580ef assets/servermod/models/item/lettuce.json

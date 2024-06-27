@@ -1,6 +1,7 @@
 package julian.servermod.item.custom.cratekeys;
 
 import julian.servermod.ServerMod;
+import julian.servermod.ServerModClient;
 import julian.servermod.block.ModBlocks;
 import julian.servermod.item.ModItems;
 import julian.servermod.screen.CrateRewardScreen;
@@ -9,6 +10,8 @@ import julian.servermod.utils.AllCustomLootTables;
 import julian.servermod.utils.CrateParticleAnimationSystem;
 import julian.servermod.utils.CrateParticles;
 import julian.servermod.utils.CustomLootTable;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.ai.TargetPredicate;
@@ -57,9 +60,14 @@ public class CrateKey extends Item {
                 }
                 ItemStack reward = rewards.get(0).copy();
                 ServerMod.LOGGER.info("Reward: " + reward.getName().getString());
-                MinecraftClient.getInstance().execute(() ->
-                        MinecraftClient.getInstance().setScreen(new CrateRewardScreen(reward, this))
-                );
+                if (FabricLoader.getInstance().getEnvironmentType() == EnvType.SERVER) {
+                    ServerModClient.CRATE_REWARD_SCREEN_CHANNEL.serverHandle(player).send(
+                            new ServerModClient.CrateScreenPacket(
+                                    Item.getRawId(this), Item.getRawId(reward.getItem()), reward.getCount())
+                    );
+
+                }
+
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
