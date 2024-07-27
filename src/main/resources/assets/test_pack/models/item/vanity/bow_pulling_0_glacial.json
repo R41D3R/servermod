@@ -1,0 +1,6 @@
+{
+    "parent": "test_pack:item/vanity/bow_glacial",
+    "textures": {
+        "layer0": "test_pack:item/glacial_bow_pulling_0"
+    }
+}

@@ -1,9 +1,12 @@
 package julian.servermod.entity.custom;
 
+import julian.servermod.ServerMod;
 import julian.servermod.entity.ai.goal.EatLeafLitterGoal;
 import julian.servermod.entity.ai.goal.EatLitterGoal;
 import julian.servermod.entity.ai.goal.FindLitterGoal;
 import julian.servermod.entity.ai.goal.HideGoal;
+import julian.servermod.item.ModItems;
+import julian.servermod.item.custom.SnailItem;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
@@ -22,11 +25,14 @@ import net.minecraft.entity.mob.SpiderEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -90,17 +96,44 @@ public class SnailEntity extends AnimalEntity implements GeoEntity {
         }
     }
 
-    @Override
-    public boolean isBreedingItem(ItemStack stack) {
-        return stack.isOf(Items.BEETROOT);
+    public ActionResult interactMob(PlayerEntity player, Hand hand) {
+
+        ItemStack itemStack = player.getStackInHand(hand);
+//        if (!itemStack.isEmpty()) {
+//            ServerMod.LOGGER.info("Snail Interaction without empty hand");
+//            if (this.isBreedingItem(itemStack)) {
+//                return super.interactMob(player, hand);
+//            }
+//        } else {
+            ServerMod.LOGGER.info("Snail Interaction with empty hand");
+
+            ItemStack snailItem = new ItemStack(ModItems.SNAIL);
+            player.giveItemStack(snailItem);
+            this.discard();
+            return ActionResult.success(this.getWorld().isClient);
+        //}
+
+        // return super.interactMob(player, hand);
     }
+
+//    @Override
+//    public boolean isBreedingItem(ItemStack stack) {
+//        return stack.isOf(Items.BEETROOT);
+//    }
 
     @Override
     public boolean damage(DamageSource source, float amount) {
-        if (this.canHide()) {
-            return false;
-        }
+//        if (this.canHide()) {
+//            return false;
+//        }
         return super.damage(source, amount);
+    }
+
+    @Override
+    protected float modifyAppliedDamage(DamageSource source, float amount) {
+        float multiplier = 1f;
+        if (this.canHide()) multiplier = 0.5f;
+        return multiplier * super.modifyAppliedDamage(source, amount);
     }
 
     public boolean canHide() {

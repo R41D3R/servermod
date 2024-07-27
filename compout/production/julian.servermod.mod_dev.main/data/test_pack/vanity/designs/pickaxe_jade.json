@@ -1,0 +1,50 @@
+{
+    "model": "test_pack:pickaxe_jade_design",
+    "type": "sellable",
+    "styles": {
+        "default": [
+            {
+                "item": "minecraft:wooden_pickaxe",
+                "assets": {
+                    "default": "test_pack:pickaxe_jade",
+                    "hand": "test_pack:pickaxe_jade"
+                }
+            },
+            {
+                "item": "minecraft:stone_pickaxe",
+                "assets": {
+                    "default": "test_pack:pickaxe_jade",
+                    "hand": "test_pack:pickaxe_jade"
+                }
+            },
+            {
+                "item": "minecraft:golden_pickaxe",
+                "assets": {
+                    "default": "test_pack:pickaxe_jade",
+                    "hand": "test_pack:pickaxe_jade"
+                }
+            },
+            {
+                "item": "minecraft:iron_pickaxe",
+                "assets": {
+                    "default": "test_pack:pickaxe_jade",
+                    "hand": "test_pack:pickaxe_jade"
+                }
+            },
+            {
+                "item": "minecraft:diamond_pickaxe",
+                "assets": {
+                    "default": "test_pack:pickaxe_jade",
+                    "hand": "test_pack:pickaxe_jade"
+                }
+            },
+            {
+                "item": "minecraft:netherite_pickaxe",
+                "assets": {
+                    "default": "test_pack:pickaxe_jade",
+                    "hand": "test_pack:pickaxe_jade"
+                }
+            }
+        ]
+    }
+}

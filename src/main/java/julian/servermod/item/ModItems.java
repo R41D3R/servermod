@@ -1,10 +1,10 @@
 package julian.servermod.item;
 
-import com.eliotlash.mclib.math.functions.classic.Mod;
 import julian.servermod.ServerMod;
 import julian.servermod.block.ModBlocks;
 import julian.servermod.entity.ModEntities;
 import julian.servermod.item.custom.*;
+import julian.servermod.item.custom.biome.MossItem;
 import julian.servermod.item.custom.biome.PebbleItem;
 import julian.servermod.item.custom.biome.RocksItem;
 import julian.servermod.item.custom.cratekeys.CrateKeyBadger;
@@ -26,9 +26,7 @@ public class ModItems {
             new SpawnEggItem(ModEntities.LOOT_BALLOON, 0xD57E57, 0x100000,
                     new FabricItemSettings()));
 
-    public static final Item SNAIL_SPAWN_EGG = registerItem("snail_spawn_egg",
-            new SpawnEggItem(ModEntities.SNAIL, 0xD57E57, 0x100000,
-                    new FabricItemSettings()));
+
 
     public static final Item CAPTURE_NET = registerItem("capture_net",
             new CaptureNet(new FabricItemSettings().maxDamage(3)));
@@ -75,6 +73,18 @@ public class ModItems {
     public static final Item CRATE_KEY_LEGENDARY = registerItem("crate_key_legendary",
             new CrateKeyLegendary(new FabricItemSettings()));
 
+    // ANIMALS
+
+    public static final Item SNAIL_SHELL = registerItem("snail_shell",
+            new Item(new FabricItemSettings()));
+
+    public static final Item SNAIL = registerItem("snail",
+            new SnailItem(new FabricItemSettings().maxCount(1)));
+
+    public static final Item SNAIL_SPAWN_EGG = registerItem("snail_spawn_egg",
+            new SpawnEggItem(ModEntities.SNAIL, 0xD57E57, 0x100000,
+                    new FabricItemSettings()));
+
 
     // BIOME DECORATION
 
@@ -105,8 +115,8 @@ public class ModItems {
     public static final Item FLOWER_COVER_RED = registerItem("aubrieta_red",
             new AliasedBlockItem(ModBlocks.FLOWER_COVER_RED_BLOCK, new FabricItemSettings()));
 
-    public static final Item MOSS_COVER = registerItem("moss_cover",
-            new AliasedBlockItem(ModBlocks.MOSS_COVER_BLOCK, new FabricItemSettings()));
+    public static final Item MOSS = registerItem("moss",
+            new MossItem(new FabricItemSettings()));
 
     public static final Item SHELF_FUNGUS = registerItem("shelf_fungus",
             new AliasedBlockItem(ModBlocks.SHELF_FUNGUS_BLOCK, new FabricItemSettings()));

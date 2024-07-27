@@ -34,12 +34,13 @@ public class CustomFernBlock
 
     @Override
     public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state, boolean isClient) {
-        return true;
+        return false;
     }
 
     @Override
     public boolean canGrow(World world, Random random, BlockPos pos, BlockState state) {
-        return true;
+        return pos.getY() < -10;
+
     }
 
     @Override

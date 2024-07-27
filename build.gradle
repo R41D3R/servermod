@@ -30,6 +30,8 @@ repositories {
 		url = 'https://maven.terraformersmc.com/'
 	}
 	maven { url 'https://maven.wispforest.io' }
+
+	maven {url = "https://maven.kyrptonaught.dev"}
 }
 
 fabricApi {
@@ -66,6 +68,9 @@ dependencies {
 	// include this if you don't want force your users to install owo
 	// sentinel will warn them and give the option to download it automatically
 	include "io.wispforest:owo-sentinel:${owo_version}"
+
+	modImplementation 'net.kyrptonaught:customportalapi:0.0.1-beta64-1.20'
+	include 'net.kyrptonaught:customportalapi:0.0.1-beta64-1.20'
 }
 
 processResources {

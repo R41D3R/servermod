@@ -5,6 +5,7 @@
   "mixins" : [
     "AnimalEntityMixin",
     "ChunkSectionMixin",
+    "EnderPearlEntityMixin",
     "ExampleMixin",
     "LeavesBlockMixin",
     "LlamaEntityMixin",

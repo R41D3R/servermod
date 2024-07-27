@@ -9,11 +9,9 @@ import julian.servermod.block.custom.*;
 import julian.servermod.block.custom.abstracts.DirectionalBlock;
 import julian.servermod.block.custom.abstracts.ThreeTallDirectionalBlock;
 import julian.servermod.block.custom.abstracts.WallPlaceableBlock;
-import julian.servermod.block.custom.biome.CoverBlock;
-import julian.servermod.block.custom.biome.CustomFernBlock;
-import julian.servermod.block.custom.biome.LitterBlock;
-import julian.servermod.block.custom.biome.Pebble;
+import julian.servermod.block.custom.biome.*;
 import julian.servermod.block.custom.crop.DailyCropBlock;
+import julian.servermod.block.furniture.TaskBoardBlock;
 import julian.servermod.sound.ModSounds;
 import julian.servermod.world.tree.MapleSaplingGenerator;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -26,6 +24,7 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 
 
@@ -77,6 +76,8 @@ public class ModBlocks {
 
 
     // WOOD
+    public static final Block MAPLE_LOG_TRY = registerBlock("maple_log_try",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).strength(4f)));
 
     public static final Block MAPLE_LOG = registerBlock("maple_log",
             new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).strength(4f)));
@@ -117,40 +118,48 @@ public class ModBlocks {
             new SaplingBlock(new MapleSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
 
     // PLANTS
+    public static final Block SNAIL_PEBBLES_BLOCK = registerBlock("snail_pebbles_block",
+            new SnailPebble(FabricBlockSettings.copyOf(Blocks.OAK_SAPLING).sounds(BlockSoundGroup.STONE).nonOpaque()));
+
+    public static final Block SNAIL_ROCKS_BLOCK = registerBlock("snail_rocks_block",
+            new SnailPebble(FabricBlockSettings.copyOf(Blocks.OAK_SAPLING).sounds(BlockSoundGroup.STONE).nonOpaque()));
 
     public static final Block PEBBLES_BLOCK = registerBlock("pebbles_block",
-            new Pebble(FabricBlockSettings.copyOf(Blocks.OAK_SAPLING).nonOpaque()));
+            new Pebble(FabricBlockSettings.copyOf(Blocks.OAK_SAPLING).sounds(BlockSoundGroup.STONE).nonOpaque()));
 
     public static final Block ROCKS_BLOCK = registerBlock("rocks_block",
-            new Pebble(FabricBlockSettings.copyOf(Blocks.OAK_SAPLING).nonOpaque()));
+            new Pebble(FabricBlockSettings.copyOf(Blocks.OAK_SAPLING).sounds(BlockSoundGroup.STONE).nonOpaque()));
 
     public static final Block LEAF_LITTER_BLOCK = registerBlock("leaf_litter_block",
-            new LitterBlock(FabricBlockSettings.copyOf(Blocks.OAK_SAPLING).noCollision()));
+            new LitterBlock(FabricBlockSettings.copyOf(Blocks.PINK_PETALS).noCollision()));
 
     public static final Block COLD_LEAF_LITTER_BLOCK = registerBlock("cold_leaf_litter_block",
-            new LitterBlock(FabricBlockSettings.copyOf(Blocks.OAK_SAPLING).noCollision()));
+            new LitterBlock(FabricBlockSettings.copyOf(Blocks.PINK_PETALS).noCollision()));
 
     public static final Block DRY_LEAF_LITTER_BLOCK = registerBlock("dry_leaf_litter_block",
-            new LitterBlock(FabricBlockSettings.copyOf(Blocks.OAK_SAPLING).noCollision()));
+            new LitterBlock(FabricBlockSettings.copyOf(Blocks.PINK_PETALS).noCollision()));
 
 
     public static final Block FLOWER_COVER_WHITE_BLOCK = registerBlock("flower_cover_white_block",
-            new CoverBlock(FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
+            new CoverBlock(FabricBlockSettings.copyOf(Blocks.PINK_PETALS)));
 
     public static final Block FLOWER_COVER_BLUE_BLOCK = registerBlock("flower_cover_blue_block",
-            new CoverBlock(FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
+            new CoverBlock(FabricBlockSettings.copyOf(Blocks.PINK_PETALS)));
 
     public static final Block FLOWER_COVER_PINK_BLOCK = registerBlock("flower_cover_pink_block",
-            new CoverBlock(FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
+            new CoverBlock(FabricBlockSettings.copyOf(Blocks.PINK_PETALS)));
 
     public static final Block FLOWER_COVER_RED_BLOCK = registerBlock("flower_cover_red_block",
-            new CoverBlock(FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
+            new CoverBlock(FabricBlockSettings.copyOf(Blocks.PINK_PETALS)));
 
     public static final Block MOSS_COVER_BLOCK = registerBlock("moss_cover_block",
-            new CoverBlock(FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
+            new CoverBlock(FabricBlockSettings.copyOf(Blocks.PINK_PETALS).sounds(BlockSoundGroup.MOSS_CARPET)));
 
     public static final Block SHELF_FUNGUS_BLOCK = registerBlock("shelf_fungus_block",
-            new CoverBlock(FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
+            new CoverBlock(FabricBlockSettings.copyOf(Blocks.PINK_PETALS)));
+
+    public static final Block MOSS_HANG_BLOCK = registerBlock("moss_hang_block",
+            new MossHangBlock(FabricBlockSettings.copyOf(Blocks.SPORE_BLOSSOM).sounds(BlockSoundGroup.SPORE_BLOSSOM)));
 
 
 
@@ -197,6 +206,9 @@ public class ModBlocks {
     //
     // FURNITURE
     //
+
+    public static final Block TASK_BOARD_BLOCK = registerBlock("task_board_block",
+            new TaskBoardBlock(FabricBlockSettings.copyOf(Blocks.FLOWER_POT).nonOpaque()));
 
     // BADGER
     public static final Block MUSHROOM_STOOL = registerBlock("mushroom_stool",

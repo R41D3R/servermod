@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "servermod:moss_cover"
+          "name": "servermod:moss"
         }
       ],
       "rolls": 1.0

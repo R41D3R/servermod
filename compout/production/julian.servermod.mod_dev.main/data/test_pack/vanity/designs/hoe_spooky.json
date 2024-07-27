@@ -1,0 +1,50 @@
+{
+    "model": "test_pack:hoe_spooky_design",
+    "type": "sellable",
+    "styles": {
+        "default": [
+            {
+                "item": "minecraft:wooden_hoe",
+                "assets": {
+                    "default": "test_pack:hoe_spooky",
+                    "hand": "test_pack:hoe_spooky"
+                }
+            },
+            {
+                "item": "minecraft:stone_hoe",
+                "assets": {
+                    "default": "test_pack:hoe_spooky",
+                    "hand": "test_pack:hoe_spooky"
+                }
+            },
+            {
+                "item": "minecraft:golden_hoe",
+                "assets": {
+                    "default": "test_pack:hoe_spooky",
+                    "hand": "test_pack:hoe_spooky"
+                }
+            },
+            {
+                "item": "minecraft:iron_hoe",
+                "assets": {
+                    "default": "test_pack:hoe_spooky",
+                    "hand": "test_pack:hoe_spooky"
+                }
+            },
+            {
+                "item": "minecraft:diamond_hoe",
+                "assets": {
+                    "default": "test_pack:hoe_spooky",
+                    "hand": "test_pack:hoe_spooky"
+                }
+            },
+            {
+                "item": "minecraft:netherite_hoe",
+                "assets": {
+                    "default": "test_pack:hoe_spooky",
+                    "hand": "test_pack:hoe_spooky"
+                }
+            }
+        ]
+    }
+}

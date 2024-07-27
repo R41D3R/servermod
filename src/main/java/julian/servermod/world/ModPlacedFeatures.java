@@ -1,6 +1,8 @@
 package julian.servermod.world;
 
 import julian.servermod.ServerMod;
+import julian.servermod.block.ModBlocks;
+import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
@@ -10,8 +12,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.blockpredicate.BlockPredicate;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.PlacedFeature;
+import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.placementmodifier.*;
 
 import java.util.List;
@@ -22,6 +23,16 @@ public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> LOOT_VASE_PLACED_KEY = registerKey("loot_vase_placed");
     public static final RegistryKey<PlacedFeature> EMERALD_ORE_PLACED_KEY = registerKey("emerald_ore_placed");
 
+    public static final RegistryKey<PlacedFeature> MAPLE_RED_PLACED_KEY = registerKey("maple_red_placed");
+    public static final RegistryKey<PlacedFeature> MAPLE_ORANGE_PLACED_KEY = registerKey("maple_orange_placed");
+    public static final RegistryKey<PlacedFeature> FANCY_MAPLE_RED_PLACED_KEY = registerKey("fancy_maple_red_placed");
+    public static final RegistryKey<PlacedFeature> FANCY_MAPLE_ORANGE_PLACED_KEY = registerKey("fancy_maple_orange_placed");
+    public static final RegistryKey<PlacedFeature> MAPLE_PLACED_KEY = registerKey("maple_placed");
+
+    public static final RegistryKey<PlacedFeature> GRANITE_ROCKS = registerKey("granite_rocks");
+
+
+
     public static void bootstrap(Registerable<PlacedFeature> context) {
         var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
 
@@ -31,7 +42,7 @@ public class ModPlacedFeatures {
                 ModOrePlacement.modifiersWithCount(7,
                         HeightRangePlacementModifier.uniform(YOffset.fixed(-80), YOffset.fixed(48))));
 
-        register(context, EMERALD_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.EMERALD_ORE_KEY),
+        register(context, EMERALD_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.EXTRA_EMERALD_ORE_KEY),
                 ModOrePlacement.modifiersWithCount(7,
                         HeightRangePlacementModifier.uniform(YOffset.fixed(-80), YOffset.fixed(48))));
 
@@ -47,7 +58,30 @@ public class ModPlacedFeatures {
                         EnvironmentScanPlacementModifier.of(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.IS_AIR, 30),
                         RandomOffsetPlacementModifier.vertically(ConstantIntProvider.create(1)),
                         BiomePlacementModifier.of()));
+
+        // TREES
+        register(context, MAPLE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.MAPLE_KEY),
+                VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(10, 0.1F, 1),
+                        ModBlocks.MAPLE_SAPLING));
+
+        register(context, MAPLE_RED_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.MAPLE_RED_KEY),
+                List.of(new PlacementModifier[]{PlacedFeatures.wouldSurvive(ModBlocks.MAPLE_SAPLING)}));
+        register(context, MAPLE_ORANGE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.MAPLE_ORANGE_KEY),
+                List.of(new PlacementModifier[]{PlacedFeatures.wouldSurvive(ModBlocks.MAPLE_SAPLING)}));
+        register(context, FANCY_MAPLE_RED_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.FANCY_MAPLE_RED_KEY),
+                List.of(new PlacementModifier[]{PlacedFeatures.wouldSurvive(ModBlocks.MAPLE_SAPLING)}));
+        register(context, FANCY_MAPLE_ORANGE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.FANCY_MAPLE_ORANGE_KEY),
+                List.of(new PlacementModifier[]{PlacedFeatures.wouldSurvive(ModBlocks.MAPLE_SAPLING)}));
+
+
+        // BIOME FEATURES
+        RegistryEntry<ConfiguredFeature<?, ?>> registryEntry3 = configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.GRANITE_ROCKS);
+
+        register(context, GRANITE_ROCKS, registryEntry3, List.of(new PlacementModifier[]{CountPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of()}));
+
     }
+
+
 
     public static RegistryKey<PlacedFeature> registerKey(String name) {
         return RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(ServerMod.MOD_ID, name));

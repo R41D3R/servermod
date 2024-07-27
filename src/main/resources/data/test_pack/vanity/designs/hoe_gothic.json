@@ -1,0 +1,50 @@
+{
+    "model": "test_pack:hoe_gothic_design",
+    "type": "sellable",
+    "styles": {
+        "default": [
+            {
+                "item": "minecraft:wooden_hoe",
+                "assets": {
+                    "default": "test_pack:hoe_gothic",
+                    "hand": "test_pack:hoe_gothic"
+                }
+            },
+            {
+                "item": "minecraft:stone_hoe",
+                "assets": {
+                    "default": "test_pack:hoe_gothic",
+                    "hand": "test_pack:hoe_gothic"
+                }
+            },
+            {
+                "item": "minecraft:golden_hoe",
+                "assets": {
+                    "default": "test_pack:hoe_gothic",
+                    "hand": "test_pack:hoe_gothic"
+                }
+            },
+            {
+                "item": "minecraft:iron_hoe",
+                "assets": {
+                    "default": "test_pack:hoe_gothic",
+                    "hand": "test_pack:hoe_gothic"
+                }
+            },
+            {
+                "item": "minecraft:diamond_hoe",
+                "assets": {
+                    "default": "test_pack:hoe_gothic",
+                    "hand": "test_pack:hoe_gothic"
+                }
+            },
+            {
+                "item": "minecraft:netherite_hoe",
+                "assets": {
+                    "default": "test_pack:hoe_gothic",
+                    "hand": "test_pack:hoe_gothic"
+                }
+            }
+        ]
+    }
+}

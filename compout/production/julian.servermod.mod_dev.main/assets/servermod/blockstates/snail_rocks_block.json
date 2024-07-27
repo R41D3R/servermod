@@ -1,0 +1,49 @@
+{
+  "variants": {
+    "size=1,facing=north": {
+      "model": "servermod:block/biome/rocks/rocks_1"
+    },
+    "size=1,facing=east": {
+      "model": "servermod:block/biome/rocks/rocks_1",
+      "y": 90
+    },
+    "size=1,facing=south": {
+      "model": "servermod:block/biome/rocks/rocks_1",
+      "y": 180
+    },
+    "size=1,facing=west": {
+      "model": "servermod:block/biome/rocks/rocks_1",
+      "y": 270
+    },
+    "size=2,facing=north": {
+      "model": "servermod:block/biome/rocks/rocks_2"
+    },
+    "size=2,facing=east": {
+      "model": "servermod:block/biome/rocks/rocks_2",
+      "y": 90
+    },
+    "size=2,facing=south": {
+      "model": "servermod:block/biome/rocks/rocks_2",
+      "y": 180
+    },
+    "size=2,facing=west": {
+      "model": "servermod:block/biome/rocks/rocks_2",
+      "y": 270
+    },
+    "size=3,facing=north": {
+      "model": "servermod:block/biome/rocks/rocks_3"
+    },
+    "size=3,facing=east": {
+      "model": "servermod:block/biome/rocks/rocks_3",
+      "y": 90
+    },
+    "size=3,facing=south": {
+      "model": "servermod:block/biome/rocks/rocks_3",
+      "y": 180
+    },
+    "size=3,facing=west": {
+      "model": "servermod:block/biome/rocks/rocks_3",
+      "y": 270
+    }
+  }
+}

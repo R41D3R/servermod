@@ -1,0 +1,50 @@
+{
+    "model": "test_pack:sword_jade_design",
+    "type": "sellable",
+    "styles": {
+        "default": [
+            {
+                "item": "minecraft:wooden_sword",
+                "assets": {
+                    "default": "test_pack:sword_jade",
+                    "hand": "test_pack:sword_jade"
+                }
+            },
+            {
+                "item": "minecraft:stone_sword",
+                "assets": {
+                    "default": "test_pack:sword_jade",
+                    "hand": "test_pack:sword_jade"
+                }
+            },
+            {
+                "item": "minecraft:golden_sword",
+                "assets": {
+                    "default": "test_pack:sword_jade",
+                    "hand": "test_pack:sword_jade"
+                }
+            },
+            {
+                "item": "minecraft:iron_sword",
+                "assets": {
+                    "default": "test_pack:sword_jade",
+                    "hand": "test_pack:sword_jade"
+                }
+            },
+            {
+                "item": "minecraft:diamond_sword",
+                "assets": {
+                    "default": "test_pack:sword_jade",
+                    "hand": "test_pack:sword_jade"
+                }
+            },
+            {
+                "item": "minecraft:netherite_sword",
+                "assets": {
+                    "default": "test_pack:sword_jade",
+                    "hand": "test_pack:sword_jade"
+                }
+            }
+        ]
+    }
+}

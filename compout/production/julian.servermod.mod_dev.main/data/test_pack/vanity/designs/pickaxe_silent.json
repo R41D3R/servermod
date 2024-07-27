@@ -1,0 +1,50 @@
+{
+    "model": "test_pack:pickaxe_silent_design",
+    "type": "sellable",
+    "styles": {
+        "default": [
+            {
+                "item": "minecraft:wooden_pickaxe",
+                "assets": {
+                    "default": "test_pack:pickaxe_silent",
+                    "hand": "test_pack:pickaxe_silent"
+                }
+            },
+            {
+                "item": "minecraft:stone_pickaxe",
+                "assets": {
+                    "default": "test_pack:pickaxe_silent",
+                    "hand": "test_pack:pickaxe_silent"
+                }
+            },
+            {
+                "item": "minecraft:golden_pickaxe",
+                "assets": {
+                    "default": "test_pack:pickaxe_silent",
+                    "hand": "test_pack:pickaxe_silent"
+                }
+            },
+            {
+                "item": "minecraft:iron_pickaxe",
+                "assets": {
+                    "default": "test_pack:pickaxe_silent",
+                    "hand": "test_pack:pickaxe_silent"
+                }
+            },
+            {
+                "item": "minecraft:diamond_pickaxe",
+                "assets": {
+                    "default": "test_pack:pickaxe_silent",
+                    "hand": "test_pack:pickaxe_silent"
+                }
+            },
+            {
+                "item": "minecraft:netherite_pickaxe",
+                "assets": {
+                    "default": "test_pack:pickaxe_silent",
+                    "hand": "test_pack:pickaxe_silent"
+                }
+            }
+        ]
+    }
+}

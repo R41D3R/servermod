@@ -1,0 +1,6 @@
+{
+    "parent": "test_pack:item/vanity/bow_maple",
+    "textures": {
+        "layer0": "test_pack:item/maple_bow_pulling_0"
+    }
+}

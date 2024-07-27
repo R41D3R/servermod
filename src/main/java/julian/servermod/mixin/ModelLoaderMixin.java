@@ -29,5 +29,7 @@ public abstract class ModelLoaderMixin {
         this.addModel(new ModelIdentifier(ServerMod.MOD_ID, "wooden_watering_can_3d_full", "inventory"));
         this.addModel(new ModelIdentifier(ServerMod.MOD_ID, "capture_net", "inventory"));
         this.addModel(new ModelIdentifier(ServerMod.MOD_ID, "capture_net_closed", "inventory"));
+        this.addModel(new ModelIdentifier(ServerMod.MOD_ID, "snail", "inventory"));
+        this.addModel(new ModelIdentifier(ServerMod.MOD_ID, "snail_3d", "inventory"));
     }
 }

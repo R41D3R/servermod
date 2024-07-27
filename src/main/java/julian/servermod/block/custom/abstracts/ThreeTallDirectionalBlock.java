@@ -88,10 +88,6 @@ public class ThreeTallDirectionalBlock extends DirectionalBlock{
         super.onBreak(world, pos, state, player);
     }
 
-    @Override
-    protected void spawnBreakParticles(World world, PlayerEntity player, BlockPos pos, BlockState state) {
-        super.spawnBreakParticles(world, player, pos, this.getDefaultState().with(HALF, TripleBlockHalf.MIDDLE));
-    }
 
     //    @Override
 //    public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {

@@ -1,6 +1,6 @@
 {
-  "parent": "test_pack:item/vanity/bow_ivy",
-  "textures": {
-    "layer0": "test_pack:item/ivy_bow_pulling_1"
-  }
+    "parent": "test_pack:item/vanity/bow_ivy",
+    "textures": {
+        "layer0": "test_pack:item/ivy_bow_pulling_1"
+    }
 }

@@ -10,9 +10,6 @@ import net.minecraft.block.TallPlantBlock;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.enchantment.Enchantments;
-import net.minecraft.loot.condition.LocationCheckLootCondition;
-import net.minecraft.loot.condition.RandomChanceLootCondition;
-import net.minecraft.loot.entry.AlternativeEntry;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
@@ -27,10 +24,7 @@ import net.minecraft.loot.function.ApplyBonusLootFunction;
 import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.loot.provider.number.UniformLootNumberProvider;
-import net.minecraft.predicate.BlockPredicate;
 import net.minecraft.predicate.StatePredicate;
-import net.minecraft.predicate.entity.LocationPredicate;
-import net.minecraft.util.math.BlockPos;
 
 public class ModLootTableProvider extends FabricBlockLootTableProvider {
     public ModLootTableProvider(FabricDataOutput dataOutput) {
@@ -54,6 +48,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         // BIOME
         addDrop(ModBlocks.PEBBLES_BLOCK, ModItems.PEBBLES_ITEM);
         addDrop(ModBlocks.ROCKS_BLOCK, ModItems.ROCKS_ITEM);
+        addDrop(ModBlocks.SNAIL_PEBBLES_BLOCK, ModItems.PEBBLES_ITEM);
+        addDrop(ModBlocks.SNAIL_ROCKS_BLOCK, ModItems.ROCKS_ITEM);
 
         addDrop(ModBlocks.LEAF_LITTER_BLOCK, ModItems.LEAF_LITTER);
         addDrop(ModBlocks.COLD_LEAF_LITTER_BLOCK, ModItems.COLD_LEAF_LITTER);
@@ -63,7 +59,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.FLOWER_COVER_BLUE_BLOCK, ModItems.FLOWER_COVER_BLUE);
         addDrop(ModBlocks.FLOWER_COVER_PINK_BLOCK, ModItems.FLOWER_COVER_PINK);
         addDrop(ModBlocks.FLOWER_COVER_RED_BLOCK, ModItems.FLOWER_COVER_RED);
-        addDrop(ModBlocks.MOSS_COVER_BLOCK, ModItems.MOSS_COVER);
+        addDrop(ModBlocks.MOSS_COVER_BLOCK, ModItems.MOSS);
+        addDrop(ModBlocks.MOSS_HANG_BLOCK, ModItems.MOSS);
         addDrop(ModBlocks.SHELF_FUNGUS_BLOCK, ModItems.SHELF_FUNGUS);
 
         addDrop(ModBlocks.ORANGE_MYCENA_BLOCK, ModItems.ORANGE_MYCENA);

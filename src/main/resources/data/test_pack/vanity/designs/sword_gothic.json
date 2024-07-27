@@ -1,0 +1,50 @@
+{
+    "model": "test_pack:sword_gothic_design",
+    "type": "sellable",
+    "styles": {
+        "default": [
+            {
+                "item": "minecraft:wooden_sword",
+                "assets": {
+                    "default": "test_pack:sword_gothic",
+                    "hand": "test_pack:sword_gothic"
+                }
+            },
+            {
+                "item": "minecraft:stone_sword",
+                "assets": {
+                    "default": "test_pack:sword_gothic",
+                    "hand": "test_pack:sword_gothic"
+                }
+            },
+            {
+                "item": "minecraft:golden_sword",
+                "assets": {
+                    "default": "test_pack:sword_gothic",
+                    "hand": "test_pack:sword_gothic"
+                }
+            },
+            {
+                "item": "minecraft:iron_sword",
+                "assets": {
+                    "default": "test_pack:sword_gothic",
+                    "hand": "test_pack:sword_gothic"
+                }
+            },
+            {
+                "item": "minecraft:diamond_sword",
+                "assets": {
+                    "default": "test_pack:sword_gothic",
+                    "hand": "test_pack:sword_gothic"
+                }
+            },
+            {
+                "item": "minecraft:netherite_sword",
+                "assets": {
+                    "default": "test_pack:sword_gothic",
+                    "hand": "test_pack:sword_gothic"
+                }
+            }
+        ]
+    }
+}

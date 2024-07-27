@@ -1,7 +1,9 @@
-// 1.20.1	2024-06-27T13:33:29.193278258	servermod/Block Loot Tables
+// 1.20.1	2024-07-24T17:15:08.185040429	servermod/Block Loot Tables
+8b0dedeab2e94d26488a9b312c6a171fa6f49913 data/servermod/loot_tables/blocks/snail_rocks_block.json
 13e1ddc2acfb99487d3ae2eb96c2311fb77a7978 data/servermod/loot_tables/blocks/maple_wood.json
 d4b346996d702c97cbc232427d16f88cac02fac9 data/servermod/loot_tables/blocks/cold_leaf_litter_block.json
 6ffb6a7b5056b98067a0661d28433c2f70cb2549 data/servermod/loot_tables/blocks/planter.json
+22e5f803e376d930696e5ef299103b77d176be7b data/servermod/loot_tables/blocks/moss_hang_block.json
 cb11cf108227fda8f9259a3a6e332bd6bcfb1410 data/servermod/loot_tables/blocks/wooden_penguin.json
 37e28722888899a07dc1b5a8aa3f9f9ea305ed90 data/servermod/loot_tables/blocks/dry_leaf_litter_block.json
 4ffbe710cadd478e43f3188def206b76a6d44f6e data/servermod/loot_tables/blocks/mango_crop.json
@@ -12,7 +14,7 @@ e7972317edc74e29c5d8933a41b2fa91d4c11172 data/servermod/loot_tables/blocks/log_s
 b132be70517b22ebd8a6b30a61570f782e91f433 data/servermod/loot_tables/blocks/flower_cover_blue_block.json
 8321c2c2121c501ccf469fd418b535d6f8a53689 data/servermod/loot_tables/blocks/combat_banner.json
 b1c78af2bcc7733a76fce0a4c72100690d9fb779 data/servermod/loot_tables/blocks/clover_block.json
-5f6600b22abb0729957ff816328e60129e68968d data/servermod/loot_tables/blocks/moss_cover_block.json
+22e5f803e376d930696e5ef299103b77d176be7b data/servermod/loot_tables/blocks/moss_cover_block.json
 bc697250215a6d5f289ae6788df8f624373e8752 data/servermod/loot_tables/blocks/platinum_block.json
 35af19e54cf42d6719620d5f1c4a4ba6f589b094 data/servermod/loot_tables/blocks/sash_banner_wall.json
 4d4605cc62bb917c9597deba7322c26d2ba50a79 data/servermod/loot_tables/blocks/maple_planks.json
@@ -53,6 +55,7 @@ baa0dabdb189f35d3b171512494659760f41cf7c data/servermod/loot_tables/blocks/loot_
 7c40812fd16b86e79eb9f94dbdb8275d50e28512 data/servermod/loot_tables/blocks/flower_cover_white_block.json
 6600b0e51dd9d6514d5e28d6c098c69db72e00db data/servermod/loot_tables/blocks/farming_banner.json
 026b6796a55b27ce74e08e017297512c0456997e data/servermod/loot_tables/blocks/lettuce_crop.json
+2f6d5e3bb23f4bb8e1251dcb5c2bc2059a322b2d data/servermod/loot_tables/blocks/snail_pebbles_block.json
 0cdfd5840e7cc606bf969345e539e365c917cdb2 data/servermod/loot_tables/blocks/maple_sapling.json
 6fb49ab884de04c4bd8b9c6256206a8b304c7494 data/servermod/loot_tables/blocks/log_stool_1.json
 10218d3c3e06adebb7ccd1ec92885b7f36765620 data/servermod/loot_tables/blocks/mushroom_lampstand.json

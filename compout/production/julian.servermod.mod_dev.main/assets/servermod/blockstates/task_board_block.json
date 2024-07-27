@@ -1,0 +1,79 @@
+{
+  "variants": {
+    "facing=north,half=lower,column=1": {
+      "model": "servermod:block/placeholder/task_board"
+    },
+    "facing=east,half=lower,column=1": {
+      "model": "servermod:block/placeholder/task_board"
+    },
+    "facing=south,half=lower,column=1": {
+      "model": "servermod:block/placeholder/task_board"
+    },
+    "facing=west,half=lower,column=1": {
+      "model": "servermod:block/placeholder/task_board"
+    },
+    "facing=north,half=lower,column=2": {
+      "model": "servermod:block/furniture/badger/task_board"
+    },
+    "facing=east,half=lower,column=2": {
+      "model": "servermod:block/furniture/badger/task_board",
+      "y": 90
+    },
+    "facing=south,half=lower,column=2": {
+      "model": "servermod:block/furniture/badger/task_board",
+      "y": 180
+    },
+    "facing=west,half=lower,column=2": {
+      "model": "servermod:block/furniture/badger/task_board",
+      "y": 270
+    },
+    "facing=north,half=lower,column=3": {
+      "model": "servermod:block/placeholder/task_board"
+    },
+    "facing=east,half=lower,column=3": {
+      "model": "servermod:block/placeholder/task_board"
+    },
+    "facing=south,half=lower,column=3": {
+      "model": "servermod:block/placeholder/task_board"
+    },
+    "facing=west,half=lower,column=3": {
+      "model": "servermod:block/placeholder/task_board"
+    },
+    "facing=north,half=upper,column=1": {
+      "model": "servermod:block/placeholder/task_board"
+    },
+    "facing=east,half=upper,column=1": {
+      "model": "servermod:block/placeholder/task_board"
+    },
+    "facing=south,half=upper,column=1": {
+      "model": "servermod:block/placeholder/task_board"
+    },
+    "facing=west,half=upper,column=1": {
+      "model": "servermod:block/placeholder/task_board"
+    },
+    "facing=north,half=upper,column=2": {
+      "model": "servermod:block/placeholder/task_board"
+    },
+    "facing=east,half=upper,column=2": {
+      "model": "servermod:block/placeholder/task_board"
+    },
+    "facing=south,half=upper,column=2": {
+      "model": "servermod:block/placeholder/task_board"
+    },
+    "facing=west,half=upper,column=2": {
+      "model": "servermod:block/placeholder/task_board"
+    },
+    "facing=north,half=upper,column=3": {
+      "model": "servermod:block/placeholder/task_board"
+    },
+    "facing=east,half=upper,column=3": {
+      "model": "servermod:block/placeholder/task_board"
+    },
+    "facing=south,half=upper,column=3": {
+      "model": "servermod:block/placeholder/task_board"
+    },
+    "facing=west,half=upper,column=3": {
+      "model": "servermod:block/placeholder/task_board"
+    }
+  }
+}

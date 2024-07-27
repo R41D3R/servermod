@@ -20,6 +20,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerParentedItemModel(ModItems.LOOT_BALLOON_SPAWN_EGG, ModelIds.getMinecraftNamespacedItem("template_spawn_egg"));
 
         // WOOD
+        blockStateModelGenerator.registerLog(ModBlocks.MAPLE_LOG_TRY).log(ModBlocks.MAPLE_LOG_TRY);
 
         blockStateModelGenerator.registerLog(ModBlocks.MAPLE_LOG).log(ModBlocks.MAPLE_LOG).wood(ModBlocks.MAPLE_WOOD);
         blockStateModelGenerator.registerLog(ModBlocks.STRIPPED_MAPLE_LOG).log(ModBlocks.STRIPPED_MAPLE_LOG).wood(ModBlocks.STRIPPED_MAPLE_WOOD);
@@ -36,6 +37,11 @@ public class ModModelProvider extends FabricModelProvider {
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
 
+        // ANIMALS
+        itemModelGenerator.register(ModItems.SNAIL_SHELL, Models.GENERATED);
+        itemModelGenerator.register(ModItems.SNAIL, Models.GENERATED);
+
+
         // PLANTS
         itemModelGenerator.register(ModItems.PEBBLES_ITEM, Models.GENERATED);
         itemModelGenerator.register(ModItems.ROCKS_ITEM, Models.GENERATED);
@@ -43,7 +49,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.COLD_LEAF_LITTER, Models.GENERATED);
         itemModelGenerator.register(ModItems.DRY_LEAF_LITTER, Models.GENERATED);
 
-        itemModelGenerator.register(ModItems.MOSS_COVER, Models.GENERATED);
+        itemModelGenerator.register(ModItems.MOSS, Models.GENERATED);
         itemModelGenerator.register(ModItems.SHELF_FUNGUS, Models.GENERATED);
         itemModelGenerator.register(ModItems.FLOWER_COVER_WHITE, Models.GENERATED);
         itemModelGenerator.register(ModItems.FLOWER_COVER_BLUE, Models.GENERATED);

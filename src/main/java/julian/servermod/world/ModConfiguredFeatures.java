@@ -5,8 +5,10 @@ import julian.servermod.block.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registerable;
+import net.minecraft.registry.RegistryEntryLookup;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.structure.rule.RuleTest;
 import net.minecraft.structure.rule.TagMatchRuleTest;
@@ -27,16 +29,32 @@ public class ModConfiguredFeatures {
 
     public static final RegistryKey<ConfiguredFeature<?, ?>> RUBY_ORE_KEY = registerKey("ruby_ore");
     public static final RegistryKey<ConfiguredFeature<?, ?>> PLATINUM_ORE_KEY = registerKey("platinum_ore");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> EMERALD_ORE_KEY = registerKey("emerald_ore");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> EXTRA_EMERALD_ORE_KEY = registerKey("emerald_ore");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> EXTRA_IRON_ORE_KEY = registerKey("iron_ore");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> EXTRA_COAL_ORE_KEY = registerKey("coal_ore");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> EXTRA_COPPER_ORE_KEY = registerKey("emerald_ore");
+
+
     public static final RegistryKey<ConfiguredFeature<?, ?>> LOOT_VASE_KEY = registerKey("loot_vase");
 
+    public static final RegistryKey<ConfiguredFeature<?, ?>> MAPLE_KEY = registerKey("maple");
     public static final RegistryKey<ConfiguredFeature<?, ?>> MAPLE_RED_KEY = registerKey("maple_red");
     public static final RegistryKey<ConfiguredFeature<?, ?>> MAPLE_ORANGE_KEY = registerKey("maple_orange");
     public static final RegistryKey<ConfiguredFeature<?, ?>> FANCY_MAPLE_RED_KEY = registerKey("fancy_maple_red");
     public static final RegistryKey<ConfiguredFeature<?, ?>> FANCY_MAPLE_ORANGE_KEY = registerKey("fancy_maple_orange");
 
+    public static final RegistryKey<ConfiguredFeature<?, ?>> GRANITE_ROCKS = registerKey("granite_rocks");
+
+
+
+
+    public static final RegistryKey<ConfiguredFeature<?, ?>> CAVE_MUSHROOM_KEY = registerKey("cave_mushroom");
+
 
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
+        // BIOME Features
+        register(context, GRANITE_ROCKS, Feature.FOREST_ROCK, new SingleStateFeatureConfig(Blocks.GRANITE.getDefaultState()));
+
 
         /// ORE GENERATION _______________________________________________________
         RuleTest stoneReplaceables = new TagMatchRuleTest(BlockTags.STONE_ORE_REPLACEABLES);
@@ -57,7 +75,7 @@ public class ModConfiguredFeatures {
 
         register(context, RUBY_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldRubyOres, 3));
         register(context, PLATINUM_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldPlatinumOres, 1));
-        register(context, EMERALD_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldEmeraldOres, 2));
+        register(context, EXTRA_EMERALD_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldEmeraldOres, 2));
 
         /// LOOT VASE ____________________________________________________________
         register(context, LOOT_VASE_KEY, Feature.SIMPLE_BLOCK,
@@ -66,12 +84,32 @@ public class ModConfiguredFeatures {
 
         /// TREE ___________________________________________________________
         // TODO: Make fancy trees taller and more narrow and mor ofter + small bushes -> normal ones almost never spawn
+
+
         register(context, MAPLE_RED_KEY, Feature.TREE, ModConfiguredFeatures.mapleRed().build());
         register(context, MAPLE_ORANGE_KEY, Feature.TREE, ModConfiguredFeatures.mapleOrange().build());
         register(context, FANCY_MAPLE_RED_KEY, Feature.TREE, ModConfiguredFeatures.fancyMapleRed().build());
         register(context, FANCY_MAPLE_ORANGE_KEY, Feature.TREE, ModConfiguredFeatures.fancyMapleOrange().build());
 
+        RegistryEntryLookup<PlacedFeature> registryEntryLookup = context.getRegistryLookup(RegistryKeys.PLACED_FEATURE);
+        RegistryEntry<PlacedFeature> MAPLE_RED_ENTRY = registryEntryLookup.getOrThrow(ModPlacedFeatures.MAPLE_RED_PLACED_KEY);
+        RegistryEntry<PlacedFeature> MAPLE_ORANGE_ENTRY = registryEntryLookup.getOrThrow(ModPlacedFeatures.MAPLE_ORANGE_PLACED_KEY);
+        RegistryEntry<PlacedFeature> FANCY_MAPLE_RED_ENTRY = registryEntryLookup.getOrThrow(ModPlacedFeatures.FANCY_MAPLE_RED_PLACED_KEY);
+        RegistryEntry<PlacedFeature> FANCY_MAPLE_ORANGE_ENTRY = registryEntryLookup.getOrThrow(ModPlacedFeatures.FANCY_MAPLE_ORANGE_PLACED_KEY);
+        RegistryEntry<PlacedFeature> OAK_ENTRY = registryEntryLookup.getOrThrow(TreePlacedFeatures.OAK_BEES_002);
+        RegistryEntry<PlacedFeature> BIRCH_ENTRY = registryEntryLookup.getOrThrow(TreePlacedFeatures.SUPER_BIRCH_BEES);
 
+        register(context, MAPLE_KEY, Feature.RANDOM_SELECTOR, new RandomFeatureConfig(List.of(
+                new RandomFeatureEntry(MAPLE_RED_ENTRY, 0.2F),
+                new RandomFeatureEntry(MAPLE_ORANGE_ENTRY, 0.2F),
+                new RandomFeatureEntry(FANCY_MAPLE_RED_ENTRY, 0.2F),
+                new RandomFeatureEntry(OAK_ENTRY, 0.1F),
+                new RandomFeatureEntry(BIRCH_ENTRY, 0.1F),
+                new RandomFeatureEntry(FANCY_MAPLE_ORANGE_ENTRY, 0.2F)),
+                MAPLE_RED_ENTRY));
+
+
+        // Cave Mushrooms
 
     }
 

@@ -16,6 +16,8 @@ public class ModItemGroups {
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.servermod"))
                     .icon(() -> new ItemStack(ModItems.RUBY)).entries((displayContext, entries) -> {
                         // WOOD
+                        entries.add(ModBlocks.MAPLE_LOG_TRY);
+
                         entries.add(ModBlocks.MAPLE_LOG);
                         entries.add(ModBlocks.STRIPPED_MAPLE_LOG);
                         entries.add(ModBlocks.MAPLE_WOOD);
@@ -30,6 +32,8 @@ public class ModItemGroups {
                         // Biome
                         entries.add(ModItems.PEBBLES_ITEM);
                         entries.add(ModItems.ROCKS_ITEM);
+                        entries.add(ModBlocks.SNAIL_PEBBLES_BLOCK);
+                        entries.add(ModBlocks.SNAIL_ROCKS_BLOCK);
 
                         entries.add(ModItems.LEAF_LITTER);
                         entries.add(ModItems.COLD_LEAF_LITTER);
@@ -40,17 +44,22 @@ public class ModItemGroups {
                         entries.add(ModItems.FLOWER_COVER_BLUE);
                         entries.add(ModItems.FLOWER_COVER_PINK);
                         entries.add(ModItems.FLOWER_COVER_RED);
-                        entries.add(ModItems.MOSS_COVER);
+                        entries.add(ModItems.MOSS);
+                        entries.add(ModBlocks.MOSS_HANG_BLOCK);
                         entries.add(ModItems.SHELF_FUNGUS);
                         entries.add(ModItems.ORANGE_MYCENA);
                         entries.add(ModItems.LARGE_ORANGE_MYCENA);
                         entries.add(ModItems.CLOVER);
 
+                        //ANIMALS
+                        entries.add(ModItems.SNAIL_SHELL);
+                        entries.add(ModItems.SNAIL);
 
                         // Entities
                         entries.add(ModItems.LOOT_BALLOON_SPAWN_EGG);
                         entries.add(ModItems.SNAIL_SPAWN_EGG);
                         entries.add(ModItems.CAPTURE_NET);
+                        entries.add(ModBlocks.TASK_BOARD_BLOCK);
 
                         entries.add(ModItems.WateringCan);
                         entries.add(ModItems.BADGER_COIN);

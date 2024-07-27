@@ -1,0 +1,50 @@
+{
+    "model": "test_pack:shovel_legendary_design",
+    "type": "sellable",
+    "styles": {
+        "default": [
+            {
+                "item": "minecraft:wooden_shovel",
+                "assets": {
+                    "default": "test_pack:shovel_legendary",
+                    "hand": "test_pack:shovel_legendary"
+                }
+            },
+            {
+                "item": "minecraft:stone_shovel",
+                "assets": {
+                    "default": "test_pack:shovel_legendary",
+                    "hand": "test_pack:shovel_legendary"
+                }
+            },
+            {
+                "item": "minecraft:golden_shovel",
+                "assets": {
+                    "default": "test_pack:shovel_legendary",
+                    "hand": "test_pack:shovel_legendary"
+                }
+            },
+            {
+                "item": "minecraft:iron_shovel",
+                "assets": {
+                    "default": "test_pack:shovel_legendary",
+                    "hand": "test_pack:shovel_legendary"
+                }
+            },
+            {
+                "item": "minecraft:diamond_shovel",
+                "assets": {
+                    "default": "test_pack:shovel_legendary",
+                    "hand": "test_pack:shovel_legendary"
+                }
+            },
+            {
+                "item": "minecraft:netherite_shovel",
+                "assets": {
+                    "default": "test_pack:shovel_legendary",
+                    "hand": "test_pack:shovel_legendary"
+                }
+            }
+        ]
+    }
+}

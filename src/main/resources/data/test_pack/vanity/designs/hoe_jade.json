@@ -1,0 +1,50 @@
+{
+    "model": "test_pack:hoe_jade_design",
+    "type": "sellable",
+    "styles": {
+        "default": [
+            {
+                "item": "minecraft:wooden_hoe",
+                "assets": {
+                    "default": "test_pack:hoe_jade",
+                    "hand": "test_pack:hoe_jade"
+                }
+            },
+            {
+                "item": "minecraft:stone_hoe",
+                "assets": {
+                    "default": "test_pack:hoe_jade",
+                    "hand": "test_pack:hoe_jade"
+                }
+            },
+            {
+                "item": "minecraft:golden_hoe",
+                "assets": {
+                    "default": "test_pack:hoe_jade",
+                    "hand": "test_pack:hoe_jade"
+                }
+            },
+            {
+                "item": "minecraft:iron_hoe",
+                "assets": {
+                    "default": "test_pack:hoe_jade",
+                    "hand": "test_pack:hoe_jade"
+                }
+            },
+            {
+                "item": "minecraft:diamond_hoe",
+                "assets": {
+                    "default": "test_pack:hoe_jade",
+                    "hand": "test_pack:hoe_jade"
+                }
+            },
+            {
+                "item": "minecraft:netherite_hoe",
+                "assets": {
+                    "default": "test_pack:hoe_jade",
+                    "hand": "test_pack:hoe_jade"
+                }
+            }
+        ]
+    }
+}

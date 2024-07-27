@@ -11,6 +11,7 @@ import julian.servermod.entity.custom.LootBalloonEntity;
 import julian.servermod.entity.custom.SnailEntity;
 import julian.servermod.item.ModItemGroups;
 import julian.servermod.item.ModItems;
+import julian.servermod.item.ModPotions;
 import julian.servermod.screen.CrateRewardScreen;
 import julian.servermod.screen.ModScreenHandlers;
 import julian.servermod.screen.StoreScreen;
@@ -32,11 +33,14 @@ import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
 import net.fabricmc.loader.api.FabricLoader;
+import net.kyrptonaught.customportalapi.api.CustomPortalBuilder;
+import net.minecraft.block.Blocks;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.resource.ResourceType;
 import net.minecraft.text.Text;
@@ -68,6 +72,7 @@ public class ServerMod implements ModInitializer {
 		ModBlocks.registerModBLocks();
 		ModItemGroups.registerItemGroups();
 		ModItems.registerModItems();
+		ModPotions.registerPotions();
 		ModBlockEntities.registerBLockEntities();
 		ModScreenHandlers.registerScreenHandlers();
 
@@ -107,6 +112,43 @@ public class ServerMod implements ModInitializer {
 		FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.MAPLES_LEAVES_ORANGE, 30, 60);
 
 		// CrateParticleAnimationSystem.initialize();
+
+
+
+
+		// ------ Portals ------
+		CustomPortalBuilder.beginPortal()
+				.frameBlock(ModBlocks.RUBY_BLOCK)
+				.lightWithItem(ModItems.RUBY)
+				.destDimID(new Identifier("minecraft", "overworld"))
+				.returnDim(new Identifier("test", "overworld"), true)
+				.tintColor(0x00FF00)
+				.registerPortal();
+
+		CustomPortalBuilder.beginPortal()
+				.frameBlock(Blocks.CRYING_OBSIDIAN)
+				.lightWithItem(ModItems.RUBY)
+				.destDimID(new Identifier("test", "the_nether"))
+				.returnDim(new Identifier("test", "overworld"), false)
+				.tintColor(0xc76efa)
+				.registerPortal();
+
+		CustomPortalBuilder.beginPortal()
+				.frameBlock(ModBlocks.RUBY_BLOCK)
+				.lightWithItem(ModItems.RUBY)
+				.destDimID(new Identifier("minecraft", "overworld"))
+				.returnDim(new Identifier("test2", "overworld"), true)
+				.tintColor(0x00FF00)
+				.registerPortal();
+
+		CustomPortalBuilder.beginPortal()
+				.frameBlock(Blocks.CRYING_OBSIDIAN)
+				.lightWithItem(ModItems.RUBY)
+				.destDimID(new Identifier("test2", "the_nether"))
+				.returnDim(new Identifier("test2", "overworld"), false)
+				.tintColor(0xc76efa)
+				.registerPortal();
+
 
 		// register Key pressing
 

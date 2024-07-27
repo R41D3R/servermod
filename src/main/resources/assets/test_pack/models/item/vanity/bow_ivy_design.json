@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "test_pack:item/bow_ivy_design"
-  }
+    "parent": "minecraft:item/generated",
+    "textures": {
+        "layer0": "test_pack:item/bow_ivy_design"
+    }
 }

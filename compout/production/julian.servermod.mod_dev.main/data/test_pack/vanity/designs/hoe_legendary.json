@@ -1,0 +1,50 @@
+{
+    "model": "test_pack:hoe_legendary_design",
+    "type": "sellable",
+    "styles": {
+        "default": [
+            {
+                "item": "minecraft:wooden_hoe",
+                "assets": {
+                    "default": "test_pack:hoe_legendary",
+                    "hand": "test_pack:hoe_legendary"
+                }
+            },
+            {
+                "item": "minecraft:stone_hoe",
+                "assets": {
+                    "default": "test_pack:hoe_legendary",
+                    "hand": "test_pack:hoe_legendary"
+                }
+            },
+            {
+                "item": "minecraft:golden_hoe",
+                "assets": {
+                    "default": "test_pack:hoe_legendary",
+                    "hand": "test_pack:hoe_legendary"
+                }
+            },
+            {
+                "item": "minecraft:iron_hoe",
+                "assets": {
+                    "default": "test_pack:hoe_legendary",
+                    "hand": "test_pack:hoe_legendary"
+                }
+            },
+            {
+                "item": "minecraft:diamond_hoe",
+                "assets": {
+                    "default": "test_pack:hoe_legendary",
+                    "hand": "test_pack:hoe_legendary"
+                }
+            },
+            {
+                "item": "minecraft:netherite_hoe",
+                "assets": {
+                    "default": "test_pack:hoe_legendary",
+                    "hand": "test_pack:hoe_legendary"
+                }
+            }
+        ]
+    }
+}
