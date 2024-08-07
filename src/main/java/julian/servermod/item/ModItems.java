@@ -21,6 +21,10 @@ import net.minecraft.util.Identifier;
 // registers all Item
 public class ModItems {
 
+    // Tools and Armor
+    public static final Item ANCIENT_PICKAXE = registerItem("ancient_pickaxe",
+            new PickaxeItem(ModToolMaterial.ANCIENT, 1, 1.F, new FabricItemSettings()));
+
     // Entities
     public static final Item LOOT_BALLOON_SPAWN_EGG = registerItem("loot_balloon_spawn_egg",
             new SpawnEggItem(ModEntities.LOOT_BALLOON, 0xD57E57, 0x100000,

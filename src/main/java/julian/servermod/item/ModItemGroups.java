@@ -15,6 +15,8 @@ public class ModItemGroups {
             new Identifier(ServerMod.MOD_ID, "servermod"),
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.servermod"))
                     .icon(() -> new ItemStack(ModItems.RUBY)).entries((displayContext, entries) -> {
+                        entries.add(ModItems.ANCIENT_PICKAXE);
+
                         // WOOD
                         entries.add(ModBlocks.MAPLE_LOG_TRY);
 

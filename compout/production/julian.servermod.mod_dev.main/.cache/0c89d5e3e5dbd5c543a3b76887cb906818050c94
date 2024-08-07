@@ -1,4 +1,4 @@
-// 1.20.1	2024-07-22T23:25:44.851289994	servermod/Model Definitions
+// 1.20.1	2024-08-02T22:48:31.880555419	servermod/Model Definitions
 581e410350608dc833c1b353809b5cec4ee57ece assets/servermod/blockstates/maple_leaves_orange.json
 b3b67f09f82ff36a9ae005684e10fa11456eb6c3 assets/servermod/models/block/maple_log_horizontal.json
 1923b951219c1cae4a7af60b8179f5cfb232063f assets/servermod/models/item/stripped_maple_log.json
@@ -7,6 +7,7 @@ c787714d9cb3327599bcc334007f410311131985 assets/servermod/models/item/corn.json
 ad43e7f3a8cff3ed39889a98c0d537d344ec55ed assets/servermod/models/item/large_orange_mycena.json
 17e9666d45ef87d766626f3b7f050d7fbe174c8e assets/servermod/models/item/snail.json
 f2761de7b38236e0438798cd037426711e33a73f assets/servermod/models/item/maple_planks.json
+fde01ccb71af5689b9078659672abb1b66d7c82f assets/servermod/models/item/maple_log_try.json
 ca4f8ff27d21369d27f4d52b8d5cd97e08198d74 assets/servermod/models/item/maple_sapling.json
 8b103b53f56ae52c08d40e4a924e06ef7bd7e3c5 assets/servermod/models/item/rocks.json
 cb767ee187bfe842ed698967cb5dca0bf6fd4dca assets/servermod/blockstates/stripped_maple_wood.json
@@ -31,10 +32,12 @@ f36977387dc99b8fdbebcaad85f2b7f524381e9e assets/servermod/models/item/maple_leav
 b04f19866b2be771b51092c1201375c97b9d5750 assets/servermod/models/item/moss.json
 6884c0d14f336e4063da5a220247ba9406cc12e8 assets/servermod/models/block/maple_standing_sign.json
 d2badef24d36c399718bd5cc35c5ebeb4a1db00d assets/servermod/models/item/maple_leaves_red.json
+b2e868f28a1fc4b3d185094ab18cc1f5aac525e0 assets/servermod/blockstates/maple_log_try.json
 28a1275fd3a4584d995205c788f4275cce3d9df0 assets/servermod/models/block/maple_planks.json
 b3c2d2e6a2bd66e7e605669ad10c99691491374b assets/servermod/models/item/banana_seeds.json
 f39b2b71aea067d5ad063f224cdead5bc5700fb5 assets/servermod/models/item/crate_key_badger.json
 1735539fb38c2478256be012bea319627b099592 assets/servermod/models/block/stripped_maple_log_horizontal.json
+5b20e99c5de0c39030f18df89e16b41db479a8ed assets/servermod/models/item/ancient_pickaxe.json
 dbd5046c66b7cd17978cbfcf051abaec11b18c9f assets/servermod/models/item/badger_club_id.json
 e4c881a54dbc056e8fe6bcdad4ef05f4f52ceee2 assets/servermod/models/item/badger_coin.json
 bb93fd0845184f8934a6456dffd2d6d764ace4b3 assets/servermod/models/block/maple_leaves_red.json
@@ -50,17 +53,19 @@ b187fd08291a1f55bad34ea318d852ed802a8f55 assets/servermod/models/item/aubrieta_w
 6e9ec21eac6ff518735f28fa2bb9766c93421776 assets/servermod/models/item/maple_log.json
 a56faa6218b4663d8e8567dd5c9b4c73b6af5a11 assets/servermod/blockstates/maple_sapling.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/servermod/models/item/loot_balloon_spawn_egg.json
+b6ecbfd08e40f28cac55d2181051873604b48dbd assets/servermod/models/block/maple_log_try.json
 de7f01ceb71e46c9360af7e9d3cf83ebec8a3513 assets/servermod/models/item/aubrieta_blue.json
 852b872f72fce2bd66cb682a617475c3d67cc94f assets/servermod/models/item/lettuce_seeds.json
 82c445f0eb28ec7c80d731fd9f0a5aefa282e213 assets/servermod/models/item/mango.json
-ab6743ce24c044ef04fb35f1b9e0f3c6a0c1431e assets/servermod/models/item/apple_seeds.json
 b3f70e6dc34c45e9618d52ec11dc3c8925b5498b assets/servermod/models/item/orange_mycena.json
+ab6743ce24c044ef04fb35f1b9e0f3c6a0c1431e assets/servermod/models/item/apple_seeds.json
 891d4fcf01f537a0e440e51b7bccc46459970aa8 assets/servermod/models/item/leaves_dead.json
 8c8dd170967bc2052fda2a50a378317209853f90 assets/servermod/models/block/maple_log.json
 629eac7833d398d840b91d23c13191d067709e57 assets/servermod/blockstates/maple_leaves_red.json
 c0f2086c0c3443fc8d11dcf19e33477896a62f19 assets/servermod/models/block/stripped_maple_log.json
 ee9c12e414428816c8a4d351da1b3c4a364296a8 assets/servermod/models/item/fertilizer_speed.json
 0b0fd93d04c5c407a45793b7834ce9299bb5fa6c assets/servermod/models/item/snail_shell.json
+9fa84b56576ed5269d92ba2a78243a7d6e72946b assets/servermod/models/block/maple_log_try_horizontal.json
 c0c57ce93be66e92e3806f0017fdcb97938e34fb assets/servermod/models/item/crate_key_legendary.json
 95d4bd79b04b3f8750c689d29bae6c132315c349 assets/servermod/models/item/aubrieta_pink.json
 0ef1cfbf0017b3975c7cb0103f7c8397bd3580ef assets/servermod/models/item/lettuce.json

@@ -37,6 +37,10 @@ public class ModModelProvider extends FabricModelProvider {
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
 
+
+        // TOOLS
+        itemModelGenerator.register(ModItems.ANCIENT_PICKAXE, Models.HANDHELD);
+
         // ANIMALS
         itemModelGenerator.register(ModItems.SNAIL_SHELL, Models.GENERATED);
         itemModelGenerator.register(ModItems.SNAIL, Models.GENERATED);

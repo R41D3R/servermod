@@ -30,10 +30,17 @@ public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> RUBY_ORE_KEY = registerKey("ruby_ore");
     public static final RegistryKey<ConfiguredFeature<?, ?>> PLATINUM_ORE_KEY = registerKey("platinum_ore");
     public static final RegistryKey<ConfiguredFeature<?, ?>> EXTRA_EMERALD_ORE_KEY = registerKey("emerald_ore");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> EXTRA_IRON_ORE_KEY = registerKey("iron_ore");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> EXTRA_COAL_ORE_KEY = registerKey("coal_ore");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> EXTRA_COPPER_ORE_KEY = registerKey("emerald_ore");
-
+//    public static final RegistryKey<ConfiguredFeature<?, ?>> EXTRA_IRON_ORE_UPPER_KEY = registerKey("extra_iron_ore_upper");
+//    public static final RegistryKey<ConfiguredFeature<?, ?>> EXTRA_IRON_ORE_MIDDLE_KEY = registerKey("extra_iron_ore_middle");
+//    public static final RegistryKey<ConfiguredFeature<?, ?>> EXTRA_IRON_ORE_SMALL_KEY = registerKey("extra_iron_ore_small");
+//    public static final RegistryKey<ConfiguredFeature<?, ?>> EXTRA_COAL_ORE_KEY = registerKey("extra_coal_ore");
+//    public static final RegistryKey<ConfiguredFeature<?, ?>> EXTRA_COPPER_ORE_KEY = registerKey("extra_copper_ore");
+//    public static final RegistryKey<ConfiguredFeature<?, ?>> EXTRA_GOLD_ORE_UPPER_KEY = registerKey("extra_gold_ore_upper");
+//    public static final RegistryKey<ConfiguredFeature<?, ?>> EXTRA_DIAMOND_ORE_KEY = registerKey("extra_diamond_ore");
+//    public static final RegistryKey<ConfiguredFeature<?, ?>> EXTRA_REDSTONE_ORE_KEY = registerKey("extra_redstone_ore");
+//    public static final RegistryKey<ConfiguredFeature<?, ?>> EXTRA_LAPIS_ORE_KEY = registerKey("extra_lapis_ore");
+//    public static final RegistryKey<ConfiguredFeature<?, ?>> EXTRA_GOLD_NETHER = registerKey("extra_gold_nether");
+//    public static final RegistryKey<ConfiguredFeature<?, ?>> EXTRA_QUARTZ_ORE_NETHER = registerKey("extra_quartz_ore");
 
     public static final RegistryKey<ConfiguredFeature<?, ?>> LOOT_VASE_KEY = registerKey("loot_vase");
 
@@ -72,10 +79,53 @@ public class ModConfiguredFeatures {
                 List.of(OreFeatureConfig.createTarget(stoneReplaceables, Blocks.EMERALD_ORE.getDefaultState()),
                         OreFeatureConfig.createTarget(deepslateReplaceables, Blocks.DEEPSLATE_EMERALD_ORE.getDefaultState()));
 
+//        List<OreFeatureConfig.Target> overworldIronOres =
+//                List.of(OreFeatureConfig.createTarget(stoneReplaceables, Blocks.IRON_ORE.getDefaultState()),
+//                        OreFeatureConfig.createTarget(deepslateReplaceables, Blocks.DEEPSLATE_IRON_ORE.getDefaultState()));
+//
+//        List<OreFeatureConfig.Target> overworldCoalOres =
+//                List.of(OreFeatureConfig.createTarget(stoneReplaceables, Blocks.COAL_ORE.getDefaultState()),
+//                        OreFeatureConfig.createTarget(deepslateReplaceables, Blocks.DEEPSLATE_COAL_ORE.getDefaultState()));
+//
+//        List<OreFeatureConfig.Target> overworldCopperOres =
+//                List.of(OreFeatureConfig.createTarget(deepslateReplaceables, Blocks.DEEPSLATE_COPPER_ORE.getDefaultState()),
+//                        OreFeatureConfig.createTarget(stoneReplaceables, Blocks.COPPER_ORE.getDefaultState()));
+//
+//        List<OreFeatureConfig.Target> overworldGoldOres =
+//                List.of(OreFeatureConfig.createTarget(deepslateReplaceables, Blocks.DEEPSLATE_GOLD_ORE.getDefaultState()),
+//                        OreFeatureConfig.createTarget(stoneReplaceables, Blocks.GOLD_ORE.getDefaultState()));
+//
+//        List<OreFeatureConfig.Target> overworldDiamondOres =
+//                List.of(OreFeatureConfig.createTarget(deepslateReplaceables, Blocks.DEEPSLATE_DIAMOND_ORE.getDefaultState()),
+//                        OreFeatureConfig.createTarget(stoneReplaceables, Blocks.DIAMOND_ORE.getDefaultState()));
+//
+//        List<OreFeatureConfig.Target> overworldRedstoneOres =
+//                List.of(OreFeatureConfig.createTarget(deepslateReplaceables, Blocks.DEEPSLATE_REDSTONE_ORE.getDefaultState()),
+//                        OreFeatureConfig.createTarget(stoneReplaceables, Blocks.REDSTONE_ORE.getDefaultState()));
+//
+//        List<OreFeatureConfig.Target> overworldLapisOres =
+//                List.of(OreFeatureConfig.createTarget(deepslateReplaceables, Blocks.DEEPSLATE_LAPIS_ORE.getDefaultState()),
+//                        OreFeatureConfig.createTarget(stoneReplaceables, Blocks.LAPIS_ORE.getDefaultState()));
+//
+//        List<OreFeatureConfig.Target> netherGoldOres =
+//                List.of(OreFeatureConfig.createTarget(stoneReplaceables, Blocks.NETHER_GOLD_ORE.getDefaultState()));
+//
+//        List<OreFeatureConfig.Target> netherQuartzOres =
+//                List.of(OreFeatureConfig.createTarget(stoneReplaceables, Blocks.NETHER_QUARTZ_ORE.getDefaultState()));
+//
 
         register(context, RUBY_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldRubyOres, 3));
         register(context, PLATINUM_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldPlatinumOres, 1));
         register(context, EXTRA_EMERALD_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldEmeraldOres, 2));
+//        register(context, EXTRA_IRON_ORE_MIDDLE_KEY, Feature.ORE, new OreFeatureConfig(overworldIronOres, 9));
+//        register(context, EXTRA_IRON_ORE_SMALL_KEY, Feature.ORE, new OreFeatureConfig(overworldIronOres, 4));
+//        register(context, EXTRA_COAL_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldCoalOres, 17));
+//        register(context, EXTRA_COPPER_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldCopperOres, 10));
+//        register(context, EXTRA_DIAMOND_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldDiamondOres, 9));
+//        register(context, EXTRA_REDSTONE_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldRedstoneOres, 1));
+//        register(context, EXTRA_LAPIS_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldLapisOres, 1));
+//        register(context, EXTRA_GOLD_NETHER, Feature.ORE, new OreFeatureConfig(netherGoldOres, 1));
+//        register(context, EXTRA_QUARTZ_ORE_NETHER, Feature.ORE, new OreFeatureConfig(netherQuartzOres, 1));
 
         /// LOOT VASE ____________________________________________________________
         register(context, LOOT_VASE_KEY, Feature.SIMPLE_BLOCK,
