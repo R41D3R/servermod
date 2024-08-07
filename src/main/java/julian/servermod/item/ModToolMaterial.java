@@ -1,31 +1,32 @@
 package julian.servermod.item;
 
-import net.fabricmc.yarn.constants.MiningLevels;
+import net.minecraft.block.Block;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
+import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.TagKey;
 
 import java.util.function.Supplier;
 
 public enum ModToolMaterial implements ToolMaterial {
-    ANCIENT(MiningLevels.DIAMOND, 2031, 10, 1.0F, 5, () -> {
+    ANCIENT(BlockTags.INCORRECT_FOR_NETHERITE_TOOL,2031, 10, 1.0F, 5, () -> {
         return Ingredient.EMPTY;
     }),
-    PLATINUM(MiningLevels.DIAMOND, 2031, 9, 4.0F, 20, () -> {
+    PLATINUM(BlockTags.INCORRECT_FOR_NETHERITE_TOOL,2031, 9, 4.0F, 20, () -> {
         return Ingredient.ofItems(ModItems.PLATINUM);
     }),
 
     ;
 
-
-    private final int miningLevel;
+    private final TagKey<Block> inverseTag;
     private final int itemDurability;
     private final int miningSpeed;
     private final float attackDamage;
     private final int enchantability;
     private final Supplier<Ingredient> repairIngredient;
 
-    ModToolMaterial(int miningLevel, int itemDurability, int miningSpeed, float attackDamage, int enchantability, Supplier<Ingredient> repairIngredient) {
-        this.miningLevel = miningLevel;
+    ModToolMaterial(TagKey<Block> inverseTag, int itemDurability, int miningSpeed, float attackDamage, int enchantability, Supplier<Ingredient> repairIngredient) {
+        this.inverseTag = inverseTag;
         this.itemDurability = itemDurability;
         this.miningSpeed = miningSpeed;
         this.attackDamage = attackDamage;
@@ -49,9 +50,10 @@ public enum ModToolMaterial implements ToolMaterial {
     }
 
     @Override
-    public int getMiningLevel() {
-        return this.miningLevel;
+    public TagKey<Block> getInverseTag() {
+        return null;
     }
+
 
     @Override
     public int getEnchantability() {

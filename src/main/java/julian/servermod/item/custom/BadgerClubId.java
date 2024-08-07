@@ -5,10 +5,10 @@ import julian.servermod.badgertasks.ActiveBadgerTaskList;
 import julian.servermod.badgertasks.BadgerClubData;
 import julian.servermod.badgertasks.BadgerTaskManager;
 import julian.servermod.utils.IEntityDataSaver;
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
@@ -64,13 +64,13 @@ public class BadgerClubId extends Item {
     }
 
     @Override
-    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+    public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
         tooltip.add(Text.of("Use with right click to get").copy()
                 .formatted(Formatting.GRAY)
         );
         tooltip.add(Text.of("your Badger Club Data").copy()
                 .formatted(Formatting.GRAY)
         );
-        super.appendTooltip(stack, world, tooltip, context);
+        super.appendTooltip(stack, context, tooltip, type);
     }
 }

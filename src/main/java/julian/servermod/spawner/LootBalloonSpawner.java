@@ -11,12 +11,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.World;
-import net.minecraft.world.spawner.Spawner;
+import net.minecraft.world.spawner.SpecialSpawner;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
 
-public class LootBalloonSpawner implements Spawner {
+public class LootBalloonSpawner implements SpecialSpawner {
     private static final int SPAWN_INTERVAL = (int)20 * 60 * 5; // 5 minutes in ticks (20 ticks per second * 300 seconds)
     private static final double SPAWN_CHANCE = 0.025; // 2.5% chance
     private static final int SPAWN_RADIUS = 30;

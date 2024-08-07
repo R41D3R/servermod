@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "servermod:item/ancient_pickaxe"
+  }
+}

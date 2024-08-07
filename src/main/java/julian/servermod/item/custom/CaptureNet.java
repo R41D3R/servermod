@@ -1,19 +1,25 @@
 package julian.servermod.item.custom;
 
 import julian.servermod.ServerMod;
-import net.minecraft.client.item.TooltipContext;
+import net.minecraft.component.Component;
+import net.minecraft.component.ComponentMap;
+import net.minecraft.component.ComponentType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.registry.Registries;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
@@ -22,6 +28,8 @@ import net.minecraft.world.level.LevelInfo;
 
 import java.util.List;
 import java.util.Optional;
+
+import static julian.servermod.utils.ComponentUtil.*;
 
 public class CaptureNet extends Item {
     public static final String CAPTURED_ENTITY_TAG = "CapturedEntity";
@@ -68,8 +76,7 @@ public class CaptureNet extends Item {
                     entity.setPos(blockPos.getX() + 0.5, blockPos.getY(), blockPos.getZ() + 0.5);
                     world.spawnEntity(entity);
                     removeCaptureTags(stack);
-                    context.getStack().damage(1, context.getPlayer(),
-                            playerEntity -> playerEntity.sendToolBreakStatus(playerEntity.getActiveHand()));
+                    context.getStack().damage(1, context.getPlayer(), EquipmentSlot.MAINHAND);
                     return ActionResult.SUCCESS;
                 }
             }
@@ -83,20 +90,22 @@ public class CaptureNet extends Item {
     }
 
     public void setCaptureTags(ItemStack stack, LivingEntity entity) {
-        stack.getNbt().putString(ENTITY_TYPE_TAG, entity.getType().toString());
-        stack.getNbt().put(CAPTURED_ENTITY_TAG, getEntityNbt(entity));
+        putValueToComponentMap(stack.getComponents(), ENTITY_TYPE_TAG, entity.getType().toString());
+        putValueToComponentMap(stack.getComponents(), CAPTURED_ENTITY_TAG, getEntityNbt(entity));
     }
 
     public NbtCompound getCaptureTags(ItemStack stack) {
         NbtCompound nbt = new NbtCompound();
-        nbt.putString(ENTITY_TYPE_TAG, stack.getNbt().getString(ENTITY_TYPE_TAG));
-        nbt.put(CAPTURED_ENTITY_TAG, stack.getNbt().get(CAPTURED_ENTITY_TAG));
+        ;
+        ;
+        nbt.putString(ENTITY_TYPE_TAG, getValueFromComponentMap(stack.getComponents(), ENTITY_TYPE_TAG).toString());
+        nbt.put(CAPTURED_ENTITY_TAG, ((NbtCompound) getValueFromComponentMap(stack.getComponents(), CAPTURED_ENTITY_TAG)));
         return nbt;
     }
 
     public void removeCaptureTags(ItemStack stack) {
-        stack.getNbt().remove(ENTITY_TYPE_TAG);
-        stack.getNbt().remove(CAPTURED_ENTITY_TAG);
+        removeValueFromComponentMap(stack.getComponents(), ENTITY_TYPE_TAG);
+        removeValueFromComponentMap(stack.getComponents(), CAPTURED_ENTITY_TAG);
     }
 
     public NbtCompound getEntityNbt(LivingEntity entity) {
@@ -106,7 +115,8 @@ public class CaptureNet extends Item {
     }
 
     public static boolean hasEntity(ItemStack stack) {
-        return stack.getNbt().contains(CAPTURED_ENTITY_TAG);
+
+        return containsComponent(stack.getComponents(), CAPTURED_ENTITY_TAG);
     }
 
     public static boolean isBlacklisted(LivingEntity entity) {
@@ -116,10 +126,13 @@ public class CaptureNet extends Item {
         return false;
     }
 
+
+
     @Override
-    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+    public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
         if (hasEntity(stack)) {
-            String str = lastStringIndex(stack.getNbt().getString(ENTITY_TYPE_TAG));
+            String entityTypeString = ((String) getValueFromComponentMap(stack.getComponents(), ENTITY_TYPE_TAG));
+            String str = lastStringIndex(entityTypeString);
             String firstLetterUpperCaseStr = str.substring(0, 1).toUpperCase() + str.substring(1);
             tooltip.add(Text.of("Captured Mob: " + firstLetterUpperCaseStr).copy()
                     .formatted(Formatting.GRAY)
@@ -128,6 +141,6 @@ public class CaptureNet extends Item {
 
 
 
-        super.appendTooltip(stack, world, tooltip, context);
+        super.appendTooltip(stack, context, tooltip, type);
     }
 }

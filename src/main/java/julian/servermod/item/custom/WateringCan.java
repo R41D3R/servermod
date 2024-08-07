@@ -4,7 +4,7 @@ import julian.servermod.block.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.client.item.TooltipContext;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.particle.ParticleTypes;
@@ -62,8 +62,7 @@ public class WateringCan extends Item {
         context.getWorld().addParticle(ParticleTypes.RAIN, positionClicked.toCenterPos().getX() + 0.25, positionClicked.getY() + 1.0, positionClicked.toCenterPos().getZ() + 0.25, 0.0, 0.0, 0.0);
 
         player.playSound(SoundEvents.ITEM_BUCKET_EMPTY, 1, 1);
-        context.getStack().damage(1, context.getPlayer(),
-                playerEntity -> playerEntity.sendToolBreakStatus(playerEntity.getActiveHand()));
+        context.getStack().damage(1, context.getPlayer(), EquipmentSlot.MAINHAND);
         return ActionResult.SUCCESS;
 
     }

@@ -20,7 +20,7 @@ import net.minecraft.world.level.storage.LevelStorage;
 import net.minecraft.world.spawner.CatSpawner;
 import net.minecraft.world.spawner.PatrolSpawner;
 import net.minecraft.world.spawner.PhantomSpawner;
-import net.minecraft.world.spawner.Spawner;
+import net.minecraft.world.spawner.SpecialSpawner;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -54,7 +54,7 @@ public abstract class MinecraftServerMixin {
 
         if (worldKey == World.OVERWORLD) {
             // Create a new mutable list and add all elements from the original list
-            List<Spawner> newSpawners = new ArrayList<>(spawners);
+            List<SpecialSpawner> newSpawners = new ArrayList<>(spawners);
 
             // Add your new spawner to the list
             newSpawners.add(new LootBalloonSpawner());
