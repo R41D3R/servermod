@@ -50,15 +50,15 @@ public class CrateRewardScreen extends BaseOwoScreen<FlowLayout> {
 
         TextureComponent chestBackground;
         if (crateKeyItem instanceof CrateKeyBadger) {
-            chestBackground = Components.texture(new Identifier(ServerMod.MOD_ID, "textures/gui/crates/badger_chest_gui.png"),
+            chestBackground = Components.texture(Identifier.of(ServerMod.MOD_ID, "textures/gui/crates/badger_chest_gui.png"),
                     0 , 0,78, 89, 78, 89);
             rewardItem.positioning(Positioning.absolute(33-2, 30-2));
         } else if(crateKeyItem instanceof CrateKeyRare) {
-            chestBackground = Components.texture(new Identifier(ServerMod.MOD_ID, "textures/gui/crates/rare_collect.png"),
+            chestBackground = Components.texture(Identifier.of(ServerMod.MOD_ID, "textures/gui/crates/rare_collect.png"),
                     0 , 0,78, 91, 78, 91);
             rewardItem.positioning(Positioning.absolute(33-2, 30+1));
         } else {
-            chestBackground = Components.texture(new Identifier(ServerMod.MOD_ID, "textures/gui/crates/legendary_collect.png"),
+            chestBackground = Components.texture(Identifier.of(ServerMod.MOD_ID, "textures/gui/crates/legendary_collect.png"),
                     0 , 0,78, 94, 78, 94);
             rewardItem.positioning(Positioning.absolute(33-2, 30+1+2));
         }

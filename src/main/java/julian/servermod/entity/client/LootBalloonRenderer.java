@@ -17,7 +17,7 @@ public class LootBalloonRenderer extends GeoEntityRenderer<LootBalloonEntity> {
 
     @Override
     public Identifier getTextureLocation(LootBalloonEntity entity) {
-        return new Identifier(ServerMod.MOD_ID, "textures/entity/balloon_1.png");
+        return Identifier.of(ServerMod.MOD_ID, "textures/entity/balloon_1.png");
     }
 
     @Override

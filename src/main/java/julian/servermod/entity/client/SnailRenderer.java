@@ -17,7 +17,7 @@ public class SnailRenderer extends GeoEntityRenderer<SnailEntity> {
 
     @Override
     public Identifier getTextureLocation(SnailEntity entity) {
-        return new Identifier(ServerMod.MOD_ID, "textures/entity/snail.png");
+        return Identifier.of(ServerMod.MOD_ID, "textures/entity/snail.png");
     }
 
     @Override

@@ -38,7 +38,7 @@ public class MossItem extends Item {
             return ActionResult.CONSUME;
         }
 
-        if (ModBlocks.MOSS_HANG_BLOCK.canPlaceAt(state, world, pos)) {
+        if (ModBlocks.MOSS_HANG_BLOCK.getDefaultState().canPlaceAt(world, pos)) {
             context.getWorld().setBlockState(pos.down(), ModBlocks.MOSS_HANG_BLOCK.getDefaultState());
             playPlaceSound(state, context.getWorld(), pos, context.getPlayer());
             return ActionResult.CONSUME;

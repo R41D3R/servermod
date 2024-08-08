@@ -19,19 +19,6 @@ public class ModModelProvider extends FabricModelProvider {
         // blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RUBY_BLOCK);
         blockStateModelGenerator.registerParentedItemModel(ModItems.LOOT_BALLOON_SPAWN_EGG, ModelIds.getMinecraftNamespacedItem("template_spawn_egg"));
 
-        // WOOD
-        blockStateModelGenerator.registerLog(ModBlocks.MAPLE_LOG_TRY).log(ModBlocks.MAPLE_LOG_TRY);
-
-        blockStateModelGenerator.registerLog(ModBlocks.MAPLE_LOG).log(ModBlocks.MAPLE_LOG).wood(ModBlocks.MAPLE_WOOD);
-        blockStateModelGenerator.registerLog(ModBlocks.STRIPPED_MAPLE_LOG).log(ModBlocks.STRIPPED_MAPLE_LOG).wood(ModBlocks.STRIPPED_MAPLE_WOOD);
-
-        // blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.MAPLE_PLANKS);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.MAPLES_LEAVES_RED);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.MAPLES_LEAVES_ORANGE);
-
-        BlockStateModelGenerator.BlockTexturePool maple_pool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.MAPLE_PLANKS);
-        maple_pool.family(ModBlocks.MAPLE_FAMILY);
-        blockStateModelGenerator.registerTintableCross(ModBlocks.MAPLE_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
     }
 
     @Override
@@ -91,8 +78,6 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.APPLE_SEEDS, Models.GENERATED);
         // ADD CROP items and loot drop items
 
-        // WOOD
-        itemModelGenerator.register(ModItems.HANGING_MAPLE_SIGN, Models.GENERATED);
 
     }
 }

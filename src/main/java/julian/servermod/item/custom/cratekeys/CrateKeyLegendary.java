@@ -28,7 +28,7 @@ public class CrateKeyLegendary extends CrateKey{
         showCustomParticles(user);
 
         if (!world.isClient()) {
-            List<ItemStack> list = AllCustomLootTables.CRATE_KEY_RARE_LOOT_TABLE.getRandomLoot(1);
+            List<ItemStack> list = AllCustomLootTables.CRATE_KEY_RARE_LOOT_TABLE.getRandomLoot(world.getRegistryManager(),1);
             doWinningRoutine(user, new ArrayList<>(list));
         }
 

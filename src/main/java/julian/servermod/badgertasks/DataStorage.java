@@ -3,20 +3,19 @@ package julian.servermod.badgertasks;
 import julian.servermod.ServerMod;
 import julian.servermod.utils.DateUtils;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.nbt.NbtElement;
-import net.minecraft.nbt.NbtList;
-import net.minecraft.nbt.NbtIo;
+import net.minecraft.nbt.*;
 
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.*;
 
 public class DataStorage implements AutoCloseable{
     private static final File FILE = new File("mods/servermod/badgertask_data.nbt");
+    private static final Path PATH = Path.of("mods/servermod/badgertask_data.nbt");
     private final NbtCompound data;
+    private final NbtSizeTracker sizeTracker = NbtSizeTracker.ofUnlimitedBytes();
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
     public DataStorage() {
@@ -26,7 +25,7 @@ public class DataStorage implements AutoCloseable{
                 data = new NbtCompound();
                 save();
             } else {
-                data = NbtIo.readCompressed(FILE);
+                data = NbtIo.readCompressed(PATH, sizeTracker);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -37,7 +36,7 @@ public class DataStorage implements AutoCloseable{
     public void save() {
         try {
             ServerMod.LOGGER.info("Saving badger task data");
-            NbtIo.writeCompressed(data, FILE);
+            NbtIo.writeCompressed(data, PATH);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

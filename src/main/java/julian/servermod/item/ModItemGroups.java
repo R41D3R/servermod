@@ -12,24 +12,10 @@ import net.minecraft.util.Identifier;
 
 public class ModItemGroups {
     public static final ItemGroup SEVERMOD_GROUP = Registry.register(Registries.ITEM_GROUP,
-            new Identifier(ServerMod.MOD_ID, "servermod"),
+            Identifier.of(ServerMod.MOD_ID, "servermod"),
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.servermod"))
                     .icon(() -> new ItemStack(ModItems.RUBY)).entries((displayContext, entries) -> {
                         entries.add(ModItems.ANCIENT_PICKAXE);
-
-                        // WOOD
-                        entries.add(ModBlocks.MAPLE_LOG_TRY);
-
-                        entries.add(ModBlocks.MAPLE_LOG);
-                        entries.add(ModBlocks.STRIPPED_MAPLE_LOG);
-                        entries.add(ModBlocks.MAPLE_WOOD);
-                        entries.add(ModBlocks.STRIPPED_MAPLE_WOOD);
-                        entries.add(ModBlocks.MAPLE_PLANKS);
-                        entries.add(ModBlocks.MAPLES_LEAVES_RED);
-                        entries.add(ModBlocks.MAPLES_LEAVES_ORANGE);
-                        entries.add(ModItems.MAPLE_SIGN);
-                        entries.add(ModItems.HANGING_MAPLE_SIGN);
-                        entries.add(ModBlocks.MAPLE_SAPLING);
 
                         // Biome
                         entries.add(ModItems.PEBBLES_ITEM);
@@ -86,13 +72,9 @@ public class ModItemGroups {
                         entries.add(ModBlocks.PLATINUM_BLOCK);
                         entries.add(ModBlocks.LOOT_VASE_BLOCK);
 
-                        entries.add(ModBlocks.PHOENIX_BLOCK);
                         entries.add(ModItems.ASHES_O_ENCHANTMENT);
                         entries.add(ModItems.PHOENIX_FEATHER);
 
-                        entries.add(ModBlocks.STYLING_TABLE_MINE);
-                        entries.add(ModBlocks.BOULDER_BLOCK);
-                        entries.add(ModBlocks.BADGER_TASK_BLOCK);
                         entries.add(ModItems.BADGER_CLUB_ID);
 
                         // Crops

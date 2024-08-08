@@ -5,6 +5,7 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.component.EnchantmentEffectComponentTypes;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.EntityType;
@@ -32,7 +33,7 @@ public class LootVaseBlock extends LootBoxBlock {
 
     @Override
     public void afterBreak(World world, PlayerEntity player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity, ItemStack tool) {
-        if (EnchantmentHelper.getLevel(Enchantments.SILK_TOUCH, tool) == 0) {
+        if (!EnchantmentHelper.hasAnyEnchantmentsWith(tool, EnchantmentEffectComponentTypes.BLOCK_EXPERIENCE)) {
             // random change to spawn a silverfish instead of dropping loot
             if (world.random.nextInt(10) == 0) {
 
@@ -55,7 +56,7 @@ public class LootVaseBlock extends LootBoxBlock {
                 // drop loot
                 ServerWorld serverWorld = world.getServer().getWorld(world.getRegistryKey());
                 dropExperience(serverWorld, pos);
-                List<ItemStack> randomLoot = AllCustomLootTables.URN_LOOT_TABLE.getRandomLoot(4);
+                List<ItemStack> randomLoot = AllCustomLootTables.URN_LOOT_TABLE.getRandomLoot(world.getRegistryManager(),4);
                 for (ItemStack itemStack : randomLoot) {
                     spawnItemStack(serverWorld, pos, itemStack);
                 }

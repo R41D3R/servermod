@@ -20,15 +20,14 @@ repositories {
 		name = 'GeckoLib'
 		url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
 		content {
-			includeGroupByRegex("software\\.bernie.*")
-			includeGroup("com.eliotlash.mclib")
+			includeGroup("software.bernie.geckolib")
 		}
 	}
 	maven { url = 'https://maven.minecraftforge.net/' }
-	maven {
-		name = 'TerraformersMC'
-		url = 'https://maven.terraformersmc.com/'
-	}
+	//maven {
+	//	name = 'TerraformersMC'
+	//	url = 'https://maven.terraformersmc.com/'
+	//}
 	maven { url 'https://maven.wispforest.io' }
 
 	maven {url = "https://maven.kyrptonaught.dev"}
@@ -52,13 +51,12 @@ dependencies {
 
 	// modImplementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
 
-	modImplementation("software.bernie.geckolib:geckolib-fabric-${minecraft_version}:${geckolib_version}")
-	implementation("com.eliotlash.mclib:mclib:20")
+	modImplementation "software.bernie.geckolib:geckolib-fabric-${minecraft_version}:${geckolib_version}"
 
 	// terrablender
-	modImplementation 'com.github.glitchfiend:TerraBlender-fabric:1.21-4.0.0.1'
-	modImplementation "com.terraformersmc.terraform-api:terraform-wood-api-v1:10.0.0"
-	include "com.terraformersmc.terraform-api:terraform-wood-api-v1:10.0.0"
+	//modImplementation 'com.github.glitchfiend:TerraBlender-fabric:1.21-4.0.0.1'
+	//modImplementation "com.terraformersmc.terraform-api:terraform-wood-api-v1:10.0.0"
+	//include "com.terraformersmc.terraform-api:terraform-wood-api-v1:10.0.0"
 
 	// owo
 	modImplementation "io.wispforest:owo-lib:${owo_version}"

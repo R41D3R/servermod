@@ -1,14 +1,22 @@
 package julian.servermod.block.custom;
 
+import com.mojang.serialization.MapCodec;
 import julian.servermod.utils.AllCustomLootTables;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FallingBlock;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.component.EnchantmentEffectComponentTypes;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.registry.DynamicRegistryManager;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.registry.tag.EnchantmentTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -22,10 +30,16 @@ public class BalloonLootCrateBlock extends FallingBlock {
     }
 
     @Override
+    protected MapCodec<? extends FallingBlock> getCodec() {
+        return null;
+    }
+
+    @Override
     public void afterBreak(World world, PlayerEntity player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity, ItemStack tool) {
-        if (EnchantmentHelper.getLevel(Enchantments.SILK_TOUCH, tool) == 0) {
+
+        if (!EnchantmentHelper.hasAnyEnchantmentsWith(tool, EnchantmentEffectComponentTypes.BLOCK_EXPERIENCE)) {
             ServerWorld serverWorld = world.getServer().getWorld(world.getRegistryKey());
-            List<ItemStack> randomLoot = AllCustomLootTables.URN_LOOT_TABLE.getRandomLoot(6);
+            List<ItemStack> randomLoot = AllCustomLootTables.URN_LOOT_TABLE.getRandomLoot(world.getRegistryManager(),6);
             for (ItemStack itemStack : randomLoot) {
                 spawnItemStack(serverWorld, pos, itemStack);
             }

@@ -2,13 +2,13 @@ package julian.servermod.world.biome;
 
 import julian.servermod.ServerMod;
 import julian.servermod.world.ModPlacedFeatures;
-import net.minecraft.client.sound.MusicType;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.BiomeMoodSound;
+import net.minecraft.sound.MusicType;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.Biome;
@@ -23,7 +23,7 @@ import static net.minecraft.world.biome.OverworldBiomeCreator.getSkyColor;
 
 public class ModBiomes {
     public static final RegistryKey<Biome> MAPLE_FOREST = RegistryKey.of(RegistryKeys.BIOME,
-            new Identifier(ServerMod.MOD_ID, "maple_forest"));
+            Identifier.of(ServerMod.MOD_ID, "maple_forest"));
 
     public static void bootstrap(Registerable<Biome> context) {
         context.register(MAPLE_FOREST, mapleForestBiome(context));
@@ -53,11 +53,11 @@ public class ModBiomes {
 
         globalOverworldGeneration(biomeBuilder);
         // DefaultBiomeFeatures.addMossyRocks(biomeBuilder);
-        ModBiomeFeatures.addGraniteRocks(biomeBuilder);
+        //ModBiomeFeatures.addGraniteRocks(biomeBuilder);
         DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
         DefaultBiomeFeatures.addExtraGoldOre(biomeBuilder);
 
-        biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.MAPLE_PLACED_KEY);
+        // biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.MAPLE_PLACED_KEY);
         // DefaultBiomeFeatures.addForestFlowers(biomeBuilder);
         DefaultBiomeFeatures.addLargeFerns(biomeBuilder);
 

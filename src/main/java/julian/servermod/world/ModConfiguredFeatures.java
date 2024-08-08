@@ -44,13 +44,13 @@ public class ModConfiguredFeatures {
 
     public static final RegistryKey<ConfiguredFeature<?, ?>> LOOT_VASE_KEY = registerKey("loot_vase");
 
-    public static final RegistryKey<ConfiguredFeature<?, ?>> MAPLE_KEY = registerKey("maple");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> MAPLE_RED_KEY = registerKey("maple_red");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> MAPLE_ORANGE_KEY = registerKey("maple_orange");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> FANCY_MAPLE_RED_KEY = registerKey("fancy_maple_red");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> FANCY_MAPLE_ORANGE_KEY = registerKey("fancy_maple_orange");
+//    public static final RegistryKey<ConfiguredFeature<?, ?>> MAPLE_KEY = registerKey("maple");
+//    public static final RegistryKey<ConfiguredFeature<?, ?>> MAPLE_RED_KEY = registerKey("maple_red");
+//    public static final RegistryKey<ConfiguredFeature<?, ?>> MAPLE_ORANGE_KEY = registerKey("maple_orange");
+//    public static final RegistryKey<ConfiguredFeature<?, ?>> FANCY_MAPLE_RED_KEY = registerKey("fancy_maple_red");
+//    public static final RegistryKey<ConfiguredFeature<?, ?>> FANCY_MAPLE_ORANGE_KEY = registerKey("fancy_maple_orange");
 
-    public static final RegistryKey<ConfiguredFeature<?, ?>> GRANITE_ROCKS = registerKey("granite_rocks");
+    //public static final RegistryKey<ConfiguredFeature<?, ?>> GRANITE_ROCKS = registerKey("granite_rocks");
 
 
 
@@ -60,7 +60,7 @@ public class ModConfiguredFeatures {
 
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
         // BIOME Features
-        register(context, GRANITE_ROCKS, Feature.FOREST_ROCK, new SingleStateFeatureConfig(Blocks.GRANITE.getDefaultState()));
+        //register(context, GRANITE_ROCKS, Feature.FOREST_ROCK, new SingleStateFeatureConfig(Blocks.GRANITE.getDefaultState()));
 
 
         /// ORE GENERATION _______________________________________________________
@@ -136,27 +136,27 @@ public class ModConfiguredFeatures {
         // TODO: Make fancy trees taller and more narrow and mor ofter + small bushes -> normal ones almost never spawn
 
 
-        register(context, MAPLE_RED_KEY, Feature.TREE, ModConfiguredFeatures.mapleRed().build());
-        register(context, MAPLE_ORANGE_KEY, Feature.TREE, ModConfiguredFeatures.mapleOrange().build());
-        register(context, FANCY_MAPLE_RED_KEY, Feature.TREE, ModConfiguredFeatures.fancyMapleRed().build());
-        register(context, FANCY_MAPLE_ORANGE_KEY, Feature.TREE, ModConfiguredFeatures.fancyMapleOrange().build());
+//        register(context, MAPLE_RED_KEY, Feature.TREE, ModConfiguredFeatures.mapleRed().build());
+//        register(context, MAPLE_ORANGE_KEY, Feature.TREE, ModConfiguredFeatures.mapleOrange().build());
+//        register(context, FANCY_MAPLE_RED_KEY, Feature.TREE, ModConfiguredFeatures.fancyMapleRed().build());
+//        register(context, FANCY_MAPLE_ORANGE_KEY, Feature.TREE, ModConfiguredFeatures.fancyMapleOrange().build());
 
-        RegistryEntryLookup<PlacedFeature> registryEntryLookup = context.getRegistryLookup(RegistryKeys.PLACED_FEATURE);
-        RegistryEntry<PlacedFeature> MAPLE_RED_ENTRY = registryEntryLookup.getOrThrow(ModPlacedFeatures.MAPLE_RED_PLACED_KEY);
-        RegistryEntry<PlacedFeature> MAPLE_ORANGE_ENTRY = registryEntryLookup.getOrThrow(ModPlacedFeatures.MAPLE_ORANGE_PLACED_KEY);
-        RegistryEntry<PlacedFeature> FANCY_MAPLE_RED_ENTRY = registryEntryLookup.getOrThrow(ModPlacedFeatures.FANCY_MAPLE_RED_PLACED_KEY);
-        RegistryEntry<PlacedFeature> FANCY_MAPLE_ORANGE_ENTRY = registryEntryLookup.getOrThrow(ModPlacedFeatures.FANCY_MAPLE_ORANGE_PLACED_KEY);
-        RegistryEntry<PlacedFeature> OAK_ENTRY = registryEntryLookup.getOrThrow(TreePlacedFeatures.OAK_BEES_002);
-        RegistryEntry<PlacedFeature> BIRCH_ENTRY = registryEntryLookup.getOrThrow(TreePlacedFeatures.SUPER_BIRCH_BEES);
-
-        register(context, MAPLE_KEY, Feature.RANDOM_SELECTOR, new RandomFeatureConfig(List.of(
-                new RandomFeatureEntry(MAPLE_RED_ENTRY, 0.2F),
-                new RandomFeatureEntry(MAPLE_ORANGE_ENTRY, 0.2F),
-                new RandomFeatureEntry(FANCY_MAPLE_RED_ENTRY, 0.2F),
-                new RandomFeatureEntry(OAK_ENTRY, 0.1F),
-                new RandomFeatureEntry(BIRCH_ENTRY, 0.1F),
-                new RandomFeatureEntry(FANCY_MAPLE_ORANGE_ENTRY, 0.2F)),
-                MAPLE_RED_ENTRY));
+//        RegistryEntryLookup<PlacedFeature> registryEntryLookup = context.getRegistryLookup(RegistryKeys.PLACED_FEATURE);
+//        RegistryEntry<PlacedFeature> MAPLE_RED_ENTRY = registryEntryLookup.getOrThrow(ModPlacedFeatures.MAPLE_RED_PLACED_KEY);
+//        RegistryEntry<PlacedFeature> MAPLE_ORANGE_ENTRY = registryEntryLookup.getOrThrow(ModPlacedFeatures.MAPLE_ORANGE_PLACED_KEY);
+//        RegistryEntry<PlacedFeature> FANCY_MAPLE_RED_ENTRY = registryEntryLookup.getOrThrow(ModPlacedFeatures.FANCY_MAPLE_RED_PLACED_KEY);
+//        RegistryEntry<PlacedFeature> FANCY_MAPLE_ORANGE_ENTRY = registryEntryLookup.getOrThrow(ModPlacedFeatures.FANCY_MAPLE_ORANGE_PLACED_KEY);
+//        RegistryEntry<PlacedFeature> OAK_ENTRY = registryEntryLookup.getOrThrow(TreePlacedFeatures.OAK_BEES_002);
+//        RegistryEntry<PlacedFeature> BIRCH_ENTRY = registryEntryLookup.getOrThrow(TreePlacedFeatures.SUPER_BIRCH_BEES);
+//
+//        register(context, MAPLE_KEY, Feature.RANDOM_SELECTOR, new RandomFeatureConfig(List.of(
+//                new RandomFeatureEntry(MAPLE_RED_ENTRY, 0.2F),
+//                new RandomFeatureEntry(MAPLE_ORANGE_ENTRY, 0.2F),
+//                new RandomFeatureEntry(FANCY_MAPLE_RED_ENTRY, 0.2F),
+//                new RandomFeatureEntry(OAK_ENTRY, 0.1F),
+//                new RandomFeatureEntry(BIRCH_ENTRY, 0.1F),
+//                new RandomFeatureEntry(FANCY_MAPLE_ORANGE_ENTRY, 0.2F)),
+//                MAPLE_RED_ENTRY));
 
 
         // Cave Mushrooms
@@ -167,24 +167,24 @@ public class ModConfiguredFeatures {
         return new TreeFeatureConfig.Builder(BlockStateProvider.of(log), new StraightTrunkPlacer(baseHeight, firstRandomHeight, secondRandomHeight), BlockStateProvider.of(leaves), new BlobFoliagePlacer(ConstantIntProvider.create(radius), ConstantIntProvider.create(0), 3), new TwoLayersFeatureSize(1, 0, 1));
     }
 
-    private static TreeFeatureConfig.Builder mapleRed() {
-        return ModConfiguredFeatures.builder(ModBlocks.MAPLE_LOG, ModBlocks.MAPLES_LEAVES_RED, 4, 2, 0, 2).ignoreVines();
-    }
-
-    private static TreeFeatureConfig.Builder mapleOrange() {
-        return ModConfiguredFeatures.builder(ModBlocks.MAPLE_LOG, ModBlocks.MAPLES_LEAVES_ORANGE, 4, 2, 0, 2).ignoreVines();
-    }
-
-    private static TreeFeatureConfig.Builder fancyMapleRed() {
-        return new TreeFeatureConfig.Builder(BlockStateProvider.of(ModBlocks.MAPLE_LOG), new LargeOakTrunkPlacer(3, 11, 0), BlockStateProvider.of(ModBlocks.MAPLES_LEAVES_RED), new LargeOakFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(4), 4), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))).ignoreVines();
-    }
-
-    private static TreeFeatureConfig.Builder fancyMapleOrange() {
-        return new TreeFeatureConfig.Builder(BlockStateProvider.of(ModBlocks.MAPLE_LOG), new LargeOakTrunkPlacer(3, 11, 0), BlockStateProvider.of(ModBlocks.MAPLES_LEAVES_ORANGE), new LargeOakFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(4), 4), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))).ignoreVines();
-    }
+//    private static TreeFeatureConfig.Builder mapleRed() {
+//        return ModConfiguredFeatures.builder(ModBlocks.MAPLE_LOG, ModBlocks.MAPLES_LEAVES_RED, 4, 2, 0, 2).ignoreVines();
+//    }
+//
+//    private static TreeFeatureConfig.Builder mapleOrange() {
+//        return ModConfiguredFeatures.builder(ModBlocks.MAPLE_LOG, ModBlocks.MAPLES_LEAVES_ORANGE, 4, 2, 0, 2).ignoreVines();
+//    }
+//
+//    private static TreeFeatureConfig.Builder fancyMapleRed() {
+//        return new TreeFeatureConfig.Builder(BlockStateProvider.of(ModBlocks.MAPLE_LOG), new LargeOakTrunkPlacer(3, 11, 0), BlockStateProvider.of(ModBlocks.MAPLES_LEAVES_RED), new LargeOakFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(4), 4), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))).ignoreVines();
+//    }
+//
+//    private static TreeFeatureConfig.Builder fancyMapleOrange() {
+//        return new TreeFeatureConfig.Builder(BlockStateProvider.of(ModBlocks.MAPLE_LOG), new LargeOakTrunkPlacer(3, 11, 0), BlockStateProvider.of(ModBlocks.MAPLES_LEAVES_ORANGE), new LargeOakFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(4), 4), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))).ignoreVines();
+//    }
 
     public static RegistryKey<ConfiguredFeature<?, ?>> registerKey(String name) {
-        return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, new Identifier(ServerMod.MOD_ID, name));
+        return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, Identifier.of(ServerMod.MOD_ID, name));
     }
 
     private static <FC extends FeatureConfig, F extends Feature<FC>> void register(

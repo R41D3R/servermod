@@ -9,6 +9,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.TallPlantBlock;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.data.server.loottable.BlockLootTableGenerator;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
 
 import net.minecraft.item.Item;
@@ -25,25 +26,18 @@ import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.loot.provider.number.UniformLootNumberProvider;
 import net.minecraft.predicate.StatePredicate;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.RegistryWrapper;
+
+import java.util.concurrent.CompletableFuture;
 
 public class ModLootTableProvider extends FabricBlockLootTableProvider {
-    public ModLootTableProvider(FabricDataOutput dataOutput) {
-        super(dataOutput);
+    public ModLootTableProvider(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
+        super(dataOutput, registryLookup);
     }
 
     @Override
     public void generate() {
-        // WOOD
-
-        addDrop(ModBlocks.MAPLE_LOG);
-        addDrop(ModBlocks.MAPLE_WOOD);
-        addDrop(ModBlocks.STRIPPED_MAPLE_LOG);
-        addDrop(ModBlocks.STRIPPED_MAPLE_WOOD);
-        addDrop(ModBlocks.MAPLE_PLANKS);
-        addDrop(ModBlocks.MAPLE_SAPLING);
-
-        addDrop(ModBlocks.MAPLES_LEAVES_RED, leavesDrops(ModBlocks.MAPLES_LEAVES_RED, ModBlocks.MAPLE_SAPLING, 0.005F));
-        addDrop(ModBlocks.MAPLES_LEAVES_ORANGE, leavesDrops(ModBlocks.MAPLES_LEAVES_ORANGE, ModBlocks.MAPLE_SAPLING, 0.005F));
 
         // BIOME
         addDrop(ModBlocks.PEBBLES_BLOCK, ModItems.PEBBLES_ITEM);
@@ -124,30 +118,41 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
     }
 
     public LootTable.Builder copperLikeOreDrops(Block drop, Item item) {
-        return BlockLootTableGenerator.dropsWithSilkTouch(drop, (LootPoolEntry.Builder)this.applyExplosionDecay(drop,
-                ((LeafEntry.Builder)
+        RegistryWrapper.Impl<Enchantment> impl = this.registryLookup.getWrapperOrThrow(RegistryKeys.ENCHANTMENT);
+        return this.dropsWithSilkTouch(
+                drop,
+                (LootPoolEntry.Builder<?>)this.applyExplosionDecay(
+                        drop,
                         ItemEntry.builder(item)
-                                .apply(SetCountLootFunction
-                                        .builder(UniformLootNumberProvider.create(1.0f, 3.0f))))
-                        .apply(ApplyBonusLootFunction.oreDrops(Enchantments.FORTUNE))));
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(2.0F, 5.0F)))
+                                .apply(ApplyBonusLootFunction.oreDrops(impl.getOrThrow(Enchantments.FORTUNE)))
+                )
+        );
     }
 
     public LootTable.Builder diamondLikeOreDrops(Block drop, Item item) {
-        return BlockLootTableGenerator.dropsWithSilkTouch(drop, (LootPoolEntry.Builder)this.applyExplosionDecay(drop,
-                ((LeafEntry.Builder)
+        RegistryWrapper.Impl<Enchantment> impl = this.registryLookup.getWrapperOrThrow(RegistryKeys.ENCHANTMENT);
+        return this.dropsWithSilkTouch(
+                drop,
+                (LootPoolEntry.Builder<?>)this.applyExplosionDecay(
+                        drop,
                         ItemEntry.builder(item)
-                                .apply(SetCountLootFunction
-                                        .builder(UniformLootNumberProvider.create(1.0f, 1.0f))))
-                        .apply(ApplyBonusLootFunction.oreDrops(Enchantments.FORTUNE))));
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0F, 3.0F)))
+                                .apply(ApplyBonusLootFunction.oreDrops(impl.getOrThrow(Enchantments.FORTUNE)))
+                )
+        );
     }
 
     public LootTable.Builder lootVaseBlockDrops(Block drop, Item item) {
-        return BlockLootTableGenerator.dropsWithSilkTouch(drop, (LootPoolEntry.Builder)this.applyExplosionDecay(drop,
-                ((LeafEntry.Builder)
+        RegistryWrapper.Impl<Enchantment> impl = this.registryLookup.getWrapperOrThrow(RegistryKeys.ENCHANTMENT);
+        return this.dropsWithSilkTouch(
+                drop,
+                (LootPoolEntry.Builder<?>)this.applyExplosionDecay(
+                        drop,
                         ItemEntry.builder(item)
-                                .apply(SetCountLootFunction
-                                        .builder(UniformLootNumberProvider.create(0.0f, 0.0f))))
-                        ));
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(2.0F, 5.0F)))
+                )
+        );
     }
 
     public BlockStatePropertyLootCondition.Builder cropBlockLikeDrop(DailyCropBlock block, Item item) {

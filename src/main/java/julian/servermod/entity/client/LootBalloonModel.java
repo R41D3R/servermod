@@ -8,16 +8,16 @@ import software.bernie.geckolib.model.GeoModel;
 public class LootBalloonModel extends GeoModel<LootBalloonEntity> {
     @Override
     public Identifier getModelResource(LootBalloonEntity animatable) {
-        return new Identifier(ServerMod.MOD_ID, "geo/loot_balloon.geo.json");
+        return Identifier.of(ServerMod.MOD_ID, "geo/loot_balloon.geo.json");
     }
 
     @Override
     public Identifier getTextureResource(LootBalloonEntity animatable) {
-        return new Identifier(ServerMod.MOD_ID, "textures/entity/balloon_1.png");
+        return Identifier.of(ServerMod.MOD_ID, "textures/entity/balloon_1.png");
     }
 
     @Override
     public Identifier getAnimationResource(LootBalloonEntity animatable) {
-        return new Identifier(ServerMod.MOD_ID, "animations/empty.animation.json");
+        return Identifier.of(ServerMod.MOD_ID, "animations/empty.animation.json");
     }
 }

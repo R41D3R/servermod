@@ -1,6 +1,5 @@
 package julian.servermod;
 
-import com.terraformersmc.terraform.sign.SpriteIdentifierRegistry;
 import io.wispforest.owo.network.OwoNetChannel;
 import julian.servermod.block.ModBlocks;
 import julian.servermod.entity.ModEntities;
@@ -8,7 +7,6 @@ import julian.servermod.entity.client.LootBalloonRenderer;
 import julian.servermod.entity.client.SnailRenderer;
 import julian.servermod.item.ModItems;
 import julian.servermod.screen.*;
-import julian.servermod.screen.util.BadgerTaskClientNetworkUtil;
 import julian.servermod.sound.ModSounds;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
@@ -33,22 +31,17 @@ import org.lwjgl.glfw.GLFW;
 import java.util.UUID;
 
 public class ServerModClient implements ClientModInitializer {
-    public static final OwoNetChannel CRATE_REWARD_SCREEN_CHANNEL = OwoNetChannel.create(new Identifier(ServerMod.MOD_ID, "crate_reward_screen"));
-    public static final OwoNetChannel CURRENCY_CHANNEL = OwoNetChannel.create(new Identifier(ServerMod.MOD_ID, "currency"));
+    public static final OwoNetChannel CRATE_REWARD_SCREEN_CHANNEL = OwoNetChannel.create(Identifier.of(ServerMod.MOD_ID, "crate_reward_screen"));
+    public static final OwoNetChannel CURRENCY_CHANNEL = OwoNetChannel.create(Identifier.of(ServerMod.MOD_ID, "currency"));
     public static KeyBinding storeGuiKey;
     public static KeyBinding rewardGuiKey;
 
     @Override
     public void onInitializeClient() {
-        HandledScreens.register(ModScreenHandlers.PHOENIX_BLOCK_SCREEN_HANDLER, PhoenixBlockScreen::new);
-        HandledScreens.register(ModScreenHandlers.STYLING_TABLE_MINE_HANDLER, StylingTableMineScreen::new);
-        HandledScreens.register(ModScreenHandlers.BOULDER_BLOCK_SCREEN_HANDLER, BoulderBlockScreen::new);
-        HandledScreens.register(ModScreenHandlers.BADGER_TASK_BLOCK_SCREEN_HANDLER, BadgerTaskBlockScreen::new);
+        //HandledScreens.register(ModScreenHandlers.BADGER_TASK_BLOCK_SCREEN_HANDLER, BadgerTaskBlockScreen::new);
 
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.PHOENIX_BLOCK, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BOULDER_BLOCK, RenderLayer.getCutout());
+
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.RARE_CHEST, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BADGER_TASK_BLOCK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.TASK_BOARD_BLOCK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LOOT_VASE_BLOCK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BADGER_CHEST, RenderLayer.getCutout());
@@ -104,24 +97,13 @@ public class ServerModClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.COLD_LEAF_LITTER_BLOCK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.DRY_LEAF_LITTER_BLOCK, RenderLayer.getCutout());
 
-        BadgerTaskClientNetworkUtil.init();
 
         EntityRendererRegistry.register(ModEntities.LOOT_BALLOON, LootBalloonRenderer::new);
         EntityRendererRegistry.register(ModEntities.SNAIL, SnailRenderer::new);
 
 
-        // trees
-        // saplings
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.MAPLE_SAPLING, RenderLayer.getCutout());
 
 
-        // Leaves
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.MAPLES_LEAVES_RED, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.MAPLES_LEAVES_ORANGE, RenderLayer.getCutout());
-
-        // TODO: Add Textures for Maple Signs
-        SpriteIdentifierRegistry.INSTANCE.addIdentifier(new SpriteIdentifier(TexturedRenderLayers.SIGNS_ATLAS_TEXTURE, ModBlocks.MAPLE_SIGN_TEXTURE));
-        SpriteIdentifierRegistry.INSTANCE.addIdentifier(new SpriteIdentifier(TexturedRenderLayers.SIGNS_ATLAS_TEXTURE, ModBlocks.MAPLE_HANGING_SIGN_TEXTURE));
 
         storeGuiKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
                 "key.servermod.open_store", // Translation key for the keybind name

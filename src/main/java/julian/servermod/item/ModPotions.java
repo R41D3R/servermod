@@ -1,6 +1,7 @@
 package julian.servermod.item;
 
 import julian.servermod.ServerMod;
+import net.fabricmc.fabric.api.registry.FabricBrewingRecipeRegistryBuilder;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.Items;
@@ -16,7 +17,7 @@ public class ModPotions {
     public static Potion LONG_HASTE_POTION;
 
     public static Potion registerPotion(String name, StatusEffectInstance effect) {
-        return Registry.register(Registries.POTION, new Identifier(ServerMod.MOD_ID, name),
+        return Registry.register(Registries.POTION, Identifier.of(ServerMod.MOD_ID, name),
                 new Potion(effect));
     }
 
@@ -29,7 +30,17 @@ public class ModPotions {
     }
 
     public static void registerPotionRecipes() {
-        BrewingRecipeRegistry.registerPotionRecipe(Potions.SWIFTNESS, ModItems.LARGE_ORANGE_MYCENA, HASTE_POTION);
-        BrewingRecipeRegistry.registerPotionRecipe(HASTE_POTION, Items.REDSTONE, LONG_HASTE_POTION);
+//        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder -> {
+//            builder.registerPotionRecipe(
+//                    // Input potion.
+//                    Potions.,
+//                    // Ingredient
+//                    ModItems.LARGE_ORANGE_MYCENA,
+//                    // Output potion.
+//                    Registries.POTION.getEntry(TATER_POTION)
+//            );
+//        });
+//        BrewingRecipeRegistry.(Potions.SWIFTNESS, ModItems.LARGE_ORANGE_MYCENA, HASTE_POTION);
+//        BrewingRecipeRegistry.registerPotionRecipe(HASTE_POTION, Items.REDSTONE, LONG_HASTE_POTION);
     }
 }

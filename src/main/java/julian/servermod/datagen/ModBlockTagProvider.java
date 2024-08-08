@@ -47,10 +47,10 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.PLANTER)
                 .add(ModBlocks.BALLOON_CRATE_BLOCK);
 
-        getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN)
-                .add(ModBlocks.MAPLE_LOG)
-                .add(ModBlocks.MAPLE_WOOD)
-                .add(ModBlocks.STRIPPED_MAPLE_LOG)
-                .add(ModBlocks.STRIPPED_MAPLE_WOOD);
+//        getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN)
+//                .add(ModBlocks.MAPLE_LOG)
+//                .add(ModBlocks.MAPLE_WOOD)
+//                .add(ModBlocks.STRIPPED_MAPLE_LOG)
+//                .add(ModBlocks.STRIPPED_MAPLE_WOOD);
     }
 }

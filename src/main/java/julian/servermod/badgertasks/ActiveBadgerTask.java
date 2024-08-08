@@ -1,6 +1,8 @@
 package julian.servermod.badgertasks;
 
 import net.minecraft.item.Item;
+import net.minecraft.network.RegistryByteBuf;
+import net.minecraft.network.codec.PacketCodec;
 
 public class ActiveBadgerTask {
     private final Item item;
@@ -30,11 +32,17 @@ public class ActiveBadgerTask {
         return item;
     }
 
-    public String toString() {
-        return item.toString() + " " + isCompleted + " " + requiredAmount;
-    }
 
     public String niceFormattedString() {
         return requiredAmount + " x " + item.getName().getString();
+    }
+
+    @Override
+    public String toString() {
+        return "ActiveBadgerTask{" +
+                "item=" + item +
+                ", isCompleted=" + isCompleted +
+                ", requiredAmount=" + requiredAmount +
+                '}';
     }
 }

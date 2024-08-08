@@ -32,7 +32,7 @@ public class ModSounds {
 
 
     private static SoundEvent registerSoundEvent(String name) {
-        Identifier id = new Identifier(ServerMod.MOD_ID, name);
+        Identifier id = Identifier.of(ServerMod.MOD_ID, name);
         return Registry.register(Registries.SOUND_EVENT, id, SoundEvent.of(id));
     }
 

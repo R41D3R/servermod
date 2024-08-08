@@ -1,5 +1,6 @@
 package julian.servermod.block.custom.biome;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -32,6 +33,11 @@ public class Pebble extends HorizontalFacingBlock {
         // set size random
         this.setDefaultState(getDefaultState().with(SIZE, 1));
         this.setDefaultState(getDefaultState().with(FACING, Direction.NORTH));
+    }
+
+    @Override
+    protected MapCodec<? extends HorizontalFacingBlock> getCodec() {
+        return null;
     }
 
     protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {

@@ -24,11 +24,11 @@ public abstract class ClimbingAnimalEntity extends AnimalEntity {
     }
 
 
-    @Override
-    protected void initDataTracker() {
-        super.initDataTracker();
-        this.dataTracker.startTracking(CLIMB_FLAG, (byte)0);
-    }
+//    @Override
+//    protected void initDataTracker(DataTracker.Builder builder) {
+//        super.initDataTracker(builder);
+//        this.dataTracker.startTracking(CLIMB_FLAG, (byte)0);
+//    }
 
     @Override
     public void tick() {

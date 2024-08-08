@@ -15,8 +15,6 @@ import julian.servermod.item.ModPotions;
 import julian.servermod.screen.CrateRewardScreen;
 import julian.servermod.screen.ModScreenHandlers;
 import julian.servermod.screen.StoreScreen;
-import julian.servermod.screen.util.BadgerTaskNetworkUtil;
-import julian.servermod.screen.util.BoulderNetworkUtil;
 import julian.servermod.screen.util.InventoryUtil;
 import julian.servermod.sound.ModSounds;
 import julian.servermod.utils.playerdata.WalletData;
@@ -52,7 +50,7 @@ import org.slf4j.LoggerFactory;
 
 public class ServerMod implements ModInitializer {
 
-	public static final OwoNetChannel STORE_BUY_CHANNEL = OwoNetChannel.create(new Identifier(ServerMod.MOD_ID, "store_buy"));
+	public static final OwoNetChannel STORE_BUY_CHANNEL = OwoNetChannel.create(Identifier.of(ServerMod.MOD_ID, "store_buy"));
 
 
 	public static final String MOD_ID = "servermod";
@@ -85,11 +83,6 @@ public class ServerMod implements ModInitializer {
 		ModCommandRegister.registerCommands();
 		ModSounds.registerSounds();
 
-		BoulderNetworkUtil.init();
-
-		BadgerTaskNetworkUtil.init();
-
-
 		ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
 			handlePlayerLogin(handler.getPlayer());
 		});
@@ -100,16 +93,6 @@ public class ServerMod implements ModInitializer {
 
 		// UseEntityCallback.EVENT.register(new VillagerTradingChangeHandler());
 
-		StrippableBlockRegistry.register(ModBlocks.MAPLE_LOG, ModBlocks.STRIPPED_MAPLE_LOG);
-		StrippableBlockRegistry.register(ModBlocks.MAPLE_WOOD, ModBlocks.STRIPPED_MAPLE_WOOD);
-
-		FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.MAPLE_LOG, 5, 5);
-		FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.MAPLE_WOOD, 5, 5);
-		FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.STRIPPED_MAPLE_LOG, 5, 5);
-		FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.STRIPPED_MAPLE_WOOD, 5, 5);
-		FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.MAPLE_PLANKS, 5, 20);
-		FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.MAPLES_LEAVES_RED, 30, 60);
-		FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.MAPLES_LEAVES_ORANGE, 30, 60);
 
 		// CrateParticleAnimationSystem.initialize();
 
@@ -120,32 +103,32 @@ public class ServerMod implements ModInitializer {
 		CustomPortalBuilder.beginPortal()
 				.frameBlock(ModBlocks.RUBY_BLOCK)
 				.lightWithItem(ModItems.RUBY)
-				.destDimID(new Identifier("minecraft", "overworld"))
-				.returnDim(new Identifier("test", "overworld"), true)
+				.destDimID(Identifier.of("minecraft", "overworld"))
+				.returnDim(Identifier.of("test", "overworld"), true)
 				.tintColor(0x00FF00)
 				.registerPortal();
 
 		CustomPortalBuilder.beginPortal()
 				.frameBlock(Blocks.CRYING_OBSIDIAN)
 				.lightWithItem(ModItems.RUBY)
-				.destDimID(new Identifier("test", "the_nether"))
-				.returnDim(new Identifier("test", "overworld"), false)
+				.destDimID(Identifier.of("test", "the_nether"))
+				.returnDim(Identifier.of("test", "overworld"), false)
 				.tintColor(0xc76efa)
 				.registerPortal();
 
 		CustomPortalBuilder.beginPortal()
 				.frameBlock(ModBlocks.RUBY_BLOCK)
 				.lightWithItem(ModItems.RUBY)
-				.destDimID(new Identifier("minecraft", "overworld"))
-				.returnDim(new Identifier("test2", "overworld"), true)
+				.destDimID(Identifier.of("minecraft", "overworld"))
+				.returnDim(Identifier.of("test2", "overworld"), true)
 				.tintColor(0x00FF00)
 				.registerPortal();
 
 		CustomPortalBuilder.beginPortal()
 				.frameBlock(Blocks.CRYING_OBSIDIAN)
 				.lightWithItem(ModItems.RUBY)
-				.destDimID(new Identifier("test2", "the_nether"))
-				.returnDim(new Identifier("test2", "overworld"), false)
+				.destDimID(Identifier.of("test2", "the_nether"))
+				.returnDim(Identifier.of("test2", "overworld"), false)
 				.tintColor(0xc76efa)
 				.registerPortal();
 

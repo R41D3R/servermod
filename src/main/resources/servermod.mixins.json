@@ -9,14 +9,9 @@
     "ChunkSectionMixin",
     "EnderPearlEntityMixin",
     "ExampleMixin",
-    "ItemStackMixin",
     "LeavesBlockMixin",
     "LlamaEntityMixin",
-    "MerchantEntityMixin",
-    "MerchantMixin",
-    "MinecraftServerMixin",
-    "ModEntityDataSaverMixin",
-    "VillagerInitMixin"
+    "ModEntityDataSaverMixin"
   ],
   "client" : [
     "ItemRendererAccessor",

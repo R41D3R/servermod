@@ -55,10 +55,10 @@ public abstract class LootBoxBlock extends Block implements Waterloggable {
         builder.add(MOVED);
     }
 
-    @Override
-    public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
-        return false;
-    }
+//    @Override
+//    public boolean canPathfindThrough(NavigationType type) {
+//        return false;
+//    }
 
 
     @Override

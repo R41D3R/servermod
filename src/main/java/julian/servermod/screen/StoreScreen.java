@@ -173,7 +173,7 @@ public class StoreScreen extends BaseOwoScreen<FlowLayout> {
         outerMenuComponent.child(menuComponent);
         outerMenuComponent.child(currencyBagComponent);
 
-        var storeBanner = Components.texture(new Identifier(ServerMod.MOD_ID, "textures/gui/store_head.png"),
+        var storeBanner = Components.texture(Identifier.of(ServerMod.MOD_ID, "textures/gui/store_head.png"),
                 0 , 0,86, 27, 86, 27);
         storeBanner.margins(Insets.bottom(8));
         rootComponent.child(storeBanner);

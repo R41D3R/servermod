@@ -75,7 +75,7 @@ public class ThreeTallDirectionalBlock extends DirectionalBlock{
     }
 
     @Override
-    public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+    public BlockState onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
         if (state.get(HALF) == TripleBlockHalf.LOWER) {
             BlockPos pos2 = pos.up();
             world.breakBlock(pos2, false);
@@ -85,7 +85,7 @@ public class ThreeTallDirectionalBlock extends DirectionalBlock{
             world.breakBlock(pos2, false);
         }
 
-        super.onBreak(world, pos, state, player);
+        return super.onBreak(world, pos, state, player);
     }
 
 

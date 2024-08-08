@@ -1,9 +1,5 @@
 package julian.servermod.block;
 
-import com.terraformersmc.terraform.sign.block.TerraformHangingSignBlock;
-import com.terraformersmc.terraform.sign.block.TerraformSignBlock;
-import com.terraformersmc.terraform.sign.block.TerraformWallHangingSignBlock;
-import com.terraformersmc.terraform.sign.block.TerraformWallSignBlock;
 import julian.servermod.ServerMod;
 import julian.servermod.block.custom.*;
 import julian.servermod.block.custom.abstracts.DirectionalBlock;
@@ -13,7 +9,6 @@ import julian.servermod.block.custom.biome.*;
 import julian.servermod.block.custom.crop.DailyCropBlock;
 import julian.servermod.block.furniture.TaskBoardBlock;
 import julian.servermod.sound.ModSounds;
-import julian.servermod.world.tree.MapleSaplingGenerator;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.data.family.BlockFamilies;
@@ -46,14 +41,6 @@ public class ModBlocks {
     public static final Block PLATINUM_BLOCK = registerBlock("platinum_block",
             new Block(FabricBlockSettings.copyOf(Blocks.DIAMOND_BLOCK)));
 
-    public static final Block PHOENIX_BLOCK = registerBlock("phoenix_block",
-            new PhoenixBlock(FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK).nonOpaque()));
-
-    public static final Block STYLING_TABLE_MINE = registerBlock("styling_table_mine",
-            new StylingTableMine(FabricBlockSettings.copyOf(Blocks.CRAFTING_TABLE).nonOpaque()));
-
-    public static final Block BOULDER_BLOCK = registerBlock("boulder_block",
-            new BoulderBlock(FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK).nonOpaque()));
 
     public static final Block RARE_CHEST = registerBlock("rare_chest",
             new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).nonOpaque()));
@@ -64,8 +51,6 @@ public class ModBlocks {
     public static final Block LEGENDARY_CHEST = registerBlock("legendary_chest",
             new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).nonOpaque()));
 
-    public static final Block BADGER_TASK_BLOCK = registerBlock("badger_task_block",
-            new BadgerTaskBlock(FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK).nonOpaque()));
 
     public static final Block LOOT_VASE_BLOCK = registerBlock("loot_vase_block",
             new LootVaseBlock(FabricBlockSettings.copyOf(Blocks.GLASS).nonOpaque().sounds(ModSounds.LOOT_VASE_BLOCK_SOUNDS)));

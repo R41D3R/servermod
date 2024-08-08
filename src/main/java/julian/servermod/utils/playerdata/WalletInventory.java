@@ -27,7 +27,7 @@ public class WalletInventory {
         this.data = list;
         for (NbtElement element : list) {
             NbtCompound compound = (NbtCompound) element;
-            Identifier id = new Identifier(compound.getString("id"));
+            Identifier id = Identifier.of(compound.getString("id"));
             Item item = Registries.ITEM.get(id);
             int count = compound.getInt("Count");
             stacks.put(item, count);

@@ -1,5 +1,6 @@
 package julian.servermod.block.custom.biome;
 
+import com.mojang.serialization.MapCodec;
 import julian.servermod.block.ModBlocks;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -28,12 +29,17 @@ public class CustomFernBlock
     }
 
     @Override
+    protected MapCodec<? extends PlantBlock> getCodec() {
+        return null;
+    }
+
+    @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return SHAPE;
     }
 
     @Override
-    public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state, boolean isClient) {
+    public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state) {
         return false;
     }
 

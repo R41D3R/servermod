@@ -2,8 +2,10 @@ package julian.servermod.utils;
 
 
 import julian.servermod.ServerMod;
-import net.minecraft.item.Item;
+import julian.servermod.utils.AllCustomLootTables.ItemStackAbstract;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.registry.RegistryWrapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,13 +17,13 @@ public class CustomLootTable {
     private final float EPIC_LOOT_WEIGHT;
     private final float LEGENDARY_LOOT_WEIGHT;
 
-    private final List<ItemStack> COMMON_LOOT;
-    private final List<ItemStack> RARE_LOOT;
-    private final List<ItemStack> EPIC_LOOT;
-    private final List<ItemStack> LEGENDARY_LOOT;
+    private final List<ItemStackAbstract> COMMON_LOOT;
+    private final List<ItemStackAbstract> RARE_LOOT;
+    private final List<ItemStackAbstract> EPIC_LOOT;
+    private final List<ItemStackAbstract> LEGENDARY_LOOT;
 
-    public CustomLootTable(List<ItemStack> commonLoot, List<ItemStack> rareLoot,
-                           List<ItemStack> epicLoot, List<ItemStack> legendaryLoot,
+    public CustomLootTable(List<ItemStackAbstract> commonLoot, List<ItemStackAbstract> rareLoot,
+                           List<ItemStackAbstract> epicLoot, List<ItemStackAbstract> legendaryLoot,
                            float commonWeight, float rareWeight,
                            float epicWeight, float legendaryWeight) {
         COMMON_LOOT = commonLoot;
@@ -34,29 +36,32 @@ public class CustomLootTable {
         LEGENDARY_LOOT_WEIGHT = legendaryWeight;
     }
 
-    public ItemStack getRandomLoot() {
-        List<ItemStack> lootList = getLootList();
+    public ItemStack getRandomLoot(RegistryWrapper.WrapperLookup registries) {
+        List<ItemStackAbstract> lootList = getLootList();
         ServerMod.LOGGER.info("Loot List: " + lootList);
-        return lootList.get(new Random().nextInt(lootList.size()));
+        ItemStackAbstract loot = lootList.get(new Random().nextInt(lootList.size()));
+        if (loot.nbt instanceof NbtCompound) return ItemStack.fromNbtOrEmpty(registries, loot.nbt);
+        else if (loot.item != null) return new ItemStack(loot.item, loot.count);
+        else return new ItemStack(loot.block, loot.count);
     }
 
-    public List<ItemStack> getRandomLoot(int count) {
+    public List<ItemStack> getRandomLoot(RegistryWrapper.WrapperLookup registries, int count) {
         List<ItemStack> result = new ArrayList<>();
         for (int i = 0; i < count; i++) {
-            result.add(getRandomLoot().copy());
+            result.add(getRandomLoot(registries).copy());
         }
         ServerMod.LOGGER.info("Result: " + result);
         return result;
     }
 
-    public List<ItemStack> getLootList() {
-        WeightedRandomBag<List<ItemStack>> bag = new WeightedRandomBag<>();
+    public List<ItemStackAbstract> getLootList() {
+        WeightedRandomBag<List<ItemStackAbstract>> bag = new WeightedRandomBag<>();
         bag.addEntry(new ArrayList<>(COMMON_LOOT), COMMON_LOOT_WEIGHT);
         bag.addEntry(new ArrayList<>(RARE_LOOT), RARE_LOOT_WEIGHT);
         bag.addEntry(new ArrayList<>(EPIC_LOOT), EPIC_LOOT_WEIGHT);
         bag.addEntry(new ArrayList<>(LEGENDARY_LOOT), LEGENDARY_LOOT_WEIGHT);
 
-        List<ItemStack> randomLootList = bag.getRandom();
+        List<ItemStackAbstract> randomLootList = bag.getRandom();
         return new ArrayList<>(randomLootList);
     }
 }

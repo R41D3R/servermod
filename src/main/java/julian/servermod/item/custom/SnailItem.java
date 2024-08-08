@@ -56,7 +56,8 @@ public class SnailItem extends Item {
             snailEntity.setPosition(spawnPos);
 
             // Send spawn packet to all tracking clients
-            world.getChunkManager().sendToOtherNearbyPlayers(snailEntity, new EntitySpawnS2CPacket(snailEntity));
+            // 		int entityId, UUID uuid, double x, double y, double z, float pitch, float yaw, EntityType<?> entityType, int entityData, Vec3d velocity, double headYaw
+            world.getChunkManager().sendToOtherNearbyPlayers(snailEntity, new EntitySpawnS2CPacket(snailEntity.getId(), snailEntity.getUuid(), snailEntity.getX(), snailEntity.getY(), snailEntity.getZ(), 0, snailEntity.getYaw(), snailEntity.getType(), 0, snailEntity.getVelocity(), snailEntity.headYaw));
         }
     }
 }

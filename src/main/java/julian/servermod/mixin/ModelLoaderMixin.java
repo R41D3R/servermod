@@ -4,6 +4,7 @@ import julian.servermod.ServerMod;
 import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.render.model.BlockStatesLoader;
 import net.minecraft.client.render.model.ModelLoader;
+import net.minecraft.client.render.model.UnbakedModel;
 import net.minecraft.client.render.model.json.JsonUnbakedModel;
 import net.minecraft.client.util.ModelIdentifier;
 import net.minecraft.util.Identifier;
@@ -20,18 +21,23 @@ import java.util.Map;
 @Mixin(ModelLoader.class)
 public abstract class ModelLoaderMixin {
     @Shadow
-    protected abstract void addModel(ModelIdentifier modelId);
+    protected abstract void addModelToBake(ModelIdentifier modelId, UnbakedModel unbakedModel);
+    @Shadow
+    private UnbakedModel missingModel;
 
-    @Inject(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/model/ModelLoader;addModel(Lnet/minecraft/client/render/model/ModelIdentifier;)V", ordinal = 3, shift = At.Shift.AFTER))
-    public void addWateringCan(BlockColors blockColors, Profiler profiler, Map<Identifier, JsonUnbakedModel> jsonUnbakedModels,
-                               Map<Identifier, List<BlockStatesLoader.SourceTrackedData>> blockStates, CallbackInfo ci) {
-        this.addModel(new ModelIdentifier(Identifier.of(ServerMod.MOD_ID, "wooden_watering_can_3d"), "inventory"));
-        this.addModel(new ModelIdentifier(Identifier.of(ServerMod.MOD_ID, "wooden_watering_can"), "inventory"));
-        this.addModel(new ModelIdentifier(Identifier.of(ServerMod.MOD_ID, "wooden_watering_can_full"), "inventory"));
-        this.addModel(new ModelIdentifier(Identifier.of(ServerMod.MOD_ID, "wooden_watering_can_3d_full"), "inventory"));
-        this.addModel(new ModelIdentifier(Identifier.of(ServerMod.MOD_ID, "capture_net"), "inventory"));
-        this.addModel(new ModelIdentifier(Identifier.of(ServerMod.MOD_ID, "capture_net_closed"), "inventory"));
-        this.addModel(new ModelIdentifier(Identifier.of(ServerMod.MOD_ID, "snail"), "inventory"));
-        this.addModel(new ModelIdentifier(Identifier.of(ServerMod.MOD_ID, "snail_3d"), "inventory"));
+    @Shadow
+    protected abstract JsonUnbakedModel loadModelFromJson(Identifier id);
+
+
+    @Inject(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/model/ModelLoader;addModelToBake(Lnet/minecraft/client/util/ModelIdentifier;Lnet/minecraft/client/render/model/UnbakedModel;)V", ordinal = 0, shift = At.Shift.AFTER))
+    public void addWateringCan(BlockColors blockColors, Profiler profiler, Map<Identifier, JsonUnbakedModel> jsonUnbakedModels, Map<Identifier, List<BlockStatesLoader.SourceTrackedData>> blockStates, CallbackInfo ci) {
+        this.addModelToBake(new ModelIdentifier(Identifier.of(ServerMod.MOD_ID, "wooden_watering_can_3d"), "inventory"), this.missingModel);
+        this.addModelToBake(new ModelIdentifier(Identifier.of(ServerMod.MOD_ID, "wooden_watering_can"), "inventory"), this.missingModel);
+        this.addModelToBake(new ModelIdentifier(Identifier.of(ServerMod.MOD_ID, "wooden_watering_can_full"), "inventory"), this.missingModel);
+        this.addModelToBake(new ModelIdentifier(Identifier.of(ServerMod.MOD_ID, "wooden_watering_can_3d_full"), "inventory"), this.missingModel);
+        this.addModelToBake(new ModelIdentifier(Identifier.of(ServerMod.MOD_ID, "capture_net"), "inventory"), this.missingModel);
+        this.addModelToBake(new ModelIdentifier(Identifier.of(ServerMod.MOD_ID, "capture_net_closed"), "inventory"), this.missingModel);
+        this.addModelToBake(new ModelIdentifier(Identifier.of(ServerMod.MOD_ID, "snail"), "inventory"), this.missingModel);
+        this.addModelToBake(new ModelIdentifier(Identifier.of(ServerMod.MOD_ID, "snail_3d"), "inventory"), this.missingModel);
     }
 }

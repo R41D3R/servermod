@@ -163,11 +163,9 @@ public class TaskBoardBlock extends DirectionalBlock {
 //    }
 
     @Override
-    public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+    public BlockState onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
         // ABC
         // DEF
-        if (player != null) {
-
 
         if (state.get(HALF) == DoubleBlockHalf.LOWER && state.get(COLUMN) == 1) {
             world.breakBlock(getBlockPos(pos, state, state.get(COLUMN), "right"), false);
@@ -175,7 +173,7 @@ public class TaskBoardBlock extends DirectionalBlock {
             world.breakBlock(pos.up(), false);
             world.breakBlock(getBlockPos(pos.up(), state, state.get(COLUMN), "right"), false);
             world.breakBlock(getBlockPos(pos.up(), state, state.get(COLUMN), "right", 2), false);
-            return;
+
         }
         else if (state.get(HALF) == DoubleBlockHalf.UPPER && state.get(COLUMN) == 1) {
             world.breakBlock(getBlockPos(pos, state, state.get(COLUMN), "right"), false);
@@ -183,7 +181,7 @@ public class TaskBoardBlock extends DirectionalBlock {
             world.breakBlock(pos.down(), false);
             world.breakBlock(getBlockPos(pos.down(), state, state.get(COLUMN), "right"), false);
             world.breakBlock(getBlockPos(pos.down(), state, state.get(COLUMN), "right", 2), false);
-            return;
+
         }
         else if (state.get(HALF) == DoubleBlockHalf.UPPER && state.get(COLUMN) == 2) {
             world.breakBlock(getBlockPos(pos, state, state.get(COLUMN), "right"), false);
@@ -191,14 +189,14 @@ public class TaskBoardBlock extends DirectionalBlock {
             world.breakBlock(pos.down(), false);
             world.breakBlock(getBlockPos(pos.down(), state, state.get(COLUMN), "right"), false);
             world.breakBlock(getBlockPos(pos.down(), state, state.get(COLUMN), "left"), false);
-            return;
+
         } else if (state.get(HALF) == DoubleBlockHalf.LOWER && state.get(COLUMN) == 2) {
             world.breakBlock(getBlockPos(pos, state, state.get(COLUMN), "right"), false);
             world.breakBlock(getBlockPos(pos, state, state.get(COLUMN), "left"), false);
             world.breakBlock(pos.up(), false);
             world.breakBlock(getBlockPos(pos.up(), state, state.get(COLUMN), "right"), false);
             world.breakBlock(getBlockPos(pos.up(), state, state.get(COLUMN), "left"), false);
-            return;
+
         }
         else if (state.get(HALF) == DoubleBlockHalf.LOWER && state.get(COLUMN) == 3) {
             world.breakBlock(getBlockPos(pos, state, state.get(COLUMN), "left"), false);
@@ -206,7 +204,7 @@ public class TaskBoardBlock extends DirectionalBlock {
             world.breakBlock(pos.up(), false);
             world.breakBlock(getBlockPos(pos.up(), state, state.get(COLUMN), "left"), false);
             world.breakBlock(getBlockPos(pos.up(), state, state.get(COLUMN), "left", 2), false);
-            return;
+
         }
         else if (state.get(HALF) == DoubleBlockHalf.UPPER && state.get(COLUMN) == 3) {
             world.breakBlock(getBlockPos(pos, state, state.get(COLUMN), "left"), false);
@@ -214,11 +212,10 @@ public class TaskBoardBlock extends DirectionalBlock {
             world.breakBlock(pos.down(), false);
             world.breakBlock(getBlockPos(pos.down(), state, state.get(COLUMN), "left"), false);
             world.breakBlock(getBlockPos(pos.down(), state, state.get(COLUMN), "left", 2), false);
-            return;
+
         }
 
-        super.onBreak(world, pos, state, player);
-        }
+        return super.onBreak(world, pos, state, player);
     }
 
 //    @Override

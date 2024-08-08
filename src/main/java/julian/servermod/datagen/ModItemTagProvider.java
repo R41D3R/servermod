@@ -14,7 +14,7 @@ import net.minecraft.util.Identifier;
 import java.util.concurrent.CompletableFuture;
 
 public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
-    public static final TagKey<Item> TAVERN_TOKENS_VALID_CURRENCY = TagKey.of(RegistryKeys.ITEM, new Identifier("taverntokens", "valid_currency"));
+    //public static final TagKey<Item> TAVERN_TOKENS_VALID_CURRENCY = TagKey.of(RegistryKeys.ITEM, Identifier.of("taverntokens", "valid_currency"));
 
     public ModItemTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> completableFuture) {
         super(output, completableFuture);
@@ -23,21 +23,12 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
 
-        getOrCreateTagBuilder(ItemTags.PLANKS)
-                .add(ModBlocks.MAPLE_PLANKS.asItem());
-
-        getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN)
-                .add(ModBlocks.MAPLE_LOG.asItem())
-                .add(ModBlocks.MAPLE_WOOD.asItem())
-                .add(ModBlocks.STRIPPED_MAPLE_LOG.asItem())
-                .add(ModBlocks.STRIPPED_MAPLE_WOOD.asItem());
-
         // Add your custom currency to the Tavern Tokens valid currency tag
 
 
-        getOrCreateTagBuilder(TAVERN_TOKENS_VALID_CURRENCY)
-                .add(ModItems.BADGER_COIN)
-                .add(ModItems.RUBY);
+//        getOrCreateTagBuilder(TAVERN_TOKENS_VALID_CURRENCY)
+//                .add(ModItems.BADGER_COIN)
+//                .add(ModItems.RUBY);
 
     }
 }
