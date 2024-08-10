@@ -43,11 +43,23 @@ public class ModColorProviders {
         // Register your blocks with their respective color providers here
         // Example:
         // registerBlockColorProvider(ModBlocks.SOME_BLOCK, 0, 0x3495eb);
-        registerBlockColorProvider(ModBlocks.MUSHROOM_LAMPSTAND, 1, 0x722F37);
-        registerBlockColorProvider(ModBlocks.MUSHROOM_STOOL, 1, 0x722F37);
-        registerBlockColorProvider(ModBlocks.SASH_BANNER_WALL, 1, 0x869755);
+//        registerBlockColorProvider(ModBlocks.MUSHROOM_LAMPSTAND, 1, 0x722F37);
+//        registerBlockColorProvider(ModBlocks.MUSHROOM_STOOL, 1, 0x722F37);
+//        registerBlockColorProvider(ModBlocks.WOODEN_SWORD, 1, 0x424e3c);
+//        registerBlockColorProvider(ModBlocks.WOODEN_LLAMA, 1, 0x6e7c46);
+//        registerBlockColorProvider(ModBlocks.WOODEN_BEAR, 1, 0x869755);
+        registerBlockColorProvider(ModBlocks.MUSHROOM_LAMPSTAND, 1, 0xbc3e39);
+        registerBlockColorProvider(ModBlocks.MUSHROOM_STOOL, 1, 0xbc3e39);
+        registerBlockColorProvider(ModBlocks.SASH_BANNER_WALL, 1, 0x5a6539);
         registerBlockColorProvider(ModBlocks.FARMING_BANNER, 1, 0xfdbf3b);
         registerBlockColorProvider(ModBlocks.COMBAT_BANNER, 1, 0xc72b1d);
+
+        registerBlockColorProvider(ModBlocks.WOODEN_SWORD, 1, 0x5a6539);
+        registerBlockColorProvider(ModBlocks.WOODEN_LLAMA, 1, 0x5a6539);
+        registerBlockColorProvider(ModBlocks.WOODEN_CREEPER, 1, 0x5a6539);
+        registerBlockColorProvider(ModBlocks.WOODEN_BEAR, 1, 0x5a6539);
+        registerBlockColorProvider(ModBlocks.WOODEN_PENGUIN, 1, 0x5a6539);
+        registerBlockColorProvider(ModBlocks.WOODEN_SCARECROW, 1, 0x5a6539);
 
 
     }

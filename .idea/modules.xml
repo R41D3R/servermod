@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/julian.servermod.mod_dev.main.iml" filepath="$PROJECT_DIR$/.idea/modules/julian.servermod.mod_dev.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/julian.servermod.mod_dev.test.iml" filepath="$PROJECT_DIR$/.idea/modules/julian.servermod.mod_dev.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mod dev.mod_dev.main.iml" filepath="$PROJECT_DIR$/.idea/modules/mod dev.mod_dev.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mod dev.mod_dev.test.iml" filepath="$PROJECT_DIR$/.idea/modules/mod dev.mod_dev.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/mod_dev.main.iml" filepath="$PROJECT_DIR$/.idea/modules/mod_dev.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/mod_dev.test.iml" filepath="$PROJECT_DIR$/.idea/modules/mod_dev.test.iml" />
     </modules>

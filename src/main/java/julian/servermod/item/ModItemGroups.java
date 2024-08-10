@@ -15,6 +15,8 @@ public class ModItemGroups {
             Identifier.of(ServerMod.MOD_ID, "servermod"),
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.servermod"))
                     .icon(() -> new ItemStack(ModItems.RUBY)).entries((displayContext, entries) -> {
+                        entries.add(ModBlocks.CUSTOM_BARRIER);
+
                         entries.add(ModItems.ANCIENT_PICKAXE);
 
                         // Biome
@@ -46,7 +48,7 @@ public class ModItemGroups {
                         // Entities
                         entries.add(ModItems.LOOT_BALLOON_SPAWN_EGG);
                         entries.add(ModItems.SNAIL_SPAWN_EGG);
-                        entries.add(ModItems.CAPTURE_NET);
+                        //entries.add(ModItems.CAPTURE_NET);
                         entries.add(ModBlocks.TASK_BOARD_BLOCK);
 
                         entries.add(ModItems.WateringCan);

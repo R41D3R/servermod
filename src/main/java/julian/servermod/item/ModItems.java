@@ -32,8 +32,8 @@ public class ModItems {
 
 
 
-    public static final Item CAPTURE_NET = registerItem("capture_net",
-            new CaptureNet(new Item.Settings().maxDamage(3)));
+//    public static final Item CAPTURE_NET = registerItem("capture_net",
+//            new CaptureNet(new Item.Settings().maxDamage(3)));
 
 
     public static final Item BADGER_CLUB_ID = registerItem("badger_club_id",
@@ -209,6 +209,7 @@ public class ModItems {
 
 
     private static Item registerItem(String name, Item item) {
+        ServerMod.LOGGER.info("Registering " + name);
         return Registry.register(Registries.ITEM, Identifier.of(ServerMod.MOD_ID, name), item);
     }
 

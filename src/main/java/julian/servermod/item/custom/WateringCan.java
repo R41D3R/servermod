@@ -1,6 +1,7 @@
 package julian.servermod.item.custom;
 
 import julian.servermod.block.ModBlocks;
+import julian.servermod.block.PlanterBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -52,7 +53,7 @@ public class WateringCan extends Item {
         }
 
         if (state.isOf(ModBlocks.PLANTER)) {
-            context.getWorld().setBlockState(positionClicked, state.with(BooleanProperty.of("wet"), true));
+            context.getWorld().setBlockState(positionClicked, state.with(PlanterBlock.WET, true));
         }
 
         context.getWorld().addParticle(ParticleTypes.RAIN, positionClicked.toCenterPos().getX(), positionClicked.getY() + 1.0, positionClicked.toCenterPos().getZ(), 0.0, 0.0, 0.0);

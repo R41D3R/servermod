@@ -8,6 +8,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.Property;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
@@ -21,14 +22,14 @@ public class PlanterBlock extends Block {
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
 
-        builder.add(WET);
-        builder.add(SOIL);
+        builder.add(WET, SOIL);
+        //builder.add(SOIL);
     }
 
 
     public PlanterBlock(FabricBlockSettings settings) {
         super(settings);
-        setDefaultState(getDefaultState().with(WET, false));
-        setDefaultState(getDefaultState().with(SOIL, false));
+        setDefaultState(getDefaultState().with(WET, false).with(SOIL, false));
+        //setDefaultState(getDefaultState().with(SOIL, false));
     } 
 }

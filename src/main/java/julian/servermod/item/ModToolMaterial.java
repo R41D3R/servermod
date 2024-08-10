@@ -14,9 +14,7 @@ public enum ModToolMaterial implements ToolMaterial {
     }),
     PLATINUM(BlockTags.INCORRECT_FOR_NETHERITE_TOOL,2031, 9, 4.0F, 20, () -> {
         return Ingredient.ofItems(ModItems.PLATINUM);
-    }),
-
-    ;
+    });
 
     private final TagKey<Block> inverseTag;
     private final int itemDurability;
@@ -51,7 +49,7 @@ public enum ModToolMaterial implements ToolMaterial {
 
     @Override
     public TagKey<Block> getInverseTag() {
-        return null;
+        return this.inverseTag;
     }
 
 

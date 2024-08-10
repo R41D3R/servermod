@@ -54,8 +54,8 @@ public class AnvilHelper {
     private static boolean designMatchesItemType(ItemStack design, ItemStack item) {
 
         ComponentMap designComponent = design.getComponents();
-        ComponentMap designTags = (ComponentMap) ComponentUtil.getValueFromComponentMap(designComponent, "Design");
-        String designID = (String) ComponentUtil.getValueFromComponentMap(designTags, "Id");
+        ComponentMap designTags = (ComponentMap) ComponentUtil.getValueFromComponentMap(designComponent, "Design", "vanity");
+        String designID = (String) ComponentUtil.getValueFromComponentMap(designTags, "Id", "vanity");
         String forItemType = designID.split(":")[1].split("_")[0];
         String inputItemID = item.getItem().toString() ;
 
@@ -71,15 +71,15 @@ public class AnvilHelper {
     private static ItemStack getItemStackWithDesign(ItemStack item, ItemStack design) {
         //NbtCompound designTag = design.getNbt();
         ComponentMap designComponent = design.getComponents();
-        ComponentMap designTags = (ComponentMap) ComponentUtil.getValueFromComponentMap(designComponent, "Design");
+        ComponentMap designTags = (ComponentMap) ComponentUtil.getValueFromComponentMap(designComponent, "Design", "vanity");
         // add default style tag to NBT Compound
         // designTag.putString("Style", "default");
 
         ItemStack copyOfInput = item.copy();
         //copyOfInput.getNbt().put("Design", designTag.getCompound("Design"));
-        ComponentUtil.putValueToComponentMap(copyOfInput.getComponents(), "Design", designTags);
+        ComponentUtil.putValueToComponentMap(copyOfInput.getComponents(), "Design", designTags, "vanity");
         //copyOfInput.getNbt().getCompound("Design").putString("Style", "default");
-        ComponentUtil.putValueToComponentMap(((ComponentMap) ComponentUtil.getValueFromComponentMap(copyOfInput.getComponents(), "Design")), "Style", "default");
+        ComponentUtil.putValueToComponentMap(((ComponentMap) ComponentUtil.getValueFromComponentMap(copyOfInput.getComponents(), "Design", "vanity")), "Style", "default", "vanity");
         ServerMod.LOGGER.info("Copied ItemStack with Design");
 
         return copyOfInput;

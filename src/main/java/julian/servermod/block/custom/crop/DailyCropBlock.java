@@ -89,11 +89,11 @@ public class DailyCropBlock extends CropBlock {
         if (age < this.getMaxAge()) {
             // grow the crop
             world.setBlockState(pos, this.withAge(age + 1).with(LAST_GROWTH_DAY, currentDayOfWeekValue), 2);
-            world.setBlockState(pos.down(), world.getBlockState(pos.down()).with(BooleanProperty.of("wet"), false), 2);
+            world.setBlockState(pos.down(), world.getBlockState(pos.down()).with(PlanterBlock.WET, false), 2);
 
             if (this.getAge(state) == MAX_AGE) {
                 // remove soil if fully grown
-                world.setBlockState(pos.down(), world.getBlockState(pos.down()).with(BooleanProperty.of("soil"), false), 2);
+                world.setBlockState(pos.down(), world.getBlockState(pos.down()).with(PlanterBlock.SOIL, false), 2);
             }
         }
     }
@@ -120,7 +120,7 @@ public class DailyCropBlock extends CropBlock {
 
     @Override
     public void onBroken(WorldAccess world, BlockPos pos, BlockState state) {
-        world.setBlockState(pos.down(), world.getBlockState(pos.down()).with(BooleanProperty.of("soil"), false), 2);
+        world.setBlockState(pos.down(), world.getBlockState(pos.down()).with(PlanterBlock.SOIL, false), 2);
     }
 
     @Override

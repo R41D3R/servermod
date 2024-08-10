@@ -7,13 +7,11 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItem;
-import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
@@ -40,7 +38,7 @@ public class RocksItem extends BlockItem {
             }
             playPlaceSound(state, context.getWorld(), context.getBlockPos(), context.getPlayer());
             context.getWorld().setBlockState(context.getBlockPos(),
-                    state.with(IntProperty.of("size", 1, 3), current_size + 1));
+                    state.with(Pebble.SIZE, current_size + 1));
             return ActionResult.CONSUME;
         }
         return super.useOnBlock(context);

@@ -3,6 +3,7 @@ package julian.servermod.block;
 import julian.servermod.ServerMod;
 import julian.servermod.block.custom.*;
 import julian.servermod.block.custom.abstracts.DirectionalBlock;
+import julian.servermod.block.custom.abstracts.FurnitureBlock;
 import julian.servermod.block.custom.abstracts.ThreeTallDirectionalBlock;
 import julian.servermod.block.custom.abstracts.WallPlaceableBlock;
 import julian.servermod.block.custom.biome.*;
@@ -11,9 +12,6 @@ import julian.servermod.block.furniture.TaskBoardBlock;
 import julian.servermod.sound.ModSounds;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
-import net.minecraft.data.family.BlockFamilies;
-import net.minecraft.data.family.BlockFamily;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -22,7 +20,12 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 
 
+
 public class ModBlocks {
+
+    public static final Block CUSTOM_BARRIER = registerBlock("custom_barrier",
+            new Block(AbstractBlock.Settings.create().strength(0, 3600000.8F).noBlockBreakParticles().solid().breakInstantly().nonOpaque()));
+
     public static final Block PLANTER = registerBlock("planter",
             new PlanterBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
 
@@ -161,6 +164,12 @@ public class ModBlocks {
     public static final Block MUSHROOM_LAMPSTAND = registerBlock("mushroom_lampstand",
             new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).nonOpaque()));
 
+//    public static final Block LOG_BENCH = registerBlock("log_bench",
+//            new FurnitureBlock(FabricBlockSettings.copyOf(CUSTOM_BARRIER), 0, new ArrayList<>(Arrays.asList(
+//            new int[]{-1, 0, 0},
+//            new int[]{1, 0, 0}
+//    ))));
+
     public static final Block LOG_BENCH = registerBlock("log_bench",
             new DirectionalBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).nonOpaque()));
 
@@ -219,7 +228,7 @@ public class ModBlocks {
             new DirectionalBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).nonOpaque()));
 
     public static final Block WOODEN_SWORD = registerBlock("wooden_sword",
-            new DirectionalBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).nonOpaque()));
+            new ThreeTallDirectionalBlock(FabricBlockSettings.copyOf(Blocks.FLOWER_POT).nonOpaque()));
 
 
 

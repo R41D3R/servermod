@@ -1,21 +1,29 @@
 package julian.servermod.utils;
 
+import julian.servermod.ServerMod;
 import net.minecraft.component.Component;
 import net.minecraft.component.ComponentMap;
 import net.minecraft.component.ComponentType;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
+import org.jetbrains.annotations.Nullable;
 
 public class ComponentUtil {
 
     public static ComponentType<?> getComponentTypeFromString(String key) {
-        Identifier id = Identifier.of(key);
+        String namespace = "minecraft";
+        Identifier id = Identifier.of(namespace, key);
+        return Registries.DATA_COMPONENT_TYPE.get(id);
+    }
+
+    public static ComponentType<?> getComponentTypeFromString(String namespace, String key) {
+        Identifier id = Identifier.of(namespace, key);
         return Registries.DATA_COMPONENT_TYPE.get(id);
     }
 
     // Method to check if a ComponentMap contains a ComponentType
-    public static boolean containsComponent(ComponentMap componentMap, String key) {
-        ComponentType<?> componentType = getComponentTypeFromString(key);
+    public static boolean containsComponent(ComponentMap componentMap, String key, String namespace) {
+        ComponentType<?> componentType = getComponentTypeFromString(namespace, key);
         if (componentType == null) {
             System.out.println("ComponentType not found for key: " + key);
             return false;
@@ -25,8 +33,8 @@ public class ComponentUtil {
     }
 
     // Method to get value from ComponentMap using string key
-    public static Object getValueFromComponentMap(ComponentMap componentMap, String key) {
-        ComponentType<?> componentType = getComponentTypeFromString(key);
+    public static Object getValueFromComponentMap(ComponentMap componentMap, String key, String namespace) {
+        ComponentType<?> componentType = getComponentTypeFromString(namespace,key);
         if (componentType != null) {
             return componentMap.get(componentType);
         } else {
@@ -36,8 +44,8 @@ public class ComponentUtil {
     }
 
     // Method to remove value from ComponentMap using string key
-    public static ComponentMap removeValueFromComponentMap(ComponentMap componentMap, String key) {
-        ComponentType<?> componentType = getComponentTypeFromString(key);
+    public static ComponentMap removeValueFromComponentMap(ComponentMap componentMap, String key, String namespace) {
+        ComponentType<?> componentType = getComponentTypeFromString(namespace, key);
         if (componentType == null) {
             System.out.println("ComponentType not found for key: " + key);
             return componentMap;
@@ -57,8 +65,8 @@ public class ComponentUtil {
     }
 
     // Method to put a value into a ComponentMap using string key
-    public static ComponentMap putValueToComponentMap(ComponentMap componentMap, String key, Object value) {
-        ComponentType<?> componentType = getComponentTypeFromString(key);
+    public static ComponentMap putValueToComponentMap(ComponentMap componentMap, String key, Object value,String namespace) {
+        ComponentType<?> componentType = getComponentTypeFromString(namespace,key);
         if (componentType == null) {
             System.out.println("ComponentType not found for key: " + key);
             return componentMap;

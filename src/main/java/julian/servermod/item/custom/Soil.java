@@ -1,6 +1,7 @@
 package julian.servermod.item.custom;
 
 import julian.servermod.block.ModBlocks;
+import julian.servermod.block.PlanterBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -29,7 +30,7 @@ public class Soil extends Item {
 
         if (state.isOf(ModBlocks.PLANTER)) {
             context.getStack().decrement(1);
-            context.getWorld().setBlockState(positionClicked, state.with(BooleanProperty.of("soil"), true));
+            context.getWorld().setBlockState(positionClicked, state.with(PlanterBlock.SOIL, true));
             addParticles(context, positionClicked);
             player.playSound(SoundEvents.ITEM_BONE_MEAL_USE, 1, 1);
             return ActionResult.SUCCESS;
