@@ -20,6 +20,12 @@ public class ModBlockEntities {
 //                    FabricBlockEntityTypeBuilder.create(BadgerTaskBlockEntity::new,
 //                            ModBlocks.BADGER_TASK_BLOCK).build());
 
+    public static final BlockEntityType<CoordinateEntity> COORDINATE_ENTITY = Registry.register(
+            Registries.BLOCK_ENTITY_TYPE,
+            Identifier.of(ServerMod.MOD_ID, "coordinate_entity"),
+            BlockEntityType.Builder.create(CoordinateEntity::new, ModBlocks.CUSTOM_BARRIER, ModBlocks.LOG_BENCH).build()
+    );
+
     public static void registerBLockEntities() {
         ServerMod.LOGGER.info("Registering Block Entities for " + ServerMod.MOD_ID);
     }

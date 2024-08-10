@@ -2,10 +2,7 @@ package julian.servermod.block;
 
 import julian.servermod.ServerMod;
 import julian.servermod.block.custom.*;
-import julian.servermod.block.custom.abstracts.DirectionalBlock;
-import julian.servermod.block.custom.abstracts.FurnitureBlock;
-import julian.servermod.block.custom.abstracts.ThreeTallDirectionalBlock;
-import julian.servermod.block.custom.abstracts.WallPlaceableBlock;
+import julian.servermod.block.custom.abstracts.*;
 import julian.servermod.block.custom.biome.*;
 import julian.servermod.block.custom.crop.DailyCropBlock;
 import julian.servermod.block.furniture.TaskBoardBlock;
@@ -19,12 +16,14 @@ import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class ModBlocks {
 
     public static final Block CUSTOM_BARRIER = registerBlock("custom_barrier",
-            new Block(AbstractBlock.Settings.create().strength(0, 3600000.8F).noBlockBreakParticles().solid().breakInstantly().nonOpaque()));
+            new CustomBarrierBlock(AbstractBlock.Settings.create().strength(0, 3600000.8F).noBlockBreakParticles().solid().breakInstantly().nonOpaque()));
 
     public static final Block PLANTER = registerBlock("planter",
             new PlanterBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
@@ -164,14 +163,14 @@ public class ModBlocks {
     public static final Block MUSHROOM_LAMPSTAND = registerBlock("mushroom_lampstand",
             new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).nonOpaque()));
 
-//    public static final Block LOG_BENCH = registerBlock("log_bench",
-//            new FurnitureBlock(FabricBlockSettings.copyOf(CUSTOM_BARRIER), 0, new ArrayList<>(Arrays.asList(
-//            new int[]{-1, 0, 0},
-//            new int[]{1, 0, 0}
-//    ))));
-
     public static final Block LOG_BENCH = registerBlock("log_bench",
-            new DirectionalBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).nonOpaque()));
+            new FurnitureBlock(FabricBlockSettings.copyOf(CUSTOM_BARRIER), 0, new ArrayList<>(Arrays.asList(
+            new int[]{-1, 0, 0},
+            new int[]{1, 0, 0}
+    ))));
+
+//    public static final Block LOG_BENCH = registerBlock("log_bench",
+//            new DirectionalBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).nonOpaque()));
 
     public static final Block LOG_TABLE = registerBlock("log_table",
             new DirectionalBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).nonOpaque()));

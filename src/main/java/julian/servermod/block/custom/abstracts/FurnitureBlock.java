@@ -1,14 +1,18 @@
 package julian.servermod.block.custom.abstracts;
 
+import com.mojang.serialization.MapCodec;
+import julian.servermod.ServerMod;
 import julian.servermod.block.ModBlocks;
-import julian.servermod.block.custom.abstracts.properties.Coordinate3D;
-import julian.servermod.block.custom.abstracts.properties.Coordinate3DProperty;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
+import julian.servermod.block.entity.CoordinateEntity;
+import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.StateManager;
+import net.minecraft.state.property.DirectionProperty;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
@@ -18,8 +22,8 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 
-public class FurnitureBlock extends DirectionalBlock {
-    public static final Coordinate3DProperty MAIN_BLOCK_PROPERTY = CustomProperties.COORDINATE_3D;
+public class FurnitureBlock extends BlockWithEntity {
+    public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
 
     public final int heightOfModelBlock;
     public final ArrayList<int[]> fillBlockCoordinates;
@@ -28,11 +32,13 @@ public class FurnitureBlock extends DirectionalBlock {
         super(settings);
         this.heightOfModelBlock = heightOfModelBlock;
         this.fillBlockCoordinates = fillBlockCoordinates;
+        setDefaultState(getDefaultState().with(FACING, Direction.NORTH));
+
     }
 
-    public int getRotation() {
+    public int getRotation(BlockState state) {
         // N -> E -> S -> W -> N
-        Direction currentDirection = this.getDefaultState().get(FACING);
+        Direction currentDirection = state.get(FACING);
         return switch (currentDirection) {
             case NORTH -> 0;
             case EAST -> 90;
@@ -44,23 +50,48 @@ public class FurnitureBlock extends DirectionalBlock {
 
 
 
-    public BlockPos getBlockPosForBlock(int[] blockCoordinates, BlockPos mainBlockPos) {
+    public BlockPos getBlockPosForBlock(int[] blockCoordinates, BlockPos mainBlockPos, BlockState state) {
         Vector3D vector3D = new Vector3D(blockCoordinates[0], blockCoordinates[1], blockCoordinates[2]);
-        vector3D.rotate(getRotation(), 'Z');
-        return mainBlockPos.add(((int) vector3D.getX()), ((int) vector3D.getY()), ((int) vector3D.getZ()));
+        vector3D.rotate(getRotation(state), 'Z');
+        return mainBlockPos.add(((int) vector3D.getX()), ((int) vector3D.getZ()), ((int) vector3D.getY()));
     }
 
     @Override
     protected boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
         BlockPos mainBlockPos = pos.up(heightOfModelBlock);
+        ServerMod.LOGGER.info("Try to place main Block Pos: " + mainBlockPos);
         for (int[] blockCoordinates : fillBlockCoordinates) {
-            BlockPos blockPos = getBlockPosForBlock(blockCoordinates, mainBlockPos);
+            BlockPos blockPos = getBlockPosForBlock(blockCoordinates, mainBlockPos, state);
             if (!world.getBlockState(blockPos).isReplaceable()) {
+                ServerMod.LOGGER.info("Block at " + blockPos + " is not replaceable");
                 return false;
             }
         }
 
         return true;
+    }
+
+    private void setMainBlockPos(World world, BlockPos pos, BlockPos mainBlockPos) {
+        if (!world.isClient){
+            ServerMod.LOGGER.info("Try to set mainblockpos for" + pos);
+            BlockEntity blockEntity = world.getBlockEntity(pos);
+            ServerMod.LOGGER.info("BlockEntity: " + blockEntity);
+            if (blockEntity instanceof CoordinateEntity){
+                CoordinateEntity coordinateEntity = (CoordinateEntity) blockEntity;
+                coordinateEntity.mainBlockPos = mainBlockPos;
+                ServerMod.LOGGER.info("Set main Block Pos to " + mainBlockPos);
+            }
+        }
+    }
+
+    private BlockPos getMainBlockPos(WorldAccess world, BlockPos pos) {
+        BlockEntity blockEntity = world.getBlockEntity(pos);
+        if (blockEntity instanceof CoordinateEntity){
+            CoordinateEntity coordinateEntity = (CoordinateEntity) blockEntity;
+            ServerMod.LOGGER.info("Get main Block Pos from " + coordinateEntity.mainBlockPos);
+            return coordinateEntity.mainBlockPos;
+        }
+        return null;
     }
 
     @Override
@@ -70,20 +101,34 @@ public class FurnitureBlock extends DirectionalBlock {
         //  -1  0  1
         //
         BlockPos mainBlockPos = pos.up(heightOfModelBlock);
-        world.setBlockState(mainBlockPos, this.getDefaultState());
+        world.setBlockState(mainBlockPos, state);
+        setMainBlockPos(world, pos, mainBlockPos);
         for (int[] blockCoordinates : fillBlockCoordinates) {
-            BlockPos blockPos = getBlockPosForBlock(blockCoordinates, mainBlockPos);
-            world.setBlockState(blockPos, ModBlocks.CUSTOM_BARRIER.getDefaultState()
-                    .with(CustomBarrierBlock.MAIN_BLOCK_PROPERTY,
-                            new Coordinate3D(mainBlockPos.getX(), mainBlockPos.getY(), mainBlockPos.getZ()))
-            );
+            BlockPos blockPos = getBlockPosForBlock(blockCoordinates, mainBlockPos, state);
+            world.setBlockState(blockPos, ModBlocks.CUSTOM_BARRIER.getDefaultState());
+            setMainBlockPos(world, blockPos, mainBlockPos);
         }
     }
 
     @Override
+    protected void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
+        if (!world.isClient){
+            BlockPos mainBlockPos = getMainBlockPos(world, pos);
+            for (int[] blockCoordinates : fillBlockCoordinates) {
+                BlockPos blockPos = getBlockPosForBlock(blockCoordinates, mainBlockPos, state);
+                world.setBlockState(blockPos, Blocks.AIR.getDefaultState());
+            }
+        }
+
+        super.onStateReplaced(state, world, pos, newState, moved);
+    }
+
+    @Override
     protected BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-        Coordinate3D mainBlockCoordinatesFromThisBlock = state.get(CustomBarrierBlock.MAIN_BLOCK_PROPERTY);
-        Coordinate3D mainBlockCoordinatesFromNeighborBlock = neighborState.get(CustomBarrierBlock.MAIN_BLOCK_PROPERTY);
+        BlockPos mainBlockCoordinatesFromThisBlock = getMainBlockPos(world, pos);
+        BlockPos mainBlockCoordinatesFromNeighborBlock = getMainBlockPos(world, neighborPos);
+        ServerMod.LOGGER.info("getStateForNeighborUpdate" + mainBlockCoordinatesFromThisBlock + " -> " + mainBlockCoordinatesFromNeighborBlock);
+        if (mainBlockCoordinatesFromThisBlock == null) return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
         if (mainBlockCoordinatesFromThisBlock.equals(mainBlockCoordinatesFromNeighborBlock)) {
             return Blocks.AIR.getDefaultState();
         }
@@ -91,8 +136,41 @@ public class FurnitureBlock extends DirectionalBlock {
     }
 
     @Override
+    public BlockState onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+        if (!world.isClient){
+            BlockPos mainBlockPos = getMainBlockPos(world, pos);
+            for (int[] blockCoordinates : fillBlockCoordinates) {
+                BlockPos blockPos = getBlockPosForBlock(blockCoordinates, mainBlockPos, state);
+                world.setBlockState(blockPos, Blocks.AIR.getDefaultState());
+            }
+        }
+
+        return super.onBreak(world, pos, state, player);
+    }
+
+    @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(MAIN_BLOCK_PROPERTY);
+        builder.add(FACING);
         super.appendProperties(builder);
+    }
+
+    @Override
+    public BlockState getPlacementState(ItemPlacementContext ctx) {
+        return super.getPlacementState(ctx).with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
+    }
+
+    @Override
+    public BlockRenderType getRenderType(BlockState state) {
+        return BlockRenderType.MODEL;
+    }
+
+    @Override
+    protected MapCodec<? extends BlockWithEntity> getCodec() {
+        return null;
+    }
+
+    @Override
+    public @Nullable BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new CoordinateEntity(pos, state);
     }
 }
