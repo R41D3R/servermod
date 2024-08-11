@@ -146,7 +146,7 @@ public class ServerModClient implements ClientModInitializer {
         CRATE_REWARD_SCREEN_CHANNEL.registerClientbound(CrateScreenPacket.class, (message, access) -> {
             ItemStack reward = new ItemStack(Item.byRawId(message.rewardItem), message.rewardItemCount);
             Item crateKeyItem = Item.byRawId(message.crateKeyItem);
-
+            ServerMod.LOGGER.info("receive create screen packet");
             MinecraftClient.getInstance().execute(() ->
                     MinecraftClient.getInstance().setScreen(new CrateRewardScreen(reward, crateKeyItem))
             );
