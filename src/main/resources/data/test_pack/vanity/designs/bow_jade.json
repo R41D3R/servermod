@@ -1,0 +1,15 @@
+{
+    "model": "test_pack:bow_jade_design",
+    "type": "sellable",
+    "styles": {
+        "default": [
+            {
+                "item": "minecraft:bow",
+                "assets": {
+                    "default": "test_pack:bow_jade",
+                    "hand": "test_pack:bow_jade"
+                }
+            }
+        ]
+    }
+}

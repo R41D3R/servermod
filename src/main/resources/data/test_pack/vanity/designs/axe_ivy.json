@@ -1,0 +1,50 @@
+{
+    "model": "test_pack:axe_ivy_design",
+    "type": "sellable",
+    "styles": {
+        "default": [
+            {
+                "item": "minecraft:wooden_axe",
+                "assets": {
+                    "default": "test_pack:axe_ivy",
+                    "hand": "test_pack:axe_ivy"
+                }
+            },
+            {
+                "item": "minecraft:stone_axe",
+                "assets": {
+                    "default": "test_pack:axe_ivy",
+                    "hand": "test_pack:axe_ivy"
+                }
+            },
+            {
+                "item": "minecraft:golden_axe",
+                "assets": {
+                    "default": "test_pack:axe_ivy",
+                    "hand": "test_pack:axe_ivy"
+                }
+            },
+            {
+                "item": "minecraft:iron_axe",
+                "assets": {
+                    "default": "test_pack:axe_ivy",
+                    "hand": "test_pack:axe_ivy"
+                }
+            },
+            {
+                "item": "minecraft:diamond_axe",
+                "assets": {
+                    "default": "test_pack:axe_ivy",
+                    "hand": "test_pack:axe_ivy"
+                }
+            },
+            {
+                "item": "minecraft:netherite_axe",
+                "assets": {
+                    "default": "test_pack:axe_ivy",
+                    "hand": "test_pack:axe_ivy"
+                }
+            }
+        ]
+    }
+}

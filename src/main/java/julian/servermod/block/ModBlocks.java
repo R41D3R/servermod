@@ -214,8 +214,13 @@ public class ModBlocks {
     public static final Block WOODEN_CART = registerBlock("wooden_cart",
             new DirectionalBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).nonOpaque()));
 
+
     public static final Block WOODEN_CREEPER = registerBlock("wooden_creeper",
-            new ThreeTallDirectionalBlock(FabricBlockSettings.copyOf(Blocks.FLOWER_POT).nonOpaque()));
+            new FurnitureBlock(FabricBlockSettings.copyOf(CUSTOM_BARRIER), 1, new ArrayList<>(Arrays.asList(
+                    new int[]{0, 0, -1},
+                    new int[]{0, 0, 1}
+            ))));
+
 
     public static final Block WOODEN_LLAMA = registerBlock("wooden_llama",
             new DirectionalBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).nonOpaque()));
@@ -224,11 +229,16 @@ public class ModBlocks {
             new DirectionalBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).nonOpaque()));
 
     public static final Block WOODEN_SCARECROW = registerBlock("wooden_scarecrow",
-            new DirectionalBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).nonOpaque()));
+            new FurnitureBlock(FabricBlockSettings.copyOf(CUSTOM_BARRIER), 1, new ArrayList<>(Arrays.asList(
+                    new int[]{0, 0, -1},
+                    new int[]{0, 0, 1}
+            ))));
 
     public static final Block WOODEN_SWORD = registerBlock("wooden_sword",
-            new ThreeTallDirectionalBlock(FabricBlockSettings.copyOf(Blocks.FLOWER_POT).nonOpaque()));
-
+            new FurnitureBlock(FabricBlockSettings.copyOf(CUSTOM_BARRIER), 1, new ArrayList<>(Arrays.asList(
+                    new int[]{0, 0, -1},
+                    new int[]{0, 0, 1}
+            ))));
 
 
     private static Block registerBlock(String name, Block block) {

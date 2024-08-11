@@ -1,0 +1,50 @@
+{
+    "model": "test_pack:pickaxe_ivy_design",
+    "type": "sellable",
+    "styles": {
+        "default": [
+            {
+                "item": "minecraft:wooden_pickaxe",
+                "assets": {
+                    "default": "test_pack:pickaxe_ivy",
+                    "hand": "test_pack:pickaxe_ivy"
+                }
+            },
+            {
+                "item": "minecraft:stone_pickaxe",
+                "assets": {
+                    "default": "test_pack:pickaxe_ivy",
+                    "hand": "test_pack:pickaxe_ivy"
+                }
+            },
+            {
+                "item": "minecraft:golden_pickaxe",
+                "assets": {
+                    "default": "test_pack:pickaxe_ivy",
+                    "hand": "test_pack:pickaxe_ivy"
+                }
+            },
+            {
+                "item": "minecraft:iron_pickaxe",
+                "assets": {
+                    "default": "test_pack:pickaxe_ivy",
+                    "hand": "test_pack:pickaxe_ivy"
+                }
+            },
+            {
+                "item": "minecraft:diamond_pickaxe",
+                "assets": {
+                    "default": "test_pack:pickaxe_ivy",
+                    "hand": "test_pack:pickaxe_ivy"
+                }
+            },
+            {
+                "item": "minecraft:netherite_pickaxe",
+                "assets": {
+                    "default": "test_pack:pickaxe_ivy",
+                    "hand": "test_pack:pickaxe_ivy"
+                }
+            }
+        ]
+    }
+}

@@ -100,9 +100,10 @@ public class FurnitureBlock extends BlockWithEntity {
         //      1
         //  -1  0  1
         //
+        world.removeBlock(pos, false);
         BlockPos mainBlockPos = pos.up(heightOfModelBlock);
         world.setBlockState(mainBlockPos, state);
-        setMainBlockPos(world, pos, mainBlockPos);
+        setMainBlockPos(world, mainBlockPos, mainBlockPos);
         for (int[] blockCoordinates : fillBlockCoordinates) {
             BlockPos blockPos = getBlockPosForBlock(blockCoordinates, mainBlockPos, state);
             world.setBlockState(blockPos, ModBlocks.CUSTOM_BARRIER.getDefaultState());
@@ -114,9 +115,11 @@ public class FurnitureBlock extends BlockWithEntity {
     protected void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (!world.isClient){
             BlockPos mainBlockPos = getMainBlockPos(world, pos);
-            for (int[] blockCoordinates : fillBlockCoordinates) {
-                BlockPos blockPos = getBlockPosForBlock(blockCoordinates, mainBlockPos, state);
-                world.setBlockState(blockPos, Blocks.AIR.getDefaultState());
+            if (mainBlockPos != null) {
+                for (int[] blockCoordinates : fillBlockCoordinates) {
+                    BlockPos blockPos = getBlockPosForBlock(blockCoordinates, mainBlockPos, state);
+                    world.setBlockState(blockPos, Blocks.AIR.getDefaultState());
+                }
             }
         }
 

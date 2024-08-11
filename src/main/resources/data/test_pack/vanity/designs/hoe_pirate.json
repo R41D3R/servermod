@@ -1,0 +1,50 @@
+{
+    "model": "test_pack:hoe_pirate_design",
+    "type": "sellable",
+    "styles": {
+        "default": [
+            {
+                "item": "minecraft:wooden_hoe",
+                "assets": {
+                    "default": "test_pack:hoe_pirate",
+                    "hand": "test_pack:hoe_pirate"
+                }
+            },
+            {
+                "item": "minecraft:stone_hoe",
+                "assets": {
+                    "default": "test_pack:hoe_pirate",
+                    "hand": "test_pack:hoe_pirate"
+                }
+            },
+            {
+                "item": "minecraft:golden_hoe",
+                "assets": {
+                    "default": "test_pack:hoe_pirate",
+                    "hand": "test_pack:hoe_pirate"
+                }
+            },
+            {
+                "item": "minecraft:iron_hoe",
+                "assets": {
+                    "default": "test_pack:hoe_pirate",
+                    "hand": "test_pack:hoe_pirate"
+                }
+            },
+            {
+                "item": "minecraft:diamond_hoe",
+                "assets": {
+                    "default": "test_pack:hoe_pirate",
+                    "hand": "test_pack:hoe_pirate"
+                }
+            },
+            {
+                "item": "minecraft:netherite_hoe",
+                "assets": {
+                    "default": "test_pack:hoe_pirate",
+                    "hand": "test_pack:hoe_pirate"
+                }
+            }
+        ]
+    }
+}

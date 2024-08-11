@@ -1,43 +1,19 @@
 {
   "variants": {
-    "facing=north,half=middle": {
+    "facing=north": {
       "model": "servermod:block/furniture/badger/wooden_creeper"
     },
-    "facing=east,half=middle": {
+    "facing=east": {
       "model": "servermod:block/furniture/badger/wooden_creeper",
       "y": 90
     },
-    "facing=south,half=middle": {
+    "facing=south": {
       "model": "servermod:block/furniture/badger/wooden_creeper",
       "y": 180
     },
-    "facing=west,half=middle": {
+    "facing=west": {
       "model": "servermod:block/furniture/badger/wooden_creeper",
       "y": 270
-    },
-    "facing=north,half=lower": {
-      "model": "servermod:block/placeholder/wooden_dark"
-    },
-    "facing=east,half=lower": {
-      "model": "servermod:block/placeholder/wooden_dark"
-    },
-    "facing=south,half=lower": {
-      "model": "servermod:block/placeholder/wooden_dark"
-    },
-    "facing=west,half=lower": {
-      "model": "servermod:block/placeholder/wooden_dark"
-    },
-    "facing=north,half=upper": {
-      "model": "servermod:block/placeholder/wooden_dark"
-    },
-    "facing=east,half=upper": {
-      "model": "servermod:block/placeholder/wooden_dark"
-    },
-    "facing=south,half=upper": {
-      "model": "servermod:block/placeholder/wooden_dark"
-    },
-    "facing=west,half=upper": {
-      "model": "servermod:block/placeholder/wooden_dark"
     }
   }
 }
