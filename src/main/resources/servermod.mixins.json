@@ -1,24 +1,25 @@
 {
-  "required" : true,
-  "package" : "julian.servermod.mixin",
-  "compatibilityLevel" : "JAVA_17",
-  "mixins" : [
+  "required": true,
+  "package": "julian.servermod.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
     "AnimalEntityMixin",
     "AnvilScreenHandlerAccessor",
     "AnvilScreenHandlerMixin",
     "ChunkSectionMixin",
     "EnderPearlEntityMixin",
     "ExampleMixin",
+    "IdentifierAccessor",
     "LeavesBlockMixin",
     "LlamaEntityMixin",
     "ModEntityDataSaverMixin"
   ],
-  "client" : [
+  "client": [
     "ItemRendererAccessor",
     "ItemRendererMixin",
     "ModelLoaderMixin"
   ],
-  "injectors" : {
-    "defaultRequire" : 1
+  "injectors": {
+    "defaultRequire": 1
 	}
 }

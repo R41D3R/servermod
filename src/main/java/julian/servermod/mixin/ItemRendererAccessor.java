@@ -15,5 +15,6 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 public interface ItemRendererAccessor {
     @Accessor("models")
     ItemModels mccourse$getModels();
-    ;
+    ;@Accessor("models")
+    ItemModels getModels();
 }

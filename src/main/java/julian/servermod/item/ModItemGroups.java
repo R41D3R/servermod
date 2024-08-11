@@ -51,7 +51,7 @@ public class ModItemGroups {
                         //entries.add(ModItems.CAPTURE_NET);
                         entries.add(ModBlocks.TASK_BOARD_BLOCK);
 
-                        entries.add(ModItems.WateringCan);
+                        entries.add(ModItems.WATERING_CAN);
                         entries.add(ModItems.BADGER_COIN);
                         entries.add(ModItems.RUBY);
                         entries.add(ModItems.CUSTOM_LAPIS);

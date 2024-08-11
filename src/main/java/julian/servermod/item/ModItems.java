@@ -41,7 +41,7 @@ public class ModItems {
 
 
 
-    public static final Item WateringCan = registerItem("wooden_watering_can",
+    public static final Item WATERING_CAN = registerItem("wooden_watering_can",
             new WateringCan(new Item.Settings().maxDamage(6)));
 
     public static final Item BADGER_COIN = registerItem("badger_coin",
@@ -204,7 +204,7 @@ public class ModItems {
 
 
     private static void addItemsToIngredientTabItemGroup(FabricItemGroupEntries entries) {
-        entries.add(WateringCan);
+        entries.add(WATERING_CAN);
     }
 
 
