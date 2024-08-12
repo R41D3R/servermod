@@ -27,6 +27,28 @@ public class InventoryUtil {
         return count;
     }
 
+    public static void removeItemsFromInventory(PlayerInventory playerInventory, Item item, int count) {
+        for (final var stack : playerInventory.offHand) {
+            if (count <= 0)
+                break;
+            if (stack.getItem() == item) {
+                int remove = Math.min(stack.getCount(), count);
+                stack.decrement(remove);
+                count -= remove;
+            }
+        }
+
+        for (final var stack : playerInventory.main) {
+            if (count <= 0)
+                break;
+            if (stack.getItem() == item) {
+                int remove = Math.min(stack.getCount(), count);
+                stack.decrement(remove);
+                count -= remove;
+            }
+        }
+    }
+
     public static int countItemsWallet(PlayerEntity player, Item item) {
         return WalletData.getWalletItemCountForItem(player, item);
     }

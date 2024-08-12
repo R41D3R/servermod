@@ -204,8 +204,17 @@ public class StoreScreen extends BaseOwoScreen<FlowLayout> {
 
     @Override
     public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
-        if (keyCode == GLFW.GLFW_KEY_J) {
+        if (keyCode == GLFW.GLFW_KEY_J || keyCode == GLFW.GLFW_KEY_ESCAPE) {
             this.client.setScreen(null);
+            new Thread(() -> {
+                try {
+                    Thread.sleep(250);
+                    client.player.playSound(ModSounds.ENDING_JINGLE, 0.2F, 1);
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }).start();
             return true;
         }
         return super.keyPressed(keyCode, scanCode, modifiers);

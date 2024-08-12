@@ -4,7 +4,7 @@ public class ModWorldGeneration {
 
     public static void generateModWorldGen() {
         ModOreGeneration.generateOres();
-        ModLootBoxGeneration.generateLootVases();
+        //ModLootBoxGeneration.generateLootVases();
         // ModTreeGeneration.generateTrees();
     }
 }

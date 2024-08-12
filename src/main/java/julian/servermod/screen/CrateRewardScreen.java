@@ -72,15 +72,15 @@ public class CrateRewardScreen extends BaseOwoScreen<FlowLayout> {
         var dismissButton = Components.button(Text.of("Close"), button -> {
             this.client.setScreen(null);
             this.client.player.playSound(ModSounds.CRATE_CLOSE, 1, 1);
-            new Thread(() -> {
-                try {
-                    Thread.sleep(500);
-                    this.client.player.playSound(ModSounds.ENDING_JINGLE, 0.4F, 1);
-
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }).start();
+//            new Thread(() -> {
+//                try {
+//                    Thread.sleep(250);
+//                    this.client.player.playSound(ModSounds.ENDING_JINGLE, 0.2F, 1);
+//
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//            }).start();
         });
         dismissButton.margins(Insets.top(5));
 

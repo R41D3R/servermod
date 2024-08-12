@@ -147,7 +147,7 @@ public class ServerMod implements ModInitializer {
 				Item buyItem = Item.byRawId(message.buyItem);
 				access.player().giveItemStack(new ItemStack(buyItem));
 
-				WalletData.removeItemCountFromWallet(access.player(), currencyItem, message.cost);
+				InventoryUtil.removeItemsFromInventory(access.player().getInventory(), currencyItem, message.cost);
 //				int remaining = message.cost;
 //				for (final var stack : access.player().getInventory().main) {
 //					if (remaining <= 0)
@@ -160,7 +160,7 @@ public class ServerMod implements ModInitializer {
 //				}
 			}
 			// update the currency of the client
-			int amount = InventoryUtil.countItemsWallet(access.player(), currencyItem);
+			int amount = InventoryUtil.countItems(access.player().getInventory(), currencyItem);
 			ServerMod.LOGGER.info("Sending currency update to client: " + amount);
 			ServerModClient.CurrencyPacket packet = new ServerModClient.CurrencyPacket(Item.getRawId(currencyItem), amount);
 			ServerModClient.CURRENCY_CHANNEL.serverHandle(access.player()).send(packet);

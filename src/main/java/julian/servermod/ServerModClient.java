@@ -123,6 +123,7 @@ public class ServerModClient implements ClientModInitializer {
 
                 if (client.currentScreen instanceof StoreScreen) {
                     client.setScreen(null);
+
                 } else {
                     client.setScreen(new StoreScreen(client.player));
                     ServerMod.STORE_BUY_CHANNEL.clientHandle().send(new ServerMod.StorePacket(0, 0, Item.getRawId(ModItems.RUBY)));
