@@ -6,6 +6,7 @@ import julian.servermod.entity.ModEntities;
 import julian.servermod.entity.client.LootBalloonRenderer;
 import julian.servermod.entity.client.SnailRenderer;
 import julian.servermod.item.ModItems;
+import julian.servermod.packets.CrateScreenPacket;
 import julian.servermod.screen.*;
 import julian.servermod.sound.ModSounds;
 import net.fabricmc.api.ClientModInitializer;
@@ -31,7 +32,6 @@ import org.lwjgl.glfw.GLFW;
 import java.util.UUID;
 
 public class ServerModClient implements ClientModInitializer {
-    public static final OwoNetChannel CRATE_REWARD_SCREEN_CHANNEL = OwoNetChannel.create(Identifier.of(ServerMod.MOD_ID, "crate_reward_screen"));
     public static final OwoNetChannel CURRENCY_CHANNEL = OwoNetChannel.create(Identifier.of(ServerMod.MOD_ID, "currency"));
     public static KeyBinding storeGuiKey;
     public static KeyBinding badgerTaskGuiKey;
@@ -125,6 +125,8 @@ public class ServerModClient implements ClientModInitializer {
                 "category.servermod.general" // Translation key for the keybind category
         ));
 
+
+
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             while (storeGuiKey.wasPressed()) {
 
@@ -165,7 +167,7 @@ public class ServerModClient implements ClientModInitializer {
             }
         });
 
-        CRATE_REWARD_SCREEN_CHANNEL.registerClientbound(CrateScreenPacket.class, (message, access) -> {
+        ServerMod.CRATE_REWARD_SCREEN_CHANNEL.registerClientbound(CrateScreenPacket.class, (message, access) -> {
             ItemStack reward = new ItemStack(Item.byRawId(message.rewardItem), message.rewardItemCount);
             Item crateKeyItem = Item.byRawId(message.crateKeyItem);
             ServerMod.LOGGER.info("receive create screen packet");
@@ -187,7 +189,8 @@ public class ServerModClient implements ClientModInitializer {
         });
     }
 
-    public record CrateScreenPacket(int crateKeyItem, int rewardItem, int rewardItemCount) {}
     public record CurrencyPacket(int currencyItem, int amount) {}
+    public record CrateScreenPacket(int crateKeyItem, int rewardItem, int rewardItemCount) {}
+
 
 }

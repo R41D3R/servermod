@@ -10,12 +10,15 @@ import julian.servermod.ServerMod;
 import julian.servermod.item.custom.cratekeys.CrateKeyBadger;
 import julian.servermod.item.custom.cratekeys.CrateKeyRare;
 import julian.servermod.sound.ModSounds;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
 
+@Environment(EnvType.CLIENT)
 public class CrateRewardScreen extends BaseOwoScreen<FlowLayout> {
     private final ItemStack rewardStack;
     private final Item crateKeyItem;

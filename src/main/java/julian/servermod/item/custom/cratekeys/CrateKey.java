@@ -63,17 +63,18 @@ public class CrateKey extends Item {
                 ServerMod.LOGGER.info("enviroment" + FabricLoader.getInstance().getEnvironmentType());
                 if (FabricLoader.getInstance().getEnvironmentType() == EnvType.SERVER) {
                     ServerMod.LOGGER.info("send create screen packet");
-                    ServerModClient.CRATE_REWARD_SCREEN_CHANNEL.serverHandle(player).send(
-
+                    ServerMod.CRATE_REWARD_SCREEN_CHANNEL.serverHandle(player).send(
                             new ServerModClient.CrateScreenPacket(
                                     Item.getRawId(this), Item.getRawId(reward.getItem()), reward.getCount())
                     );
 
                 }
-//                ServerMod.LOGGER.info("set screen with" + this);
-//                MinecraftClient.getInstance().execute(() ->
-//                        MinecraftClient.getInstance().setScreen(new CrateRewardScreen(reward, this))
-//                );
+//                if (FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT) {
+//                    ServerMod.LOGGER.info("set screen with" + this);
+//                    MinecraftClient.getInstance().execute(() ->
+//                            MinecraftClient.getInstance().setScreen(new CrateRewardScreen(reward, this))
+//                    );
+//                }
 
             } catch (InterruptedException e) {
                 e.printStackTrace();

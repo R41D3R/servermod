@@ -13,6 +13,7 @@ import julian.servermod.item.ModComponents;
 import julian.servermod.item.ModItemGroups;
 import julian.servermod.item.ModItems;
 import julian.servermod.item.ModPotions;
+import julian.servermod.packets.CrateScreenPacket;
 import julian.servermod.screen.CrateRewardScreen;
 import julian.servermod.screen.ModScreenHandlers;
 import julian.servermod.screen.StoreScreen;
@@ -63,6 +64,8 @@ import java.util.Objects;
 public class ServerMod implements ModInitializer {
 
 	public static final OwoNetChannel STORE_BUY_CHANNEL = OwoNetChannel.create(Identifier.of(ServerMod.MOD_ID, "store_buy"));
+	public static final OwoNetChannel CRATE_REWARD_SCREEN_CHANNEL = OwoNetChannel.create(Identifier.of(ServerMod.MOD_ID, "crate_reward_screen"));
+
 
 	public static final CustomGameRuleCategory GREEN_CATEGORY = new CustomGameRuleCategory(Identifier.of(ServerMod.MOD_ID, "netherroof_do_death"),
 			Text.of("Void Nether Roof Mod"));
@@ -153,7 +156,10 @@ public class ServerMod implements ModInitializer {
 //				.registerPortal();
 
 
+
 		// register Key pressing
+
+		CRATE_REWARD_SCREEN_CHANNEL.registerClientboundDeferred(ServerModClient.CrateScreenPacket.class);
 
 		// ruby store screen
 		ServerWorldEvents.LOAD.register((server, world) -> {
@@ -215,5 +221,6 @@ public class ServerMod implements ModInitializer {
 	}
 
 	public record StorePacket(int cost, int buyItem, int currencyItem) {}
+
 
 }
