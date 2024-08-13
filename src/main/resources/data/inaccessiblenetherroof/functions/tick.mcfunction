@@ -1,0 +1,1 @@
+execute as @e[predicate=inaccessiblenetherroof:aboveroof] at @s run tp @s ~ ~-4 ~

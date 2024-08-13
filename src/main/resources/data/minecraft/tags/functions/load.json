@@ -1,1 +1,5 @@
-{"replace":false,"values":["template:load"]}
+{
+    "values": [
+        "say hello"
+    ]
+}

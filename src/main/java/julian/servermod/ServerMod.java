@@ -25,6 +25,10 @@ import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.fabricmc.fabric.api.gamerule.v1.CustomGameRuleCategory;
+import net.fabricmc.fabric.api.gamerule.v1.GameRuleFactory;
+import net.fabricmc.fabric.api.gamerule.v1.GameRuleRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
@@ -36,6 +40,8 @@ import net.kyrptonaught.customportalapi.api.CustomPortalBuilder;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.damage.DamageSources;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -45,14 +51,21 @@ import net.minecraft.resource.ResourceType;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.GameRules;
 import org.lwjgl.glfw.GLFW;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Objects;
 
 public class ServerMod implements ModInitializer {
 
 	public static final OwoNetChannel STORE_BUY_CHANNEL = OwoNetChannel.create(Identifier.of(ServerMod.MOD_ID, "store_buy"));
 
+	public static final CustomGameRuleCategory GREEN_CATEGORY = new CustomGameRuleCategory(Identifier.of(ServerMod.MOD_ID, "netherroof_do_death"),
+			Text.of("Void Nether Roof Mod"));
+	public static final GameRules.Key<GameRules.BooleanRule> DO_DEATH = register("killOnRoof", GREEN_CATEGORY, GameRuleFactory.createBooleanRule(false));
 
 	public static final String MOD_ID = "servermod";
 
@@ -60,6 +73,11 @@ public class ServerMod implements ModInitializer {
 	// It is considered best practice to use your mod id as the logger's name.
 	// That way, it's clear which mod wrote info, warnings, and errors.
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+
+	private static <T extends GameRules.Rule<T>> GameRules.Key<T> register(String name, CustomGameRuleCategory category, GameRules.Type<T> type) {
+		return GameRuleRegistry.register(name, category, type);
+	}
+
 
 	@Override
 	public void onInitialize() {
@@ -138,7 +156,20 @@ public class ServerMod implements ModInitializer {
 
 		// ruby store screen
 
-
+		ServerTickEvents.END_SERVER_TICK.register(minecraftServer -> {
+			minecraftServer.getPlayerManager().getPlayerList().forEach(playerEntity -> {
+				if (Objects.requireNonNull(playerEntity.getServer()).getGameRules().getBoolean(DO_DEATH)
+						&& playerEntity.getServerWorld().getDimension().hasCeiling()
+						&& !playerEntity.isCreativeLevelTwoOp()) {
+					Vec3d v = playerEntity.getPos();
+					if (v.y >= 128) {
+						DamageSources damageSources = new DamageSources(minecraftServer.getRegistryManager());
+						DamageSource outOfWorldDamage = damageSources.outOfWorld();
+						playerEntity.damage(outOfWorldDamage, 2f);
+					}
+				}
+			});
+		});
 
 		STORE_BUY_CHANNEL.registerServerbound(ServerMod.StorePacket.class, (message, access) -> {
 			Item currencyItem = Item.byRawId(message.currencyItem);

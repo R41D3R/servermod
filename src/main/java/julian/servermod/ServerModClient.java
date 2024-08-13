@@ -34,6 +34,7 @@ public class ServerModClient implements ClientModInitializer {
     public static final OwoNetChannel CRATE_REWARD_SCREEN_CHANNEL = OwoNetChannel.create(Identifier.of(ServerMod.MOD_ID, "crate_reward_screen"));
     public static final OwoNetChannel CURRENCY_CHANNEL = OwoNetChannel.create(Identifier.of(ServerMod.MOD_ID, "currency"));
     public static KeyBinding storeGuiKey;
+    public static KeyBinding badgerTaskGuiKey;
     public static KeyBinding rewardGuiKey;
 
     @Override
@@ -111,6 +112,12 @@ public class ServerModClient implements ClientModInitializer {
                 GLFW.GLFW_KEY_J, // Use J key
                 "category.servermod.general" // Translation key for the keybind category
         ));
+        badgerTaskGuiKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+                "key.servermod.open_badger_task", // Translation key for the keybind name
+                InputUtil.Type.KEYSYM,
+                GLFW.GLFW_KEY_O, // Use J key
+                "category.servermod.general" // Translation key for the keybind category
+        ));
         rewardGuiKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
                 "key.servermod.open_chest_reward", // Translation key for the keybind name
                 InputUtil.Type.KEYSYM,
@@ -128,6 +135,20 @@ public class ServerModClient implements ClientModInitializer {
                     client.setScreen(new StoreScreen(client.player));
                     ServerMod.STORE_BUY_CHANNEL.clientHandle().send(new ServerMod.StorePacket(0, 0, Item.getRawId(ModItems.RUBY)));
                     ServerMod.STORE_BUY_CHANNEL.clientHandle().send(new ServerMod.StorePacket(0, 0, Item.getRawId(ModItems.BADGER_COIN)));
+                }
+            }
+        });
+
+        ClientTickEvents.END_CLIENT_TICK.register(client -> {
+            while (badgerTaskGuiKey.wasPressed()) {
+
+                if (client.currentScreen instanceof BadgerTaskScreen) {
+                    client.setScreen(null);
+
+                } else {
+                    client.setScreen(new BadgerTaskScreen());
+//                    ServerMod.STORE_BUY_CHANNEL.clientHandle().send(new ServerMod.StorePacket(0, 0, Item.getRawId(ModItems.RUBY)));
+//                    ServerMod.STORE_BUY_CHANNEL.clientHandle().send(new ServerMod.StorePacket(0, 0, Item.getRawId(ModItems.BADGER_COIN)));
                 }
             }
         });

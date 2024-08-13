@@ -3,15 +3,11 @@
   "package": "julian.servermod.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "AnimalEntityMixin",
     "AnvilScreenHandlerAccessor",
     "AnvilScreenHandlerMixin",
     "ChunkSectionMixin",
-    "EnderPearlEntityMixin",
     "ExampleMixin",
     "IdentifierAccessor",
-    "LeavesBlockMixin",
-    "LlamaEntityMixin",
     "ModEntityDataSaverMixin"
   ],
   "client": [

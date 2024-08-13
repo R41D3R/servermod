@@ -23,9 +23,6 @@
 		],
 		"fabric-datagen": [
 			"julian.servermod.ServerModDataGenerator"
-		],
-		"terrablender": [
-			"julian.servermod.world.biome.ModTerrablenderAPI"
 		]
 	},
 	"mixins": [
