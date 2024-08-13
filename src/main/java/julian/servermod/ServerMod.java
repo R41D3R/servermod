@@ -26,6 +26,7 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerWorldEvents;
 import net.fabricmc.fabric.api.gamerule.v1.CustomGameRuleCategory;
 import net.fabricmc.fabric.api.gamerule.v1.GameRuleFactory;
 import net.fabricmc.fabric.api.gamerule.v1.GameRuleRegistry;
@@ -155,6 +156,10 @@ public class ServerMod implements ModInitializer {
 		// register Key pressing
 
 		// ruby store screen
+		ServerWorldEvents.LOAD.register((server, world) -> {
+			GameRules gameRules = world.getGameRules();
+			gameRules.get(GameRules.REDUCED_DEBUG_INFO).set(true, server);
+		});
 
 		ServerTickEvents.END_SERVER_TICK.register(minecraftServer -> {
 			minecraftServer.getPlayerManager().getPlayerList().forEach(playerEntity -> {
