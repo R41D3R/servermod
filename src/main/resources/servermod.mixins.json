@@ -11,7 +11,8 @@
     "HopperMinecartEntityMixin",
     "IdentifierAccessor",
     "IEasyHopperBlockEntity",
-    "ModEntityDataSaverMixin"
+    "ModEntityDataSaverMixin",
+    "SlotMixin"
   ],
   "client": [
     "ItemRendererAccessor",
