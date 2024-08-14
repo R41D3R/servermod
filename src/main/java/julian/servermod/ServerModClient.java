@@ -6,7 +6,6 @@ import julian.servermod.entity.ModEntities;
 import julian.servermod.entity.client.LootBalloonRenderer;
 import julian.servermod.entity.client.SnailRenderer;
 import julian.servermod.item.ModItems;
-import julian.servermod.packets.CrateScreenPacket;
 import julian.servermod.screen.*;
 import julian.servermod.sound.ModSounds;
 import net.fabricmc.api.ClientModInitializer;
@@ -149,10 +148,22 @@ public class ServerModClient implements ClientModInitializer {
 
                 } else {
                     client.setScreen(new BadgerTaskScreen());
+                    ServerMod.BADGER_TASK_CHANNEL.clientHandle().send(new ServerModClient.OpenBadgerTaskPacket());
 //                    ServerMod.STORE_BUY_CHANNEL.clientHandle().send(new ServerMod.StorePacket(0, 0, Item.getRawId(ModItems.RUBY)));
 //                    ServerMod.STORE_BUY_CHANNEL.clientHandle().send(new ServerMod.StorePacket(0, 0, Item.getRawId(ModItems.BADGER_COIN)));
                 }
             }
+        });
+
+        ServerMod.BADGER_TASK_CHANNEL.registerClientbound(BadgerTaskPacket.class, (message, access) -> {
+            // server sends badger tasks
+            MinecraftClient.getInstance().execute(() -> {
+                Screen currentScreen = MinecraftClient.getInstance().currentScreen;
+                if (currentScreen instanceof BadgerTaskScreen screen) {
+                    screen.updateTask(message.taskIds, message.itemCounts, message.completed);
+
+                }
+            });
         });
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
@@ -191,6 +202,8 @@ public class ServerModClient implements ClientModInitializer {
 
     public record CurrencyPacket(int currencyItem, int amount) {}
     public record CrateScreenPacket(int crateKeyItem, int rewardItem, int rewardItemCount) {}
-
+    public record OpenBadgerTaskPacket() {}
+    public record BadgerTaskPacket(int[] taskIds, int[] itemCounts, int[] completed) {}
+    public record CompleteBadgerTask(int taskId) {}
 
 }

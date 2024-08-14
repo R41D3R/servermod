@@ -13,7 +13,6 @@ import julian.servermod.item.ModComponents;
 import julian.servermod.item.ModItemGroups;
 import julian.servermod.item.ModItems;
 import julian.servermod.item.ModPotions;
-import julian.servermod.packets.CrateScreenPacket;
 import julian.servermod.screen.CrateRewardScreen;
 import julian.servermod.screen.ModScreenHandlers;
 import julian.servermod.screen.StoreScreen;
@@ -65,6 +64,8 @@ public class ServerMod implements ModInitializer {
 
 	public static final OwoNetChannel STORE_BUY_CHANNEL = OwoNetChannel.create(Identifier.of(ServerMod.MOD_ID, "store_buy"));
 	public static final OwoNetChannel CRATE_REWARD_SCREEN_CHANNEL = OwoNetChannel.create(Identifier.of(ServerMod.MOD_ID, "crate_reward_screen"));
+	public static final OwoNetChannel BADGER_TASK_CHANNEL = OwoNetChannel.create(Identifier.of(ServerMod.MOD_ID, "badger_task"));
+
 
 
 	public static final CustomGameRuleCategory GREEN_CATEGORY = new CustomGameRuleCategory(Identifier.of(ServerMod.MOD_ID, "netherroof_do_death"),
@@ -160,6 +161,18 @@ public class ServerMod implements ModInitializer {
 		// register Key pressing
 
 		CRATE_REWARD_SCREEN_CHANNEL.registerClientboundDeferred(ServerModClient.CrateScreenPacket.class);
+		//BADGER_TASK_CHANNEL.registerClientboundDeferred(ServerModClient.OpenBadgerTaskPacket.class);
+		BADGER_TASK_CHANNEL.registerClientboundDeferred(ServerModClient.BadgerTaskPacket.class);
+
+		BADGER_TASK_CHANNEL.registerServerbound(ServerModClient.OpenBadgerTaskPacket.class, (message, access) -> {
+			// client opens badger task screen
+			// rquest badger tasks from server
+			int exampleItemId = Item.getRawId(Items.DIAMOND);
+			int[] itemIds = new int[]{exampleItemId, exampleItemId, exampleItemId, exampleItemId, exampleItemId};
+			int[] itemCounts = new int[]{41, 13, 12, 11, 11};
+			int[] completed = new int[]{0, 0, 1, 0, 1};
+			BADGER_TASK_CHANNEL.serverHandle(access.player()).send(new ServerModClient.BadgerTaskPacket(itemIds, itemCounts, completed));
+		});
 
 		// ruby store screen
 		ServerWorldEvents.LOAD.register((server, world) -> {
