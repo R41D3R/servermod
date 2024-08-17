@@ -2,6 +2,7 @@ package julian.servermod.mixin;
 
 import com.google.common.collect.ImmutableList;
 import julian.servermod.MinecraftServerSupplier;
+import julian.servermod.ModConfig;
 import julian.servermod.ServerMod;
 import julian.servermod.badgertasks.BadgerTaskManager;
 import julian.servermod.spawner.LootBalloonSpawner;
@@ -51,16 +52,17 @@ public abstract class MinecraftServerMixin {
     @Redirect(method = "createWorlds", at = @At(value = "NEW", target = "net/minecraft/server/world/ServerWorld"))
     private ServerWorld redirectServerWorldConstructor(MinecraftServer server, Executor workerExecutor, LevelStorage.Session session, ServerWorldProperties properties, RegistryKey worldKey, DimensionOptions dimensionOptions, WorldGenerationProgressListener worldGenerationProgressListener, boolean debugWorld, long seed, List spawners, boolean shouldTickTime, RandomSequencesState randomSequencesState) {
         // code here
+        if (ModConfig.LOOT_BALLOON_ACTIVATED) {
+            if (worldKey == World.OVERWORLD) {
+                // Create a new mutable list and add all elements from the original list
+                List<SpecialSpawner> newSpawners = new ArrayList<>(spawners);
 
-        if (worldKey == World.OVERWORLD) {
-            // Create a new mutable list and add all elements from the original list
-            List<SpecialSpawner> newSpawners = new ArrayList<>(spawners);
+                // Add your new spawner to the list
+                newSpawners.add(new LootBalloonSpawner());
 
-            // Add your new spawner to the list
-            newSpawners.add(new LootBalloonSpawner());
-
-            ServerMod.LOGGER.info("Added LootBalloonSpawner to spawners for " + worldKey.getValue());
-            return new ServerWorld(server, workerExecutor, session, properties, worldKey, dimensionOptions, worldGenerationProgressListener, debugWorld, seed, newSpawners, true, null);
+                ServerMod.LOGGER.info("Added LootBalloonSpawner to spawners for " + worldKey.getValue());
+                return new ServerWorld(server, workerExecutor, session, properties, worldKey, dimensionOptions, worldGenerationProgressListener, debugWorld, seed, newSpawners, true, null);
+            }
         }
         ServerMod.LOGGER.info("Added LootBalloonSpawner not to spawners for " + worldKey.getValue());
 

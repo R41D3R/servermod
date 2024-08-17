@@ -89,7 +89,7 @@ public class ModPlacedFeatures {
 
         register(context, EXTRA_DIAMOND_ORE_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(OreConfiguredFeatures.ORE_DIAMOND_BURIED),
                 ModOrePlacement.modifiersWithCount(10,
-                        HeightRangePlacementModifier.uniform(YOffset.fixed(-24), YOffset.fixed(18))));
+                        HeightRangePlacementModifier.uniform(YOffset.fixed(-64), YOffset.fixed(18))));
 
         register(context, EXTRA_REDSTONE_ORE_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(OreConfiguredFeatures.ORE_REDSTONE),
                 ModOrePlacement.modifiersWithCount(10,

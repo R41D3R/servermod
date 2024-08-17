@@ -124,39 +124,12 @@ public class ServerMod implements ModInitializer {
 
 
 		// ------ Portals ------
-//		CustomPortalBuilder.beginPortal()
-//				.frameBlock(ModBlocks.RUBY_BLOCK)
-//				.lightWithItem(ModItems.RUBY)
-//				.destDimID(Identifier.of("minecraft", "overworld"))
-//				.returnDim(Identifier.of("test", "overworld"), true)
-//				.tintColor(0x00FF00)
-//				.registerPortal();
-//
-//		CustomPortalBuilder.beginPortal()
-//				.frameBlock(Blocks.CRYING_OBSIDIAN)
-//				.lightWithItem(ModItems.RUBY)
-//				.destDimID(Identifier.of("test", "the_nether"))
-//				.returnDim(Identifier.of("test", "overworld"), false)
-//				.tintColor(0xc76efa)
-//				.registerPortal();
-//
-//		CustomPortalBuilder.beginPortal()
-//				.frameBlock(ModBlocks.RUBY_BLOCK)
-//				.lightWithItem(ModItems.RUBY)
-//				.destDimID(Identifier.of("minecraft", "overworld"))
-//				.returnDim(Identifier.of("test2", "overworld"), true)
-//				.tintColor(0x00FF00)
-//				.registerPortal();
-//
-//		CustomPortalBuilder.beginPortal()
-//				.frameBlock(Blocks.CRYING_OBSIDIAN)
-//				.lightWithItem(ModItems.RUBY)
-//				.destDimID(Identifier.of("test2", "the_nether"))
-//				.returnDim(Identifier.of("test2", "overworld"), false)
-//				.tintColor(0xc76efa)
-//				.registerPortal();
-
-
+		CustomPortalBuilder.beginPortal()
+				.frameBlock(ModBlocks.PLATINUM_BLOCK)
+				.lightWithItem(ModItems.PLATINUM)
+				.destDimID(Identifier.of("servermod", "overworld"))
+				.tintColor(219,219,219)
+				.registerPortal();
 
 		// register Key pressing
 

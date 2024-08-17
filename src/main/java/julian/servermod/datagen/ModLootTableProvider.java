@@ -63,7 +63,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.CLOVER_BLOCK, ModItems.CLOVER);
 
         addDrop(ModBlocks.RUBY_BLOCK);
-        addDrop(ModBlocks.PLATINUM_BLOCK);
+        // addDrop(ModBlocks.PLATINUM_BLOCK);
         addDrop(ModBlocks.PLANTER);
 
         addDrop(ModBlocks.RUBY_ORE, copperLikeOreDrops(ModBlocks.RUBY_ORE, ModItems.RUBY));
