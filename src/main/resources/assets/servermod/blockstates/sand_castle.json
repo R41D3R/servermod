@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "servermod:block/furniture/sand_castle"
+    },
+    "facing=east": {
+      "model": "servermod:block/furniture/sand_castle",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "servermod:block/furniture/sand_castle",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "servermod:block/furniture/sand_castle",
+      "y": 270
+    }
+  }
+}

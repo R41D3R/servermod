@@ -82,6 +82,15 @@ public class ServerModClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WOODEN_SCARECROW, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WOODEN_SWORD, RenderLayer.getCutout());
 
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.TIGER_PLUSHIE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LAWN_FROG, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SAND_CASTLE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.MOAI_STATUE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.GARDEN_GNOME, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.FLOWER_BASKET, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.REPTANT_VASE_SHORT, RenderLayer.getCutout());
+
+
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.FLOWER_COVER_RED_BLOCK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.FLOWER_COVER_PINK_BLOCK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.FLOWER_COVER_BLUE_BLOCK, RenderLayer.getCutout());
@@ -126,34 +135,46 @@ public class ServerModClient implements ClientModInitializer {
 
 
 
-        ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            while (storeGuiKey.wasPressed()) {
-
-                if (client.currentScreen instanceof StoreScreen) {
-                    client.setScreen(null);
-
-                } else {
-                    client.setScreen(new StoreScreen(client.player));
-                    ServerMod.STORE_BUY_CHANNEL.clientHandle().send(new ServerMod.StorePacket(0, 0, Item.getRawId(ModItems.RUBY)));
-                    ServerMod.STORE_BUY_CHANNEL.clientHandle().send(new ServerMod.StorePacket(0, 0, Item.getRawId(ModItems.BADGER_COIN)));
-                }
-            }
-        });
-
-        ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            while (badgerTaskGuiKey.wasPressed()) {
-
-                if (client.currentScreen instanceof BadgerTaskScreen) {
-                    client.setScreen(null);
-
-                } else {
-                    client.setScreen(new BadgerTaskScreen());
-                    ServerMod.BADGER_TASK_CHANNEL.clientHandle().send(new ServerModClient.OpenBadgerTaskPacket());
+//        ClientTickEvents.END_CLIENT_TICK.register(client -> {
+//            while (storeGuiKey.wasPressed()) {
+//
+//                if (client.currentScreen instanceof StoreScreen) {
+//                    client.setScreen(null);
+//
+//                } else {
+//                    client.setScreen(new StoreScreen(client.player));
 //                    ServerMod.STORE_BUY_CHANNEL.clientHandle().send(new ServerMod.StorePacket(0, 0, Item.getRawId(ModItems.RUBY)));
 //                    ServerMod.STORE_BUY_CHANNEL.clientHandle().send(new ServerMod.StorePacket(0, 0, Item.getRawId(ModItems.BADGER_COIN)));
-                }
-            }
-        });
+//                }
+//            }
+//        });
+//
+//        ClientTickEvents.END_CLIENT_TICK.register(client -> {
+//            while (badgerTaskGuiKey.wasPressed()) {
+//
+//                if (client.currentScreen instanceof BadgerTaskScreen) {
+//                    client.setScreen(null);
+//
+//                } else {
+//                    client.setScreen(new BadgerTaskScreen());
+//                    ServerMod.BADGER_TASK_CHANNEL.clientHandle().send(new ServerModClient.OpenBadgerTaskPacket());
+////                    ServerMod.STORE_BUY_CHANNEL.clientHandle().send(new ServerMod.StorePacket(0, 0, Item.getRawId(ModItems.RUBY)));
+////                    ServerMod.STORE_BUY_CHANNEL.clientHandle().send(new ServerMod.StorePacket(0, 0, Item.getRawId(ModItems.BADGER_COIN)));
+//                }
+//            }
+//        });
+//
+//        ClientTickEvents.END_CLIENT_TICK.register(client -> {
+//            while (rewardGuiKey.wasPressed()) {
+//
+//                if (client.currentScreen instanceof CrateRewardScreen) {
+//                    client.setScreen(null);
+//                } else {
+//                    ItemStack reward = new ItemStack(ModItems.CRATE_KEY_LEGENDARY, 3);
+//                    client.setScreen(new CrateRewardScreen(reward, ModItems.CRATE_KEY_RARE));
+//                }
+//            }
+//        });
 
         ServerMod.BADGER_TASK_CHANNEL.registerClientbound(BadgerTaskPacket.class, (message, access) -> {
             // server sends badger tasks
@@ -166,17 +187,7 @@ public class ServerModClient implements ClientModInitializer {
             });
         });
 
-        ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            while (rewardGuiKey.wasPressed()) {
 
-                if (client.currentScreen instanceof CrateRewardScreen) {
-                    client.setScreen(null);
-                } else {
-                    ItemStack reward = new ItemStack(ModItems.CRATE_KEY_LEGENDARY, 3);
-                    client.setScreen(new CrateRewardScreen(reward, ModItems.CRATE_KEY_RARE));
-                }
-            }
-        });
 
         ServerMod.CRATE_REWARD_SCREEN_CHANNEL.registerClientbound(CrateScreenPacket.class, (message, access) -> {
             ItemStack reward = new ItemStack(Item.byRawId(message.rewardItem), message.rewardItemCount);

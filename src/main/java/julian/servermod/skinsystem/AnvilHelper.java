@@ -2,9 +2,13 @@ package julian.servermod.skinsystem;
 
 import com.mojang.authlib.GameProfile;
 import julian.servermod.ServerMod;
+import julian.servermod.item.custom.ItemDesign;
 import julian.servermod.mixin.AnvilScreenHandlerAccessor;
 import julian.servermod.utils.ComponentUtil;
 import net.minecraft.component.ComponentMap;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.CustomModelDataComponent;
+import net.minecraft.component.type.LoreComponent;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -12,8 +16,10 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.screen.AnvilScreenHandler;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 
+import java.util.List;
 import java.util.Optional;
 
 public class AnvilHelper {
@@ -33,7 +39,7 @@ public class AnvilHelper {
 
         ItemStack resultStack = getItemStackWithDesign(leftStack, rightStack);
         if(handler instanceof AnvilScreenHandler anvilHandler && runScreenUpdate(anvilHandler, resultStack)) {
-            // anvilHandler.updateResult();
+            anvilHandler.updateResult();
         }
         ServerMod.LOGGER.info("Player can apply skin");
 
@@ -42,7 +48,7 @@ public class AnvilHelper {
     }
 
     private static boolean isDesign(ItemStack itemStack) {
-        if (itemStack.getItem().toString() == "design") {
+        if (itemStack.getItem() instanceof ItemDesign) {
             ServerMod.LOGGER.info("ItemStack is a Design");
             return true;
         }
@@ -52,43 +58,34 @@ public class AnvilHelper {
     }
 
     private static boolean designMatchesItemType(ItemStack design, ItemStack item) {
-
-        ComponentMap designComponent = design.getComponents();
-        ComponentMap designTags = (ComponentMap) ComponentUtil.getValueFromComponentMap(designComponent, "Design", "vanity");
-        String designID = (String) ComponentUtil.getValueFromComponentMap(designTags, "Id", "vanity");
-        String forItemType = designID.split(":")[1].split("_")[0];
-        String inputItemID = item.getItem().toString() ;
-
-        if (inputItemID.contains(forItemType)) {
-            ServerMod.LOGGER.info("Design matches item type");
-            return true;
+        if (design.getItem() instanceof ItemDesign) {
+            Class<?> targetItemClass = ((ItemDesign) design.getItem()).getTargetItem();
+            if (targetItemClass.isInstance(item.getItem())) {
+                ServerMod.LOGGER.info("Design matches item type");
+                return true;
+            }
         }
-
         ServerMod.LOGGER.info("Design does not match item type");
         return false;
     }
 
     private static ItemStack getItemStackWithDesign(ItemStack item, ItemStack design) {
-        //NbtCompound designTag = design.getNbt();
-        ComponentMap designComponent = design.getComponents();
-        ComponentMap designTags = (ComponentMap) ComponentUtil.getValueFromComponentMap(designComponent, "Design", "vanity");
-        // add default style tag to NBT Compound
-        // designTag.putString("Style", "default");
 
+        ServerMod.LOGGER.info("Adding Design to ItemStack");
+        ItemDesign designItem = (ItemDesign) design.getItem();
+        int customModelData = designItem.getCustomModelData();
         ItemStack copyOfInput = item.copy();
-        //copyOfInput.getNbt().put("Design", designTag.getCompound("Design"));
-        ComponentUtil.putValueToComponentMap(copyOfInput.getComponents(), "Design", designTags, "vanity");
-        //copyOfInput.getNbt().getCompound("Design").putString("Style", "default");
-        ComponentUtil.putValueToComponentMap(((ComponentMap) ComponentUtil.getValueFromComponentMap(copyOfInput.getComponents(), "Design", "vanity")), "Style", "default", "vanity");
-        ServerMod.LOGGER.info("Copied ItemStack with Design");
-
+        copyOfInput.set(DataComponentTypes.CUSTOM_MODEL_DATA, new CustomModelDataComponent(customModelData));
+        copyOfInput.set(DataComponentTypes.LORE, new LoreComponent(List.of(Text.of(designItem.getDesignName()))));
         return copyOfInput;
+
+
     }
 
     private static boolean runScreenUpdate(AnvilScreenHandler anvilScreenHandler, ItemStack resultStack) {
         var slots = anvilScreenHandler.slots;
 
-        ((AnvilScreenHandlerAccessor) anvilScreenHandler).aph$getLevelCost().set(0);
+        ((AnvilScreenHandlerAccessor) anvilScreenHandler).aph$getLevelCost().set(10);
 
         slots.get(2).setStack(resultStack);
 

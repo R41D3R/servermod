@@ -4,11 +4,6 @@
             "type": "directory",
             "source": "tutorial",
             "prefix": "tutorial/"
-        },
-        {
-            "type": "directory",
-            "source": "flute",
-            "prefix": "flute/"
         }
     ]
 }

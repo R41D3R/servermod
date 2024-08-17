@@ -63,7 +63,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.CLOVER_BLOCK, ModItems.CLOVER);
 
         addDrop(ModBlocks.RUBY_BLOCK);
-        addDrop(ModBlocks.PLATINUM_BLOCK);
+        // addDrop(ModBlocks.PLATINUM_BLOCK);
         addDrop(ModBlocks.PLANTER);
 
         addDrop(ModBlocks.RUBY_ORE, copperLikeOreDrops(ModBlocks.RUBY_ORE, ModItems.RUBY));
@@ -95,6 +95,14 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.WOODEN_PENGUIN);
         addDrop(ModBlocks.WOODEN_SCARECROW);
         addDrop(ModBlocks.WOODEN_SWORD);
+
+        addDrop(ModBlocks.TIGER_PLUSHIE);
+        addDrop(ModBlocks.LAWN_FROG);
+        addDrop(ModBlocks.SAND_CASTLE);
+        addDrop(ModBlocks.MOAI_STATUE);
+        addDrop(ModBlocks.GARDEN_GNOME);
+        addDrop(ModBlocks.FLOWER_BASKET);
+        addDrop(ModBlocks.REPTANT_VASE_SHORT);
 
         // Crops
         addDrop(ModBlocks.CORN_CROP, customCropDrops(ModBlocks.CORN_CROP, ModItems.CORN, ModItems.CORN_SEEDS, cropBlockLikeDrop((DailyCropBlock) ModBlocks.CORN_CROP, ModItems.CORN)));

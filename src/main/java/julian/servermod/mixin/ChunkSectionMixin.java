@@ -18,13 +18,13 @@ public abstract class ChunkSectionMixin {
 
     @Inject(method = "setBlockState(IIILnet/minecraft/block/BlockState;Z)Lnet/minecraft/block/BlockState;", at = @At("HEAD"), cancellable = true)
     private void dontGenerate(int x, int y, int z, BlockState state, boolean lock, CallbackInfoReturnable<BlockState> cir) {
-        if (y > 48) {
-            if (state.isOf(Blocks.EMERALD_ORE)) {
-                cir.setReturnValue(setBlockState(x, y, z, Blocks.STONE.getDefaultState(), lock));
-            } else if (state.isOf(Blocks.DEEPSLATE_EMERALD_ORE)) {
-                cir.setReturnValue(setBlockState(x, y, z, Blocks.DEEPSLATE.getDefaultState(), lock));
-            }
-        }
+//        if (y > 48) {
+//            if (state.isOf(Blocks.EMERALD_ORE)) {
+//                cir.setReturnValue(setBlockState(x, y, z, Blocks.STONE.getDefaultState(), lock));
+//            } else if (state.isOf(Blocks.DEEPSLATE_EMERALD_ORE)) {
+//                cir.setReturnValue(setBlockState(x, y, z, Blocks.DEEPSLATE.getDefaultState(), lock));
+//            }
+//        }
 
     }
 }

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "servermod:block/furniture/reptant_vase_short"
+    },
+    "facing=east": {
+      "model": "servermod:block/furniture/reptant_vase_short",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "servermod:block/furniture/reptant_vase_short",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "servermod:block/furniture/reptant_vase_short",
+      "y": 270
+    }
+  }
+}

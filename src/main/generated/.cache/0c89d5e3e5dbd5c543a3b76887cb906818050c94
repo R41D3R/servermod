@@ -1,6 +1,7 @@
-// 1.21	2024-08-13T20:32:04.096795652	servermod/Model Definitions
-dbd5046c66b7cd17978cbfcf051abaec11b18c9f assets/servermod/models/item/badger_club_id.json
+// 1.21	2024-08-24T22:59:46.373124247	servermod/Model Definitions
+e137609c7226cce5f85d4feec739609fd970fe47 assets/servermod/models/item/axe_shell_design.json
 5b20e99c5de0c39030f18df89e16b41db479a8ed assets/servermod/models/item/ancient_pickaxe.json
+dbd5046c66b7cd17978cbfcf051abaec11b18c9f assets/servermod/models/item/badger_club_id.json
 e4c881a54dbc056e8fe6bcdad4ef05f4f52ceee2 assets/servermod/models/item/badger_coin.json
 e63f50083f796558afe05dd6edc22ee40b53f2c3 assets/servermod/models/item/pineapple.json
 c787714d9cb3327599bcc334007f410311131985 assets/servermod/models/item/corn.json
@@ -30,8 +31,8 @@ ab6743ce24c044ef04fb35f1b9e0f3c6a0c1431e assets/servermod/models/item/apple_seed
 ee9c12e414428816c8a4d351da1b3c4a364296a8 assets/servermod/models/item/fertilizer_speed.json
 b04f19866b2be771b51092c1201375c97b9d5750 assets/servermod/models/item/moss.json
 0b0fd93d04c5c407a45793b7834ce9299bb5fa6c assets/servermod/models/item/snail_shell.json
-b3c2d2e6a2bd66e7e605669ad10c99691491374b assets/servermod/models/item/banana_seeds.json
 c0c57ce93be66e92e3806f0017fdcb97938e34fb assets/servermod/models/item/crate_key_legendary.json
+b3c2d2e6a2bd66e7e605669ad10c99691491374b assets/servermod/models/item/banana_seeds.json
 95d4bd79b04b3f8750c689d29bae6c132315c349 assets/servermod/models/item/aubrieta_pink.json
 0ef1cfbf0017b3975c7cb0103f7c8397bd3580ef assets/servermod/models/item/lettuce.json
 f39b2b71aea067d5ad063f224cdead5bc5700fb5 assets/servermod/models/item/crate_key_badger.json

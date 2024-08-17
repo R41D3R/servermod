@@ -17,6 +17,7 @@ import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 
 // registers all Item
 public class ModItems {
@@ -194,6 +195,10 @@ public class ModItems {
     public static final Item APPLE_SEEDS = registerItem("apple_seeds",
             new AliasedBlockItem(ModBlocks.APPLE_CROP, new Item.Settings()));
 
+
+    // ##########  DESIGNS  ##########
+    public static final Item DESIGN_AXE_SHELL = registerItem("axe_shell_design",
+            new ItemDesign(new Item.Settings().maxCount(1).fireproof().rarity(Rarity.EPIC), AxeItem.class, 1, "Axe Shell"));
 
     // BANNER
     //BADGER

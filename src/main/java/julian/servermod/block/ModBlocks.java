@@ -240,6 +240,36 @@ public class ModBlocks {
                     new int[]{0, 0, 1}
             ))));
 
+    public static final Block TIGER_PLUSHIE = registerBlock("tiger_plushie",
+            new FurnitureBlock(FabricBlockSettings.copyOf(CUSTOM_BARRIER), 0, new ArrayList<>(Arrays.asList(
+            ))));
+
+    public static final Block LAWN_FROG = registerBlock("lawn_frog",
+            new FurnitureBlock(FabricBlockSettings.copyOf(CUSTOM_BARRIER), 0, new ArrayList<>(Arrays.asList(
+            ))));
+
+    public static final Block SAND_CASTLE = registerBlock("sand_castle",
+            new FurnitureBlock(FabricBlockSettings.copyOf(CUSTOM_BARRIER), 0, new ArrayList<>(Arrays.asList(
+            ))));
+
+    public static final Block MOAI_STATUE = registerBlock("moai_statue",
+            new FurnitureBlock(FabricBlockSettings.copyOf(CUSTOM_BARRIER), 1, new ArrayList<>(Arrays.asList(
+                    new int[]{0, 0, -1},
+                    new int[]{0, 0, 1}
+            ))));
+
+    public static final Block GARDEN_GNOME = registerBlock("garden_gnome",
+            new FurnitureBlock(FabricBlockSettings.copyOf(CUSTOM_BARRIER), 0, new ArrayList<>(Arrays.asList(
+            ))));
+
+    public static final Block FLOWER_BASKET = registerBlock("flower_basket",
+            new FurnitureBlock(FabricBlockSettings.copyOf(CUSTOM_BARRIER), 0, new ArrayList<>(Arrays.asList(
+            ))));
+
+    public static final Block REPTANT_VASE_SHORT = registerBlock("reptant_vase_short",
+            new FurnitureBlock(FabricBlockSettings.copyOf(CUSTOM_BARRIER), 0, new ArrayList<>(Arrays.asList(
+            ))));
+
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);

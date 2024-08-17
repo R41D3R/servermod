@@ -79,5 +79,9 @@ public class ModModelProvider extends FabricModelProvider {
         // ADD CROP items and loot drop items
 
 
+        // DESIGNS
+        itemModelGenerator.register(ModItems.DESIGN_AXE_SHELL, Models.GENERATED);
+
+
     }
 }

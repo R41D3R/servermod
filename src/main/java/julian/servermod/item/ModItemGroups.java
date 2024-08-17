@@ -120,6 +120,17 @@ public class ModItemGroups {
                         entries.add(ModBlocks.WOODEN_SCARECROW);
                         entries.add(ModBlocks.WOODEN_SWORD);
 
+                        entries.add(ModBlocks.TIGER_PLUSHIE);
+                        entries.add(ModBlocks.LAWN_FROG);
+                        entries.add(ModBlocks.SAND_CASTLE);
+                        entries.add(ModBlocks.MOAI_STATUE);
+                        entries.add(ModBlocks.GARDEN_GNOME);
+                        entries.add(ModBlocks.FLOWER_BASKET);
+                        entries.add(ModBlocks.REPTANT_VASE_SHORT);
+
+                        // DESIGNS
+                        entries.add(ModItems.DESIGN_AXE_SHELL);
+
                     }).build());
 
     public static void registerItemGroups() {

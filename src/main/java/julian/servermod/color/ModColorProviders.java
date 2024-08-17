@@ -61,6 +61,11 @@ public class ModColorProviders {
         registerBlockColorProvider(ModBlocks.WOODEN_PENGUIN, 1, 0x5a6539);
         registerBlockColorProvider(ModBlocks.WOODEN_SCARECROW, 1, 0x5a6539);
 
+        registerBlockColorProvider(ModBlocks.TIGER_PLUSHIE, 1, 0xa83e2f);
+        registerBlockColorProvider(ModBlocks.SAND_CASTLE, 1, 0x2287ae);
+        registerBlockColorProvider(ModBlocks.GARDEN_GNOME, 1, 0xB20E0E);
+        registerBlockColorProvider(ModBlocks.FLOWER_BASKET, 1, 0xD9730C);
+
 
     }
 }

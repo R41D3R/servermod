@@ -90,7 +90,7 @@ public class ServerMod implements ModInitializer {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
-		ModComponents.registerComponents();
+		ModDataComponents.register();
 		ModBlocks.registerModBLocks();
 		ModItemGroups.registerItemGroups();
 		ModItems.registerModItems();
@@ -104,7 +104,7 @@ public class ServerMod implements ModInitializer {
 
 		ModWorldGeneration.generateModWorldGen();
 
-		ModCommandRegister.registerCommands();
+		// ModCommandRegister.registerCommands();
 		ModSounds.registerSounds();
 
 		ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
@@ -124,39 +124,12 @@ public class ServerMod implements ModInitializer {
 
 
 		// ------ Portals ------
-//		CustomPortalBuilder.beginPortal()
-//				.frameBlock(ModBlocks.RUBY_BLOCK)
-//				.lightWithItem(ModItems.RUBY)
-//				.destDimID(Identifier.of("minecraft", "overworld"))
-//				.returnDim(Identifier.of("test", "overworld"), true)
-//				.tintColor(0x00FF00)
-//				.registerPortal();
-//
-//		CustomPortalBuilder.beginPortal()
-//				.frameBlock(Blocks.CRYING_OBSIDIAN)
-//				.lightWithItem(ModItems.RUBY)
-//				.destDimID(Identifier.of("test", "the_nether"))
-//				.returnDim(Identifier.of("test", "overworld"), false)
-//				.tintColor(0xc76efa)
-//				.registerPortal();
-//
-//		CustomPortalBuilder.beginPortal()
-//				.frameBlock(ModBlocks.RUBY_BLOCK)
-//				.lightWithItem(ModItems.RUBY)
-//				.destDimID(Identifier.of("minecraft", "overworld"))
-//				.returnDim(Identifier.of("test2", "overworld"), true)
-//				.tintColor(0x00FF00)
-//				.registerPortal();
-//
-//		CustomPortalBuilder.beginPortal()
-//				.frameBlock(Blocks.CRYING_OBSIDIAN)
-//				.lightWithItem(ModItems.RUBY)
-//				.destDimID(Identifier.of("test2", "the_nether"))
-//				.returnDim(Identifier.of("test2", "overworld"), false)
-//				.tintColor(0xc76efa)
-//				.registerPortal();
-
-
+		CustomPortalBuilder.beginPortal()
+				.frameBlock(ModBlocks.PLATINUM_BLOCK)
+				.lightWithItem(ModItems.PLATINUM)
+				.destDimID(Identifier.of("servermod", "overworld"))
+				.tintColor(219,219,219)
+				.registerPortal();
 
 		// register Key pressing
 
@@ -228,8 +201,8 @@ public class ServerMod implements ModInitializer {
 	public static void handlePlayerLogin(PlayerEntity player) {
 		boolean reassigned = BadgerTaskManager.resetBadgerTasksIfNecessary(player.getUuid());
 		if (reassigned) {
-			Text message = Text.of("Your badger tasks have been reassigned.").copy().formatted(Formatting.GREEN);
-			player.sendMessage(message, false);
+//			Text message = Text.of("Your badger tasks have been reassigned.").copy().formatted(Formatting.GREEN);
+//			player.sendMessage(message, false);
 		}
 	}
 
