@@ -17,6 +17,10 @@ repositories {
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
 	maven {
+		url = "https://www.cursemaven.com"
+		allowInsecureProtocol = true
+	}
+	maven {
 		name = 'GeckoLib'
 		url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
 		content {
@@ -69,6 +73,8 @@ dependencies {
 
 	modImplementation 'net.kyrptonaught:customportalapi:0.0.1-beta66-1.21'
 	include 'net.kyrptonaught:customportalapi:0.0.1-beta66-1.21'
+	modImplementation 'curse.maven:selene-499980:5636180'
+
 }
 
 processResources {

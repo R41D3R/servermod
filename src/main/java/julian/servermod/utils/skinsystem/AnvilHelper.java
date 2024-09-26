@@ -1,18 +1,13 @@
-package julian.servermod.skinsystem;
+package julian.servermod.utils.skinsystem;
 
-import com.mojang.authlib.GameProfile;
 import julian.servermod.ServerMod;
 import julian.servermod.item.custom.ItemDesign;
 import julian.servermod.mixin.AnvilScreenHandlerAccessor;
-import julian.servermod.utils.ComponentUtil;
-import net.minecraft.component.ComponentMap;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.CustomModelDataComponent;
 import net.minecraft.component.type.LoreComponent;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.nbt.NbtCompound;
 import net.minecraft.screen.AnvilScreenHandler;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -20,7 +15,6 @@ import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 
 import java.util.List;
-import java.util.Optional;
 
 public class AnvilHelper {
 
@@ -30,7 +24,8 @@ public class AnvilHelper {
         ItemStack rightStack = slots.get(1).getStack();
 
         ServerMod.LOGGER.info("Checking if player can apply skin");
-        if (!isDesign(rightStack) || !designMatchesItemType(rightStack, leftStack) || !(player instanceof final ServerPlayerEntity serverPlayer)) return false;
+        if (!isDesign(rightStack) || !designMatchesItemType(rightStack, leftStack)
+                || !(player instanceof final ServerPlayerEntity serverPlayer)) return false;
 
         ServerMod.LOGGER.info("left stack is " + leftStack.getItem().toString());
         ServerMod.LOGGER.info("right stack is " + rightStack.getItem().toString());

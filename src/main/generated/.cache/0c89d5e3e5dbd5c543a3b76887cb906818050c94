@@ -1,7 +1,7 @@
-// 1.21	2024-08-24T22:59:46.373124247	servermod/Model Definitions
-e137609c7226cce5f85d4feec739609fd970fe47 assets/servermod/models/item/axe_shell_design.json
+// 1.21	2024-09-06T06:49:51.096290778	servermod/Model Definitions
 5b20e99c5de0c39030f18df89e16b41db479a8ed assets/servermod/models/item/ancient_pickaxe.json
 dbd5046c66b7cd17978cbfcf051abaec11b18c9f assets/servermod/models/item/badger_club_id.json
+a18b4e9c91c1372e8d5987f65bb27e96e86c15ea assets/servermod/models/item/shell_axe_token.json
 e4c881a54dbc056e8fe6bcdad4ef05f4f52ceee2 assets/servermod/models/item/badger_coin.json
 e63f50083f796558afe05dd6edc22ee40b53f2c3 assets/servermod/models/item/pineapple.json
 c787714d9cb3327599bcc334007f410311131985 assets/servermod/models/item/corn.json
@@ -13,10 +13,12 @@ b187fd08291a1f55bad34ea318d852ed802a8f55 assets/servermod/models/item/aubrieta_w
 8b103b53f56ae52c08d40e4a924e06ef7bd7e3c5 assets/servermod/models/item/rocks.json
 874f33bef62cf4cb0f1e8f059876dcc3e1bd7538 assets/servermod/models/item/banana.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/servermod/models/item/loot_balloon_spawn_egg.json
+0aabb73bf2b804e483ec29408d6d4a09716060e3 assets/servermod/models/item/candy.json
 4723d75865cd98afdeaa1ff83441ebc0351fca11 assets/servermod/models/item/clover.json
 bb248fff40525032518af6a86605c609be2e76f6 assets/servermod/models/item/aubrieta_red.json
 de7f01ceb71e46c9360af7e9d3cf83ebec8a3513 assets/servermod/models/item/aubrieta_blue.json
 021e02827ce8bdf1d637b517e0298c78173f7662 assets/servermod/models/item/shelf_fungus.json
+a5310e742d20d6b9467d146234b4e2f0f2406bda assets/servermod/models/item/crab_claw.json
 02dea629e7b74f1c79fff12dce1fa3223d5f43f6 assets/servermod/models/item/eggplant_seeds.json
 8e4a38c5dc50676136e5b387331250221f0e1f46 assets/servermod/models/item/pineapple_seeds.json
 a96d9a5a896fa63ee51ea99189fbbc4ea0ee8534 assets/servermod/models/item/pebbles.json
@@ -31,8 +33,9 @@ ab6743ce24c044ef04fb35f1b9e0f3c6a0c1431e assets/servermod/models/item/apple_seed
 ee9c12e414428816c8a4d351da1b3c4a364296a8 assets/servermod/models/item/fertilizer_speed.json
 b04f19866b2be771b51092c1201375c97b9d5750 assets/servermod/models/item/moss.json
 0b0fd93d04c5c407a45793b7834ce9299bb5fa6c assets/servermod/models/item/snail_shell.json
-c0c57ce93be66e92e3806f0017fdcb97938e34fb assets/servermod/models/item/crate_key_legendary.json
 b3c2d2e6a2bd66e7e605669ad10c99691491374b assets/servermod/models/item/banana_seeds.json
+c0c57ce93be66e92e3806f0017fdcb97938e34fb assets/servermod/models/item/crate_key_legendary.json
+1a000b66e738af5a46a4b012563153801d622692 assets/servermod/models/item/shell.json
 95d4bd79b04b3f8750c689d29bae6c132315c349 assets/servermod/models/item/aubrieta_pink.json
 0ef1cfbf0017b3975c7cb0103f7c8397bd3580ef assets/servermod/models/item/lettuce.json
 f39b2b71aea067d5ad063f224cdead5bc5700fb5 assets/servermod/models/item/crate_key_badger.json

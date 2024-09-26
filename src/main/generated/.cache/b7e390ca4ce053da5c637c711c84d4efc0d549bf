@@ -1,4 +1,4 @@
-// 1.21	2024-08-24T22:59:46.371887632	servermod/World Gen
+// 1.21	2024-09-06T06:49:51.095126267	servermod/World Gen
 9c93d152f27e50ebb2a9866af348a0e68eb8b1b8 data/servermod/worldgen/placed_feature/extra_lapis_ore.json
 63c72347dd7763e6d3da6b81deccfdda8af3063e data/servermod/worldgen/configured_feature/emerald_ore.json
 340d0602c8811624bf457f8c049694c071b74842 data/servermod/worldgen/placed_feature/extra_gold_ore_upper.json
@@ -17,8 +17,8 @@ ea325ddc48eaf9d6000cf2eedcc2babb659bef6c data/servermod/worldgen/placed_feature/
 e692f0f84d6c9e69d155166abb45bd8ba6635f58 data/servermod/worldgen/configured_feature/ruby_ore.json
 c3c8a39c993319119cc28e863d724c84691d31f7 data/servermod/worldgen/placed_feature/extra_iron_ore_upper.json
 f533de355971654d873ff7ef2c89a609434ff029 data/servermod/worldgen/placed_feature/extra_iron_ore_small.json
-d6b5245baa6ebffcb8b09fd2eadec747a47645e1 data/servermod/worldgen/placed_feature/loot_vase_placed.json
 5b5c9ee5bc4e0f580b1a01542caa45278dc0409c data/servermod/worldgen/placed_feature/extra_coal_ore.json
+d6b5245baa6ebffcb8b09fd2eadec747a47645e1 data/servermod/worldgen/placed_feature/loot_vase_placed.json
 d28df75e6c7d38ebdd03aa659768af65fdcff684 data/servermod/worldgen/configured_feature/loot_vase.json
 f28e56d979e7b38e55abaa644708169305b7594e data/servermod/worldgen/configured_feature/extra_coal_ore.json
 aa5cf6b838d285fca38e3190b0a559c89dd87404 data/servermod/worldgen/configured_feature/extra_iron_ore_middle.json

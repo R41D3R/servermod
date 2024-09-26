@@ -6,15 +6,20 @@ import julian.servermod.entity.ModEntities;
 import julian.servermod.entity.client.LootBalloonRenderer;
 import julian.servermod.entity.client.SnailRenderer;
 import julian.servermod.item.ModItems;
+import julian.servermod.mixin.HandledScreenInvoker;
 import julian.servermod.screen.*;
 import julian.servermod.sound.ModSounds;
+import julian.servermod.utils.pockets.PocketUtil;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.fabricmc.fabric.api.client.screen.v1.ScreenEvents;
+import net.fabricmc.fabric.api.client.screen.v1.ScreenMouseEvents;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.render.RenderLayer;
@@ -24,6 +29,7 @@ import net.minecraft.client.util.SpriteIdentifier;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.screen.slot.Slot;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.lwjgl.glfw.GLFW;
@@ -35,6 +41,8 @@ public class ServerModClient implements ClientModInitializer {
     public static KeyBinding storeGuiKey;
     public static KeyBinding badgerTaskGuiKey;
     public static KeyBinding rewardGuiKey;
+
+    private double accScroll = 0;
 
     @Override
     public void onInitializeClient() {
@@ -148,6 +156,12 @@ public class ServerModClient implements ClientModInitializer {
 //                }
 //            }
 //        });
+            ScreenEvents.BEFORE_INIT.register((client, screen, scaledWidth, scaledHeight) -> {
+                if (screen instanceof HandledScreen handledScreen) {
+                    ScreenMouseEvents.afterMouseScroll(screen).register((_screen, x, y, horiz, vert) ->
+                            this.onMouseScrolled(handledScreen, x, y, vert));
+                }
+            });
 //
 //        ClientTickEvents.END_CLIENT_TICK.register(client -> {
 //            while (badgerTaskGuiKey.wasPressed()) {
@@ -217,4 +231,34 @@ public class ServerModClient implements ClientModInitializer {
     public record BadgerTaskPacket(int[] taskIds, int[] itemCounts, int[] completed) {}
     public record CompleteBadgerTask(int taskId) {}
 
+
+    private boolean onMouseScrolled(HandledScreen screen, double x, double y, double scroll) {
+        Slot slot = ((HandledScreenInvoker) screen).invokeGetSlotAt(x, y);
+        if (slot == null) {
+            return true;
+        }
+        ItemStack stack = slot.getStack();
+        if (!PocketUtil.hasPockets(stack)) {
+            return true;
+        }
+        if (accScroll * scroll < 0) {
+            accScroll = 0;
+        }
+        accScroll += scroll;
+        int amt = (int) accScroll;
+        accScroll -= amt;
+        if (amt == 0) {
+            return true;
+        }
+
+        PocketUtil.shiftBundle(stack, amt);
+
+        ServerMod.BUNDLE_SCROLL_CHANNEL.clientHandle().send(new ServerMod.BundleScrollPacket(
+                screen.getScreenHandler().syncId,
+                screen.getScreenHandler().getRevision(),
+                slot.id,
+                amt));
+        ServerMod.LOGGER.info("bundle scroll amt: " + amt);
+        return false;
+    }
 }

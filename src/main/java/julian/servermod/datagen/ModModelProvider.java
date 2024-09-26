@@ -1,6 +1,5 @@
 package julian.servermod.datagen;
 
-import julian.servermod.block.ModBlocks;
 import julian.servermod.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
@@ -23,6 +22,13 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
+
+        //Currencies
+        itemModelGenerator.register(ModItems.SHELL, Models.GENERATED);
+        itemModelGenerator.register(ModItems.CANDY, Models.GENERATED);
+
+        // Crab
+        itemModelGenerator.register(ModItems.CRAB_CLAW, Models.GENERATED);
 
 
         // TOOLS
@@ -80,7 +86,7 @@ public class ModModelProvider extends FabricModelProvider {
 
 
         // DESIGNS
-        itemModelGenerator.register(ModItems.DESIGN_AXE_SHELL, Models.GENERATED);
+        itemModelGenerator.register(ModItems.SHELL_AXE_TOKEN, Models.GENERATED);
 
 
     }

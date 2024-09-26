@@ -14,13 +14,16 @@ import net.minecraft.world.World;
 import net.minecraft.world.spawner.SpecialSpawner;
 import org.jetbrains.annotations.Nullable;
 
+import java.time.LocalTime;
 import java.util.Random;
 
 public class LootBalloonSpawner implements SpecialSpawner {
     private static final int SPAWN_INTERVAL = (int)20 * 60 * 5; // 5 minutes in ticks (20 ticks per second * 300 seconds)
     private static final double SPAWN_CHANCE = 0.025; // 2.5% chance
+    private static final double SPAWN_CHANCE_MULTIPLIER = 2;
     private static final int SPAWN_RADIUS = 30;
-    private static final int SPAWN_HEIGHT_OFFSET = 25;
+    private static final int SPAWN_HEIGHT_OFFSET = 30;
+    private static final int SPAWN_HEIGHT_OFFSET_VARIATION = 5;
     private final Random random = new Random();
     private int spawnTimer;
 
@@ -38,8 +41,17 @@ public class LootBalloonSpawner implements SpecialSpawner {
 
         this.spawnTimer = SPAWN_INTERVAL;
 
+        double baseSpawnChance = SPAWN_CHANCE;
+        LocalTime currentTime = LocalTime.now();
+        LocalTime startTime = LocalTime.of(17, 0); // 17:00 or 5 PM
+        LocalTime endTime = LocalTime.of(21, 0);   // 21:00 or 9 PM
+        if (currentTime.isAfter(startTime) && currentTime.isBefore(endTime)) {
+            baseSpawnChance *= SPAWN_CHANCE_MULTIPLIER;
+        }
+
         for (ServerPlayerEntity player : world.getPlayers()) {
-            if (this.random.nextDouble() <= SPAWN_CHANCE) {
+
+            if (this.random.nextDouble() <= baseSpawnChance) {
                 BlockPos playerPos = player.getBlockPos();
                 //ServerMod.LOGGER.info("player pos was " + playerPos);
                 BlockPos spawnPos = this.getSpawnPosition(world, player);
@@ -68,7 +80,8 @@ public class LootBalloonSpawner implements SpecialSpawner {
             int z = playerPos.getZ() + this.random.nextInt(2*SPAWN_RADIUS) - SPAWN_RADIUS;
 //            int x = playerPos.getX();
 //            int z = playerPos.getZ();
-            int y = world.getTopY(Heightmap.Type.WORLD_SURFACE, x, z) + SPAWN_HEIGHT_OFFSET;
+            int variation = random.nextInt(-SPAWN_HEIGHT_OFFSET_VARIATION, SPAWN_HEIGHT_OFFSET_VARIATION);
+            int y = world.getTopY(Heightmap.Type.WORLD_SURFACE, x, z) + SPAWN_HEIGHT_OFFSET + variation;
             BlockPos potentialPos = new BlockPos(x, y, z);
             //ServerMod.LOGGER.info("potential pos " + potentialPos);
             if (isValidSpawnPosition(world, potentialPos)) {

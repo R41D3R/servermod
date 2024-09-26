@@ -19,6 +19,13 @@ public class ModItemGroups {
 
                         entries.add(ModItems.ANCIENT_PICKAXE);
 
+                        // Currencies
+                        entries.add(ModItems.SHELL);
+                        entries.add(ModItems.CANDY);
+
+                        // Crab
+                        entries.add(ModItems.CRAB_CLAW);
+
                         // Biome
                         entries.add(ModItems.PEBBLES_ITEM);
                         entries.add(ModItems.ROCKS_ITEM);
@@ -129,7 +136,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.REPTANT_VASE_SHORT);
 
                         // DESIGNS
-                        entries.add(ModItems.DESIGN_AXE_SHELL);
+                        entries.add(ModItems.SHELL_AXE_TOKEN);
 
                     }).build());
 

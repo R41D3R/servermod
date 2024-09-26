@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "servermod:item/axe_shell_design"
+    "layer0": "servermod:item/shell_axe_token"
   }
 }

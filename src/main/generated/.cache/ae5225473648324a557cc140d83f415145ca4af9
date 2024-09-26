@@ -1,4 +1,4 @@
-// 1.21	2024-08-24T22:59:46.369491744	servermod/Block Loot Tables
+// 1.21	2024-09-06T06:49:51.093774846	servermod/Block Loot Tables
 8f92f8fb4483c0490d00b7db60faaf3d5f767cf0 data/servermod/loot_table/blocks/flower_basket.json
 4fc43725370bd046ffac627459f8cd706f621ce5 data/servermod/loot_table/blocks/eggplant_crop.json
 473beadea510646a7ed4a854ac64e07d469ae99d data/servermod/loot_table/blocks/log_stack_3.json
@@ -16,8 +16,8 @@ cb11cf108227fda8f9259a3a6e332bd6bcfb1410 data/servermod/loot_table/blocks/wooden
 7674f0901d7f006603931afc69ee4bd113b1d3f2 data/servermod/loot_table/blocks/stall_cart.json
 4ffbe710cadd478e43f3188def206b76a6d44f6e data/servermod/loot_table/blocks/mango_crop.json
 9d429b35fb93c25292da55fdbea174b26766bab3 data/servermod/loot_table/blocks/wooden_bear.json
-1f21dbf4df774f18ba705e0b4e5ab826c7a93bee data/servermod/loot_table/blocks/reptant_vase_short.json
 a52374a16c1c9ff23f03df63db5d04904164f5d9 data/servermod/loot_table/blocks/deepslate_platinum_ore.json
+1f21dbf4df774f18ba705e0b4e5ab826c7a93bee data/servermod/loot_table/blocks/reptant_vase_short.json
 e7972317edc74e29c5d8933a41b2fa91d4c11172 data/servermod/loot_table/blocks/log_stool_2.json
 c6e8d1f802e2060e6652f73c1caa7603176126d3 data/servermod/loot_table/blocks/log_stack_1.json
 7c40812fd16b86e79eb9f94dbdb8275d50e28512 data/servermod/loot_table/blocks/flower_cover_white_block.json

@@ -20,6 +20,8 @@ import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.command.CommandManager;
+import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -35,6 +37,7 @@ import software.bernie.geckolib.animation.AnimatableManager;
 
 
 import java.util.EnumSet;
+import java.util.Objects;
 
 
 public class LootBalloonEntity extends FlyingEntity implements GeoEntity {
@@ -64,14 +67,27 @@ public class LootBalloonEntity extends FlyingEntity implements GeoEntity {
     @Override
     public boolean damage(DamageSource source, float amount) {
         if (source.getAttacker() instanceof PlayerEntity || source.getSource() instanceof ProjectileEntity) {
-            playEffects();
-            popBalloon();
+//            if (this.getWorld().isClient) {
+//
+//            }
+
+            if (!this.getWorld().isClient) {
+                playEffects(((PlayerEntity) source.getAttacker()));
+                popBalloon();
+            }
             return true;
         }
         return false; // Prevent the entity from taking damage from other sources
     }
 
-    private void playEffects() {
+    private void runParticleCommand(PlayerEntity player, double x, double y, double z) {
+        String command = String.format("/particle explosion %.3f %.3f %.3f 0.000 0.000 0.000 1 0 force", x, y, z);
+        CommandManager commandManager = Objects.requireNonNull(player.getServer()).getCommandManager();
+        ServerCommandSource commandSource = player.getServer().getCommandSource();
+        commandManager.executeWithPrefix(commandSource, command);
+    }
+
+    private void playEffects(PlayerEntity player) {
         BlockPos pos = new BlockPos((int)this.getX(), (int)this.getY(), (int)this.getZ()).up(2);
 //        getWorld().playSound(this.getX(), this.getY(), this.getZ(), ModSounds.POP, SoundCategory.AMBIENT, 1.0f, 1.0f, false);
 
@@ -81,7 +97,8 @@ public class LootBalloonEntity extends FlyingEntity implements GeoEntity {
             double x = pos.getX() + (getWorld().random.nextDouble() - 0.5) * radius * 2;
             double y = pos.getY() + (getWorld().random.nextDouble() - 0.5) * radius;
             double z = pos.getZ() + (getWorld().random.nextDouble() - 0.5) * radius * 2;
-            getWorld().addParticle(ParticleTypes.EXPLOSION, x, y, z, 0, 0, 0);
+            // getWorld().addParticle(ParticleTypes.EXPLOSION, x, y, z, 0, 0, 0);
+            runParticleCommand(player, x, y, z);
         }
         ServerMod.LOGGER.info("Show particles at " + pos);
 
@@ -212,7 +229,7 @@ public class LootBalloonEntity extends FlyingEntity implements GeoEntity {
 
         public FlyRandomlyGoal(LootBalloonEntity ghast) {
             this.ghast = ghast;
-            this.setControls(EnumSet.of(Goal.Control.MOVE));
+            this.setControls(EnumSet.of(Control.MOVE));
         }
 
         @Override

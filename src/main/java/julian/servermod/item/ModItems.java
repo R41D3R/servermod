@@ -31,6 +31,16 @@ public class ModItems {
             new SpawnEggItem(ModEntities.LOOT_BALLOON, 0xD57E57, 0x100000,
                     new Item.Settings()));
 
+    // Currencies
+    public static final Item SHELL = registerItem("shell",
+            new Item(new Item.Settings()));
+
+    public static final Item CANDY = registerItem("candy",
+            new Item(new Item.Settings()));
+
+    // Crab
+    public static final Item CRAB_CLAW = registerItem("crab_claw",
+            new Item(new Item.Settings()));
 
 
 //    public static final Item CAPTURE_NET = registerItem("capture_net",
@@ -197,8 +207,23 @@ public class ModItems {
 
 
     // ##########  DESIGNS  ##########
-    public static final Item DESIGN_AXE_SHELL = registerItem("axe_shell_design",
-            new ItemDesign(new Item.Settings().maxCount(1).fireproof().rarity(Rarity.EPIC), AxeItem.class, 1, "Axe Shell"));
+    public static final Item SHELL_AXE_TOKEN = registerItem("shell_axe_token",
+            new ItemDesign(new Item.Settings().maxCount(1).fireproof().rarity(Rarity.EPIC), AxeItem.class, 1, "Shell Axe"));
+
+    public static final Item SHELL_HOE_TOKEN = registerItem("shell_hoe_token",
+            new ItemDesign(new Item.Settings().maxCount(1).fireproof().rarity(Rarity.EPIC), HoeItem.class, 1, "Shell Hoe"));
+
+    public static final Item SHELL_PICKAXE_TOKEN = registerItem("shell_pickaxe_token",
+            new ItemDesign(new Item.Settings().maxCount(1).fireproof().rarity(Rarity.EPIC), PickaxeItem.class, 1, "Shell Pickaxe"));
+
+    public static final Item SHELL_SHOVEL_TOKEN = registerItem("shell_shovel_token",
+            new ItemDesign(new Item.Settings().maxCount(1).fireproof().rarity(Rarity.EPIC), ShovelItem.class, 1, "Shell Shovel"));
+
+    public static final Item SHELL_SWORD_TOKEN = registerItem("shell_sword_token",
+            new ItemDesign(new Item.Settings().maxCount(1).fireproof().rarity(Rarity.EPIC), SwordItem.class, 1, "Shell Sword"));
+
+    public static final Item SQUIRT_BOW_TOKEN = registerItem("squirt_bow_token",
+            new ItemDesign(new Item.Settings().maxCount(1).fireproof().rarity(Rarity.EPIC), BowItem.class, 1, "Squirt Bow"));
 
     // BANNER
     //BADGER

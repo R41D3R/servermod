@@ -18,7 +18,11 @@ import julian.servermod.screen.ModScreenHandlers;
 import julian.servermod.screen.StoreScreen;
 import julian.servermod.screen.util.InventoryUtil;
 import julian.servermod.sound.ModSounds;
+import julian.servermod.utils.FarmWorldUtil.ChangeTimeChecker;
+import julian.servermod.utils.FarmWorldUtil.FolderDeleter;
+import julian.servermod.utils.FarmWorldUtil.YamlSeedUpdater;
 import julian.servermod.utils.playerdata.WalletData;
+import julian.servermod.utils.pockets.PocketUtil;
 import julian.servermod.world.gen.ModWorldGeneration;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.ModInitializer;
@@ -49,6 +53,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.resource.ResourceType;
+import net.minecraft.screen.ScreenHandler;
+import net.minecraft.screen.slot.Slot;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
@@ -58,6 +65,7 @@ import org.lwjgl.glfw.GLFW;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
 import java.util.Objects;
 
 public class ServerMod implements ModInitializer {
@@ -66,6 +74,7 @@ public class ServerMod implements ModInitializer {
 	public static final OwoNetChannel CRATE_REWARD_SCREEN_CHANNEL = OwoNetChannel.create(Identifier.of(ServerMod.MOD_ID, "crate_reward_screen"));
 	public static final OwoNetChannel BADGER_TASK_CHANNEL = OwoNetChannel.create(Identifier.of(ServerMod.MOD_ID, "badger_task"));
 
+	public static final OwoNetChannel BUNDLE_SCROLL_CHANNEL = OwoNetChannel.create(Identifier.of(ServerMod.MOD_ID, "bundle_scroll"));
 
 
 	public static final CustomGameRuleCategory GREEN_CATEGORY = new CustomGameRuleCategory(Identifier.of(ServerMod.MOD_ID, "netherroof_do_death"),
@@ -115,11 +124,88 @@ public class ServerMod implements ModInitializer {
 		FabricDefaultAttributeRegistry.register(ModEntities.SNAIL, SnailEntity.setAttributes());
 
 
+		// BundleScroll
+		BUNDLE_SCROLL_CHANNEL.registerServerbound(ServerMod.BundleScrollPacket.class, (message, access) -> {
+			int syncId = message.syncId;
+			int revision = message.revision;
+			int i = message.slot;
+			int amt = message.amount;
+
+			ServerPlayerEntity player = access.player();
+
+			player.updateLastActionTime();
+			ScreenHandler screenHandler = player.currentScreenHandler;
+			if (screenHandler.syncId != syncId) {
+				return;
+			}
+			if (player.isSpectator()) {
+				screenHandler.syncState();
+				return;
+			}
+			if (!screenHandler.canUse(player)) {
+				LOGGER.debug("Player {} interacted with invalid menu {}", player, screenHandler);
+				return;
+			}
+			if (!screenHandler.isValid(i)) {
+				LOGGER.debug("Player {} clicked invalid slot index: {}, available slots: {}", player.getName(), i, screenHandler.slots.size());
+				return;
+			}
+
+			boolean flag = revision == player.currentScreenHandler.getRevision();
+			screenHandler.disableSyncing();
+			Slot slot = screenHandler.getSlot(i);
+			ItemStack stack = slot.getStack();
+			if (PocketUtil.hasPockets(stack)) {
+				PocketUtil.shiftBundle(stack, amt);
+			}
+			screenHandler.enableSyncing();
+			if (flag) {
+				screenHandler.updateToClient();
+			} else {
+				screenHandler.sendContentUpdates();
+			}
+
+
+		});
+
 		// UseEntityCallback.EVENT.register(new VillagerTradingChangeHandler());
 
 
 		// CrateParticleAnimationSystem.initialize();
 
+
+		// Check if DH FarmWorld needs to be deleted
+		String jsonFilePath = "config/servermod/dh_farmworld.json";
+		if (ChangeTimeChecker.checkAndUpdateJSONChangeTime(jsonFilePath)) {
+			if (FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT) {
+
+				// Delete the DH FarmWorld
+				List<String> farmWorlds = List.of(
+						"Distant_Horizons_server_data/Minecraft+Server/servermod@@nether",
+						"Distant_Horizons_server_data/Minecraft+Server/servermod@@overworld"
+				);
+				for (String farmWorld : farmWorlds) {
+					FolderDeleter.deleteFolder(farmWorld);
+				}
+			}
+
+			if (FabricLoader.getInstance().getEnvironmentType() == EnvType.SERVER) {
+				List<String> farmWorldConfigs = List.of(
+						"config/multiworld/worlds/servermod/nether.yml",
+						"config/multiworld/worlds/servermod/overworld.yml"
+				);
+				for (String farmWorldConfig : farmWorldConfigs) {
+					YamlSeedUpdater.updateSeed(farmWorldConfig);
+				}
+				List<String> farmWorldData = List.of(
+						"world/dimensions/servermod/nether",
+						"world/dimensions/servermod/overworld"
+				);
+				for (String farmWorldDataDir : farmWorldData) {
+					FolderDeleter.deleteFolder(farmWorldDataDir);
+				}
+			}
+		}
 
 
 
@@ -151,6 +237,7 @@ public class ServerMod implements ModInitializer {
 		ServerWorldEvents.LOAD.register((server, world) -> {
 			GameRules gameRules = world.getGameRules();
 			gameRules.get(GameRules.REDUCED_DEBUG_INFO).set(true, server);
+			gameRules.get(GameRules.SEND_COMMAND_FEEDBACK).set(false, server);
 		});
 
 		ServerTickEvents.END_SERVER_TICK.register(minecraftServer -> {
@@ -207,6 +294,7 @@ public class ServerMod implements ModInitializer {
 	}
 
 	public record StorePacket(int cost, int buyItem, int currencyItem) {}
+	public record BundleScrollPacket(int syncId, int revision, int slot, int amount) {}
 
 
 }

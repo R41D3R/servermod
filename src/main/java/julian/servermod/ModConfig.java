@@ -13,7 +13,7 @@ public class ModConfig {
     public final static boolean HOPPER_BETTER_EXTRACT = true;
     public final static boolean HOPPER_EXTRACT_COOLDOWN = true;
     public final static int HOPPER_MINECART_TRANSFER_COOLDOWN = 1;
-    public final static boolean HOPPER_MINECART_BETTER_EXTRACT = false;
+    public final static boolean HOPPER_MINECART_BETTER_EXTRACT = true;
 
     // Minecart
     public final static int POWERED_RAIL_SPEED = 16;

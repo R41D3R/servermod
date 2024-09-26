@@ -5,16 +5,27 @@
   "mixins": [
     "AnvilScreenHandlerAccessor",
     "AnvilScreenHandlerMixin",
+    "ArmorItemMixin",
+    "BubbleColumnBlockMixin",
+    "BundleContentsComponentsMixin",
+    "BundleItemMixin",
     "ChunkSectionMixin",
     "ExampleMixin",
     "HopperBlockEntityMixin",
     "HopperMinecartEntityMixin",
     "IdentifierAccessor",
     "IEasyHopperBlockEntity",
+    "ItemStackMixin",
+    "MagmaBlockMixin",
     "ModEntityDataSaverMixin",
-    "SlotMixin"
+    "PlayerAdvancementTrackerMixin",
+    "PocketContentsComponentsMixin",
+    "ScreenHandlerMixin",
+    "SoulSandMixin"
   ],
   "client": [
+    "DrawContextMixin",
+    "HandledScreenInvoker",
     "ItemRendererAccessor",
     "ItemRendererMixin",
     "ModelLoaderMixin"

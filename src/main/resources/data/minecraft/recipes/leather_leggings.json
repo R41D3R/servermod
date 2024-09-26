@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:bundle"
+    },
+    {
+      "item": "minecraft:leather_leggings"
+    }
+  ],
+  "result": {
+    "id": "minecraft:leather_leggings",
+    "count": 1,
+    "components": {
+      "servermod:pocket_count": 4
+    }
+  }
+}

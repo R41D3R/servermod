@@ -1,20 +1,13 @@
 package julian.servermod.mixin;
 
-import julian.servermod.skinsystem.AnvilHelper;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.item.ItemStack;
 import net.minecraft.screen.*;
 import org.jetbrains.annotations.Nullable;
-import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(AnvilScreenHandler.class)
 public abstract class AnvilScreenHandlerMixin extends ForgingScreenHandler {
@@ -49,6 +42,7 @@ public abstract class AnvilScreenHandlerMixin extends ForgingScreenHandler {
 
     @Inject(at = @At("HEAD"), method = "updateResult", cancellable = true)
     private void init(CallbackInfo info) {
-        if (AnvilHelper.canApplySkin(this.player, this.slots, this.newItemName)) info.cancel();
+        if (julian.servermod.utils.skinsystem.AnvilHelper.canApplySkin(this.player, this.slots, this.newItemName)) info.cancel();
+        // if (julian.servermod.utils.pockets.AnvilHelper.canApplyPocket(this.player, this.slots, this.newItemName)) info.cancel();
     }
 }
